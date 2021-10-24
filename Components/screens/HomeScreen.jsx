@@ -1,4 +1,5 @@
 import React from "react";
+import {StyleSheet,SafeAreaView,View,TouchableOpacity,Text,useWindowDimensions,Image} from 'react-native'
 
 const HomeScreen = () =>{
     const layout = useWindowDimensions()
