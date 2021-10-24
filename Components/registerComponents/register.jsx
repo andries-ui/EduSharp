@@ -212,7 +212,7 @@ const styles = StyleSheet.create({
         padding: 5,
          alignContent: 'center',
           shadowColor: '#d5dbe3',
-           borderTopEndRadius:20,
+           borderTopEndRadius:10,
            borderBottomEndRadius:20,
            borderBottomRightRadius:20,
            borderTopStartRadius:20
