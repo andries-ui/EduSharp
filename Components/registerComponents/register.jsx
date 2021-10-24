@@ -212,8 +212,8 @@ const styles = StyleSheet.create({
         padding: 5,
          alignContent: 'center',
           shadowColor: '#d5dbe3',
-           borderTopEndRadius:10,
-           borderBottomEndRadius:20,
+           borderTopEndRadius:20,
+           borderBottomEndRadius:5,
            borderBottomRightRadius:20,
            borderTopStartRadius:20
            
