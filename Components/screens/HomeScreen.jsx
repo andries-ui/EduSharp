@@ -1,7 +1,7 @@
 import React from "react";
 import {StyleSheet,SafeAreaView,View,TouchableOpacity,Text,useWindowDimensions,Image} from 'react-native'
 
-const HomeScreen = () =>{
+const HomeScreen = ({navigation}) =>{
     const layout = useWindowDimensions()
     const img = {uri:'https://s3-alpha-sig.figma.com/img/de23/e554/ebdc307453e297e144715b1cca292de4?Expires=1635724800&Signature=NcDpb-b3oyY79hcr1Vkrz2rSZ~aKin3LL0DMt6bvMmOTrkuIM4icgTleI2zTBg9P67KwMxVn0Ulx7JOWluwnRkZIZVi14ZnZidNRipjaccD5MlyIlG0gFM5exs~nkZ-C1347by~HgMtQMA8bU1qiKYh0~5MVgycQZf~YTWCWii9fO3ycYzxgAIjDtpGaKcQweUfN1mVkXoxF96lmNjJgkGAPiZTXm1xTxcAR5HskdoAylf3Y2PQTRDQL0ITSbj1RBzPJVsshFfDMLU0OpjFGo0UuC4F6569dAPCdOs8xA4nFCosEc0SMJwLL8mxvLOTpHp6t97S9J9Fa8Xm~Gjv3pg__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA'}
     return(
