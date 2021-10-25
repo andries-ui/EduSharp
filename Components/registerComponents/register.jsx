@@ -37,8 +37,8 @@ const Register = () => {
     }
     return (
         <SafeAreaView>
-            <View style={{ padding: 10, margin: 20, marginTop: 30, alignItems: 'center', width: layout.width, height: layout.height }}>
-                <View style={{ width: '50%', margin: 0, padding: 0 }}>
+            <View style={{ padding: 10, margin: 20, marginTop: 80, alignItems: 'center', width: layout.width, height: layout.height }}>
+                <View style={{ width: '90%', margin: 0, padding: 0 }}>
                     <Text style={{ padding: 3, fontWeight: '500', fontSize: 45,color:'#3b3c3d' }}>
                         Sign Up
                     </Text>
@@ -157,7 +157,7 @@ const Register = () => {
                                 <Text style={{
                                     marginTop:-40,
                                     color: '#337af5',
-                                    marginLeft:'75%'
+                                    marginLeft:'70%'
                                     }}>
                                     View More
                                 </Text>
