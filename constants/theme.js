@@ -7,7 +7,10 @@ export const COLORS={
     secondary:"#FC2B4D",
     Danger:"#dc3545",
     Black:"#000000",
-    Bhite:"#ffffff",
+    White:"#ffffff",
+    LightBlack:"rgba(0,0,0,.45)",
+    DarkBlack:"rgba(0,0,0,.8)",
+
     
     
     AppBackgroundColor:"#ffffff",

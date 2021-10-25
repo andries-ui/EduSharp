@@ -16,7 +16,7 @@ const Register = () => {
 
     const show = ()=>{
         setShowPassword({showpassword :!showpassword})
-    }
+    } 
 
     const validate = Yup.object({
         name: Yup.string().max(15, 'Only 15 Characters Allowed').required('*Required*'),
