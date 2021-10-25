@@ -7,7 +7,8 @@ const HomeScreen = ({navigation}) =>{
     return(
         <SafeAreaView>
             <View 
-            style={{   marginTop:60,
+            style={{ 
+                marginTop:60,
                 alignSelf:'center',
                 margin:20,
                 borderWidth:1,
@@ -15,12 +16,20 @@ const HomeScreen = ({navigation}) =>{
                 margin:8,
                 borderColor:'transparent'}}>
                 <View style={{margin:30}}>
-                    <Text style={{ fontWeight:'700',
-            fontSize:35}}>Welcome</Text>
+                <Text style=
+                    {{ 
+                        fontWeight:'600',
+                        fontSize:45,
+                        color:'#3b3c3d',
+                        alignSelf:'center'
+
+                    }}>
+                        Welcome
+                    </Text>
                     <View style={{alignSelf:'center',width:'100%'}}>
                        <Image source={img} style={{width:250,height:300,alignSelf:'center'}}></Image>
                     </View>
-                    <View style={{marginTop:60}}>
+                    <View style={{marginTop:40}}>
                         <TouchableOpacity style={{borderRadius:20,backgroundColor:'#2769ba',alignSelf:'center',width:300,height:40}}><Text style={{color:'white',alignSelf:'center',padding:4}}>Sign In </Text></TouchableOpacity>
                         <TouchableOpacity onPress={()=>navigation.navigate('register')} style={{borderRadius:20,backgroundColor:'#cc1d32',alignSelf:'center',width:300,height:40,margin:20}}><Text style={{color:'white',alignSelf:'center',padding:4}}>Sign Up </Text></TouchableOpacity>
                     </View>
