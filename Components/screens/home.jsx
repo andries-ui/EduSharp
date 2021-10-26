@@ -29,7 +29,7 @@ const HomeScreen = ({navigation}) =>{
                        <Image source={img} style={{width:250,height:300,alignSelf:'center'}}></Image>
                     </View>
                     <View style={{marginTop:60}}>
-                        <TouchableOpacity style={{borderRadius:20,backgroundColor:'#2769ba',alignSelf:'center',width:300,height:40}}><Text style={{color:'white',alignSelf:'center',padding:4}}>Sign In </Text></TouchableOpacity>
+                        <TouchableOpacity onPress={()=>navigation.navigate('SignInScreen')} style={{borderRadius:20,backgroundColor:'#2769ba',alignSelf:'center',width:300,height:40}}><Text style={{color:'white',alignSelf:'center',padding:4}}>Sign In </Text></TouchableOpacity>
                         <TouchableOpacity onPress={()=>navigation.navigate('register')} style={{borderRadius:20,backgroundColor:'#cc1d32',alignSelf:'center',width:300,height:40,margin:20}}><Text style={{color:'white',alignSelf:'center',padding:4}}>Sign Up </Text></TouchableOpacity>
                     </View>
                 </View>
