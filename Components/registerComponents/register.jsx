@@ -181,7 +181,8 @@ const Register = () => {
                                 <Text style={{ color: 'white', alignSelf: 'center', padding: 6 }}>
                                         Register
                                 </Text>
-                                </TouchableOpacity>
+                                </TouchableOpacity  >
+                                
                                 <Text 
                                    style={{
                                         alignSelf: 'center',
