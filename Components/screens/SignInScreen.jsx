@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "react-native-gesture-handler";
 import {
   SafeAreaView,
@@ -7,130 +7,167 @@ import {
   ScrollView,
   StyleSheet,
   Image,
-
   TouchableOpacity,
+  StatusBar,
+  Dimensions
 } from "react-native";
-import Icon from "react-native-vector-icons/MaterialIcons";
+// import Icon from "react-native-vector-icons/MaterialIcons";
 import { TextInput } from "react-native-paper";
+import { Icon, Input, Button } from "react-native-elements";
+import { FONTS, COLORS } from "../../constants/index";
+const topPadding =Dimensions.get('screen').height*.2
+
+
 
 const SignIn = ({ navigation }) => {
-  const img = { uri: 'https://s3-alpha-sig.figma.com/img/2dc7/d28f/2d79748dc83f65605ff2759929c7d3fe?Expires=1636329600&Signature=OrmiI4sx69i1NNGQJipZBZagYmvDbcEbiiqHPfQ5w1hXlU84-Azvx9uA5FnojqYULHtCYKDx3xbKwC7ZyKlvEWbq~4cRCVWOaqsbg4scBmUMpWfOCsv3AlUV-hnszmuMyeR2ncuA27ezjSbdQkdafAihaZqGifRKthe8dqUivIbiqJSWTMEwHBYQklErhdbQY6cCnJm0y7YiR5~Z8rkJTifvVOdXWx6ECPI6gdGxX6r3qGVRa1RLwuDVFJcwKVJOW57XiTa~9YF3WOLag9euWbwGBZbWGm2bKEkqDyLzJKAMqan8DErnBJTjUk-qKNCamhRus6r-16oAFrchDJjK~g__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA' }
+  const [isPasswordVisibility, setIsPasswordVisibility] = useState(true);
+
+  const changePasswordViewState = () => {
+    setIsPasswordVisibility(!isPasswordVisibility);
+  };
+
+  const PassWordViewState = () => (
+    <TouchableOpacity
+      activeOpacity={0.7}
+      onPress={() => changePasswordViewState()}
+    >
+      {isPasswordVisibility ? (
+        <Icon name="eye-slash" type="font-awesome" style={{ marginLeft: 10 }} />
+      ) : (
+        <Icon name="eye" type="font-awesome" style={{ marginLeft: 10 }} />
+      )}
+    </TouchableOpacity>
+  );
+
+  const img = {
+    uri: "https://s3-alpha-sig.figma.com/img/2dc7/d28f/2d79748dc83f65605ff2759929c7d3fe?Expires=1636329600&Signature=OrmiI4sx69i1NNGQJipZBZagYmvDbcEbiiqHPfQ5w1hXlU84-Azvx9uA5FnojqYULHtCYKDx3xbKwC7ZyKlvEWbq~4cRCVWOaqsbg4scBmUMpWfOCsv3AlUV-hnszmuMyeR2ncuA27ezjSbdQkdafAihaZqGifRKthe8dqUivIbiqJSWTMEwHBYQklErhdbQY6cCnJm0y7YiR5~Z8rkJTifvVOdXWx6ECPI6gdGxX6r3qGVRa1RLwuDVFJcwKVJOW57XiTa~9YF3WOLag9euWbwGBZbWGm2bKEkqDyLzJKAMqan8DErnBJTjUk-qKNCamhRus6r-16oAFrchDJjK~g__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
+  };
   return (
-
-    < >
-
-      <ScrollView
-        style={{ paddingHorizontal: 20, flex: 1 }}
-        showsVerticalScrollIndicator={false}
-      >
-        <View style={{ marginTop: 98 }}>
-          <Text style={{ fontWeight: '500', fontSize: 45, color: '#3b3c3d', marginBottom: -35 }}>Sign In</Text>
+    <SafeAreaView style={STYLES.container}>
+      <ScrollView  showsVerticalScrollIndicator={false}>
+        <View>
+          <Text
+            style={{
+              fontWeight: "500",
+              color: "#3b3c3d",
+              ...FONTS.h1
+            }}
+          >
+            Sign In
+          </Text>
         </View>
 
         <View style={{ marginTop: 20 }}>
           <View style={STYLES.inputContainer}>
-
-            <TextInput placeholder="Email" style={STYLES.input} left={<TextInput.Icon name="email" />} />
-          </View>
-          <View style={STYLES.inputContainer}>
-
-            <TextInput
-              placeholder="Password"
-              style={STYLES.input} left={<TextInput.Icon name="lock" />}
-              right={<TextInput.Icon name="eye" />}
-              secureTextEntry={true}
-              keyboardAppearance={'light'}
-              
+            <Input
+              placeholder="Email"
+              style={STYLES.input}
+              leftIcon={<Icon name="envelope-o" type="font-awesome" />}
             />
           </View>
-          <View style={STYLES.btnPrimary}>
-            <Text style={{ fontWeight: "400", fontSize: 18, color: 'white' }}>Sign In</Text>
+          <View style={STYLES.inputContainer}>
+            <Input
+              placeholder="Password"
+              style={STYLES.input}
+              leftIcon={<Icon name="lock" type="font-awesome" />}
+              rightIcon={<PassWordViewState />}
+              secureTextEntry={isPasswordVisibility}
+            />
           </View>
+          <TouchableOpacity activeOpacity={0.7} style={{ padding: 10 }}>
+            <Text style={{ textAlign: "right" ,fontStyle:'italic',...FONTS.body3}}>Forgot Password?</Text>
+          </TouchableOpacity>
+          <Button
+            title="Sign In"
+            containerStyle={{
+              marginTop: 10,
+              borderRadius: 20,
+            }}
+            buttonStyle={{
+              backgroundColor: COLORS.primary,
+            }}
+            titleStyle={{
+              color: COLORS.White,
+            }}
+          />
 
-          <View style={STYLES.btn}>
-            <Text
-              style={{
-                fontWeight: "600",
-                fontSize: 18,
-                justifyContent: "center",
-                textAlign: "center",
-                marginTop: 15
-
-              }}
-            >
-              Forgot password?
-            </Text>
-          </View>
+          <Text
+            style={{
+              ...FONTS.h4,
+              textAlign: "center",
+              marginBottom: 10,
+              marginTop: 10,
+            }}
+          >
+            or
+          </Text>
           <View
             style={{
-              marginVertical: 20,
               flexDirection: "row",
               justifyContent: "center",
-              alignItems: "center",
             }}
           >
-            <View ></View>
-            <Text style={{ marginHorizontal: 5, fontWeight: "600", fontSize: 19 }}>OR</Text>
-            <View ></View>
-          </View>
-          <View
-            style={{
-              flexDirection: "row",
-              justifyContent: "space-between",
-            }}
-          >
-
-            <View style={STYLES.btnSecondary}>
-              <Text style={{ fontWeight: "600", fontSize: 18, marginBottom: 10 }}>
-                <Image source={img} style={{ width: 20, height: 20, marginRight: 10, marginTop: 25 }}></Image>
-                Sign in with
-
-              </Text>
-            </View>
-            <View style={STYLES.btnSecondary}>
-              <Icon name="facebook" size={25} color={'blue'} style={STYLES.inputIcon} />
-              <Text
-                style={{ fontWeight: "600", fontSize: 18, paddingLeft: 5 }}
-              >
-                Sign in
-
-              </Text>
-            </View>
-
+            <TouchableOpacity activeOpacity={.7} style={[STYLES.altSignInBtn,{marginRight:5}]}>
+              <Image
+                source={img}
+                style={{
+                  width: 20,
+                  height: 20,
+                }}
+              ></Image>
+            </TouchableOpacity>
+            <TouchableOpacity activeOpacity={.7} style={[STYLES.altSignInBtn,{marginLeft:5}]}>
+              <Icon
+                name="facebook"
+                size={25}
+                color={"blue"}
+                style={STYLES.inputIcon}
+              />
+            </TouchableOpacity>
           </View>
         </View>
 
         <View
           style={{
             flexDirection: "row",
-            alignItems: "flex-end",
             justifyContent: "center",
-            marginTop: 10,
-            marginBottom: 20,
+            marginTop: 40,
           }}
         >
-          <Text style={{ fontWeight: "500", fontSize: 19 }}>Don`t have an account ?</Text>
+          <Text style={{ fontWeight: "500", ...FONTS.body2}}>
+            Don`t have an account ?
+          </Text>
           <TouchableOpacity onPress={() => navigation.navigate("register")}>
-            <Text style={{ fontWeight: "500", fontSize: 19 }}>Sign up</Text>
+            <Text style={{ fontWeight: "900",...FONTS.body2 ,color:'blue'}}>Sign up</Text>
           </TouchableOpacity>
         </View>
       </ScrollView>
-    </>
+    </SafeAreaView>
   );
 };
 
 const STYLES = StyleSheet.create({
-  inputContainer: { flexDirection: "row", marginTop: 20 },
+  container: {
+    flex:1,
+    marginTop: StatusBar.currentHeight,
+    padding: 10,
+    backgroundColor: COLORS.AppBackgroundColor,
+    justifyContent:'center',
+    alignItems:'center',
+    paddingTop:topPadding,
+  },
+
+  inputContainer: { flexDirection: "row" },
   input: {
     height: 50,
     padding: 5,
-    alignContent: 'center',
-    shadowColor: '#d5dbe3',
+    alignContent: "center",
+    shadowColor: "#d5dbe3",
     borderTopEndRadius: 5,
     borderBottomEndRadius: 5,
     borderBottomRightRadius: 5,
     borderTopStartRadius: 5,
-    width: '100%'
+    width: "100%",
   },
   inputIcon: { marginLeft: 0 },
   btnPrimary: {
@@ -152,6 +189,17 @@ const STYLES = StyleSheet.create({
     flexDirection: "row",
   },
   btn: { justifyContent: "center" },
+  altSignInBtn: {
+    justifyContent: "center",
+    alignItems: "center",
+    paddingBottom: 10,
+    paddingTop: 10,
+    paddingLeft: 30,
+    paddingRight: 30,
+    borderWidth:1,
+    borderColor:'rgba(0,0,0,.1)',
+    borderRadius:5,
+  },
 });
 
 export default SignIn;
