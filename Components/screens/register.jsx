@@ -1,242 +1,266 @@
 import React, { useState } from "react";
-import { SafeAreaView, View, Text, StyleSheet, TouchableOpacity, useWindowDimensions } from 'react-native'
+import {
+  SafeAreaView,
+  View,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  ScrollView,
+  StatusBar,
+  Dimensions
+} from "react-native";
 import { Formik } from "formik";
-import * as Yup from 'yup'
+import * as Yup from "yup";
 import { TextInput } from "react-native-paper";
-import { CheckBox } from "react-native-elements";
+import { CheckBox, Input, Icon, Button } from "react-native-elements";
+import { COLORS, SIZES, FONTS } from "../../constants/index";
+const topPadding = Dimensions.get("screen").height * 0.1;
 // import PasswordInputText from 'react-native-hide-show-password-input'
 
-const Register = ({navigation}) => {
-    const [checked, setChecked] = useState(false)
-    const [name, setName] = useState('')
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
-    const [confirm, setConfirm] = useState('')
-    const [users, setUsers] = useState([])
-    const [showpassword, setShowPassword] = useState(true)
+const Register = ({ navigation }) => {
+  const [checked, setChecked] = useState(false);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirm, setConfirm] = useState("");
+  const [users, setUsers] = useState([]);
+  const [showpassword, setShowPassword] = useState(true);
+  const [isPasswordVisibility, setIsPasswordVisibility] = useState(true);
+  const [isConfirmPasswordVisibility, setIsConfirmPasswordVisibility] =
+    useState(true);
 
-    const layout = useWindowDimensions()
-    
-    const IconChange = ()=>{
+  const changePasswordViewState = () => {
+    setIsPasswordVisibility(!isPasswordVisibility);
+  };
+  const changeConfirmPasswordViewState = () => {
+    setIsConfirmPasswordVisibility(!isConfirmPasswordVisibility);
+  };
 
-        if(showpassword===true){
-          return  <TextInput.Icon name="eye" size={25} onPress={show} style={{ padding: 4, marginTop: 10 }}/>
-        }else{
-            return <TextInput.Icon name="calendar" size={25} onPress={show} style={{ padding: 4, marginTop: 10 }}/>
-        }
-   
-    }
-    const checkIcon=()=>{
-        setChecked(!checked)
-    }
-    const show = () => {
-        setShowPassword(!showpassword)
-    }
+  const PassWordViewState = () => (
+    <TouchableOpacity
+      activeOpacity={0.7}
+      onPress={() => changePasswordViewState()}
+    >
+      {isPasswordVisibility ? (
+        <Icon name="eye-slash" type="font-awesome" style={{ marginLeft: 10 }} />
+      ) : (
+        <Icon name="eye" type="font-awesome" style={{ marginLeft: 10 }} />
+      )}
+    </TouchableOpacity>
+  );
+  const ConfirmPassWordViewState = () => (
+    <TouchableOpacity
+      activeOpacity={0.7}
+      onPress={() => changeConfirmPasswordViewState()}
+    >
+      {isConfirmPasswordVisibility ? (
+        <Icon name="eye-slash" type="font-awesome" style={{ marginLeft: 10 }} />
+      ) : (
+        <Icon name="eye" type="font-awesome" style={{ marginLeft: 10 }} />
+      )}
+    </TouchableOpacity>
+  );
 
-    const validate = Yup.object({
-        name: Yup.string().max(15, 'Only 15 Characters Allowed').required('*Required*'),
-        email: Yup.string().email('Not the correct format').required('*Required*'),
-        password: Yup.string().min(6, 'Atleast 6 Characters ').required('*Required*'),
-        confirm: Yup.string().min(6, 'Atleast 6 Characters ').required('*Required*'),
-        checked: Yup.bool().oneOf([true], ' ').required('*Required*'),
+  const checkIcon = () => {
+    setChecked(!checked);
+  };
+  const show = () => {
+    setShowPassword(!showpassword);
+  };
 
-    })
-    const createUser = () => {
-        setUsers([...users, {
-            name: name,
-            email: email,
-            password: password,
-            confirm: confirm
-        }])
-    }
- 
-    return (
-        <SafeAreaView>
-            <View style={{ padding: 10, margin: 20, marginTop: 50, alignItems: 'center', width: layout.width, height: layout.height }}>
-                <View style={{ width: '90%', margin: 0, padding: 0 }}>
-                    <Text style={{ padding: 3, fontWeight: '500', fontSize: 45,color:'#3b3c3d' }}>
-                        Sign Up
-                    </Text>
-                   
-                    <Formik
-                        initialValues={{
-                            name: '',
-                            email: '',
-                            password: '',
-                            confirm: '',
-                            checked: false
-                        }}
-                        validateOnMount={true}
-                        validationSchema={validate}
-                        onSubmit={(values) => createUser(values.name, values.email, values.password, values.confirm, values.checked)}
+  const validate = Yup.object({
+    name: Yup.string()
+      .max(15, "Only 15 Characters Allowed")
+      .required("Please enter username"),
+    email: Yup.string()
+      .email("Not the correct format")
+      .required("Please enter email address"),
+    password: Yup.string()
+      .min(6, "Atleast 6 Characters ")
+      .required("Please enter confirm password"),
+    confirm: Yup.string()
+      .min(6, "Atleast 6 Characters ")
+      .required("Please enter confirm password"),
+    checked: Yup.bool().oneOf([true], " ").required("*Required*")
+  });
+  const createUser = () => {
+    setUsers([
+      ...users,
+      {
+        name: name,
+        email: email,
+        password: password,
+        confirm: confirm
+      }
+    ]);
+  };
+
+  return (
+    <SafeAreaView style={styles.container}>
+      <View>
+        <View>
+          <Text style={{ ...FONTS.h1, fontWeight: "bold", marginBottom: 20 }}>
+            Sign Up
+          </Text>
+          <ScrollView>
+            <Formik
+              initialValues={{
+                name: "",
+                email: "",
+                password: "",
+                confirm: "",
+                checked: false
+              }}
+              validateOnMount={true}
+              validationSchema={validate}
+              onSubmit={(values) =>
+                createUser(
+                  values.name,
+                  values.email,
+                  values.password,
+                  values.confirm,
+                  values.checked
+                )
+              }
+            >
+              {({
+                errors,
+                values,
+                handleChange,
+                handleBlur,
+                touched,
+                handleSubmit
+              }) => (
+                <View>
+                  <View style={styles.text}>
+                    <Input
+                      value={values.name}
+                      placeholder={"Username"}
+                      onChangeText={handleChange("name")}
+                      onBlur={handleBlur("name")}
+                      leftIcon={<Icon name="user" type="font-awesome" />}
+                    />
+                    {errors.name && touched.name ? (
+                      <Text style={styles.inputError}>{errors.name}</Text>
+                    ) : null}
+                  </View>
+                  <View style={styles.text}>
+                    <Input
+                      value={values.email}
+                      placeholder={"Email Address"}
+                      onBlur={handleBlur("email")}
+                      onChangeText={handleChange("email")}
+                      leftIcon={<Icon name="envelope" type="font-awesome" />}
+                    />
+                    {errors.email && touched.email ? (
+                      <Text style={styles.inputError}>{errors.email}</Text>
+                    ) : null}
+                  </View>
+                  <View style={styles.text}>
+                    <Input
+                      value={values.password}
+                      onChangeText={handleChange("password")}
+                      onBlur={handleBlur("password")}
+                      placeholder="Password"
+                      leftIcon={<Icon name="lock" type="font-awesome" />}
+                      rightIcon={<PassWordViewState />}
+                      secureTextEntry={isPasswordVisibility}
+                    />
+
+                    {errors.password && touched.password ? (
+                      <Text style={styles.inputError}>{errors.password}</Text>
+                    ) : null}
+                    <Text
+                      style={{
+                        alignSelf: "flex-start",
+                        padding: 5
+                      }}
                     >
-                        {({
-                            errors,
-                            values,
-                            handleChange,
-                            handleBlur,
-                            touched,
-                            handleSubmit
-                        }) =>
-                        (
-                            <View>
-                                <View style={styles.text}>
-                                    <TextInput
-                                        value={values.name}
-                                        placeholder={'Username'}
-                                        onChangeText={handleChange('name')}
-                                        onBlur={handleBlur('name')}
-                                      
-                                        style={styles.inputSearch}
-                                        left={<TextInput.Icon name="account" size={30} style={{ padding: 4, marginTop: 9 }} color={'#3b3c3d'}  />}
-                                    />
-                                    {errors.name && touched.name ? (
-                                        <Text style={{ alignSelf: 'flex-start', color: 'red' }}>
-                                            {errors.name}
-                                        </Text>
-                                    ) : null}
-                                </View>
-                                <View style={styles.text}>
-                                    <TextInput
-                                        value={values.email}
-                                        placeholder={'Email Address'}
-                                        onBlur={handleBlur('email')}
-                                        onChangeText={handleChange('email')}
-                                        style={styles.inputSearch}
-                                        left={<TextInput.Icon name="email" size={28} style={{ padding: 4, marginTop: 9 }} color={'#3b3c3d'}  />}
-                                    />
-                                    {errors.email && touched.email ? (
-                                        <Text style={{ alignSelf: 'flex-start', color: 'red' }}> {errors.email}</Text>
-                                    ) : null}
-                                </View>
-                                <View style={styles.text}>
-                                <TextInput
-                                        value={values.password}
-                                        onChangeText={handleChange('password')}
-                                        onBlur={handleBlur('password')}
-                                        placeholder="Password"
-                                        style={styles.inputSearch}
-                                        left={<TextInput.Icon name="lock" size={28} style={{ padding: 4, marginTop: 9 }} color={'#3b3c3d'}  />}
-                                        right={<TextInput.Icon name="eye" size={25} style={{ padding: 4, marginTop: 10 }} />}
-                                        secureTextEntry={true}
-                                    />
-                                   
-                                    {errors.password && touched.password ? (
-                                        <Text style={{ alignSelf: 'flex-start', color: 'red' }}>
-                                            {errors.password}
-                                        </Text>
-                                    ) : null}
-                                    <Text
-                                        style={{
-                                            alignSelf: 'flex-start',
-                                            padding: 5
-                                        }}
-                                       
-                                    >
-                                        Strong Password:EduSharp@123
-                                    </Text>
-                                </View>
-                                <View style={styles.text}>
-                                    <TextInput
-                                        value={values.confirm}
-                                        onChangeText={handleChange('confirm')}
-                                        onBlur={handleBlur('confirm')}
-                                        placeholder="Confirm Password"
-                                        style={styles.inputSearch}
-                                        left={<TextInput.Icon name="lock" size={28} style={{ padding: 4, marginTop: 9 }} color={'#3b3c3d'}  />}
-                                        right={<TextInput.Icon name="eye" size={25} style={{ padding: 4, marginTop: 10 }} />}
-                                        secureTextEntry={true}
-                                    />
-                                    {errors.confirm && touched.confirm ? (
-                                        <Text style={{ alignSelf: 'flex-start', color: 'red' }}>
-                                            {errors.confirm}
-                                        </Text>
-                                    ) : null}
-                                </View>
-                                <View style={{ display: 'flex', flexDirection: 'row',  }}>
-                                    <CheckBox
-                                        title={"Accept T's & Cs"}
-                                        onPress={checkIcon}
-                                        style={{
-                                            backgroundColor: 'gainsboro'
-                                        }}
-                                        checked={checked}
-                                        onBlur={handleBlur('checked')}
-                                    />
-                                    {errors.checked && touched.checked ? (
-                                        <Text style={{ color: 'red' }}>
-                                            {errors.checked}
-                                        </Text>
-                                    ) : null}
-                                </View>
-                                <Text style={{
-                                    marginTop:-40,
-                                    color: '#337af5',
-                                    marginLeft:'70%'
-                                    }}
-                                    onPress={()=>navigation.navigate('terms&condition')}
-                                    >
-                                    View More
-                                </Text>
+                      Strong Password:EduSharp@123
+                    </Text>
+                  </View>
+                  <View style={styles.text}>
+                    <Input
+                      value={values.confirm}
+                      onChangeText={handleChange("confirm")}
+                      onBlur={handleBlur("confirm")}
+                      placeholder="Confirm Password"
+                      leftIcon={<Icon name="lock" type="font-awesome" />}
+                      rightIcon={<ConfirmPassWordViewState />}
+                      secureTextEntry={isConfirmPasswordVisibility}
+                    />
+                    {errors.confirm && touched.confirm ? (
+                      <Text style={styles.inputError}>{errors.confirm}</Text>
+                    ) : null}
+                  </View>
+                  <View style={{ flexDirection: "row" }}>
+                    <CheckBox
+                      title={"Accept T's & Cs"}
+                      onPress={checkIcon}
+                      style={{
+                        backgroundColor: "gainsboro"
+                      }}
+                      checked={checked}
+                      onBlur={handleBlur("checked")}
+                    />
+                    {errors.checked && touched.checked ? (
+                      <Text style={{ color: "red" }}>{errors.checked}</Text>
+                    ) : null}
+                  </View>
+                  <Text
+                    style={{
+                      marginTop: -40,
+                      color: "#337af5",
+                      marginLeft: "70%"
+                    }}
+                    onPress={() => navigation.navigate("terms&condition")}
+                  >
+                    View More
+                  </Text>
 
-                                <View style={{ marginTop: 18, }}>
-                                    <TouchableOpacity
-                                        style={{
-                                            backgroundColor: '#4372c4',
-                                            width: '90%',
-                                            height: 40,
-                                            borderRadius: 20,
-                                            margin: 8
-                                        }}
-                                        onPress={handleSubmit}
-                                    >
-                                        <Text style={{ color: 'white', alignSelf: 'center', paddingTop: 6,fontSize:19 }}>
-                                            Register
-                                        </Text>
-                                    </TouchableOpacity>
-                                    <Text
-                                        style={{
-                                            alignSelf: 'center',
-                                            margin: 4,
-                                            fontSize:19,
-                                            fontWeight:'600'
-                                        }}
-                                        onPress={()=>navigation.navigate('SignInScreen')}
-                                    >
-                                        Have an account? Sign In
-                                    </Text>
-                                </View>
-                            </View>
-                        )}
-                    </Formik>
+                  <View style={{ marginTop: 18 }}>
+                    <Button
+                      title="Sign In"
+                      containerStyle={{
+                        marginTop: 10,
+                        borderRadius: 20
+                      }}
+                      buttonStyle={{
+                        backgroundColor: COLORS.primary
+                      }}
+                      titleStyle={{
+                        color: COLORS.White
+                      }}
+                    />
+                  </View>
                 </View>
-            </View>
-        </SafeAreaView>
-    )
-}
-const styles = StyleSheet.create({
-    Search: {
-        shadowColor: '#000',
-        shadowOpacity: 0.12,
-        shadowRadius: 60,
-        elevation: 8,
-        borderRadius: 40
-    },
-    inputSearch: {
-        width: '90%',
-        height: 50,
-        padding: 5,
-        alignContent: 'center',
-        shadowColor: '#d5dbe3',
-        borderTopEndRadius: 5,
-        borderBottomEndRadius: 5,
-        borderBottomRightRadius: 5,
-        borderTopStartRadius: 5
+              )}
+            </Formik>
 
-    },
-    text: {
-        padding: 4,
-        margin: 4,
-    }
-})
-export default Register
+            <View style={{flexDirection:'row',marginTop:20,alignItems:'center',justifyContent:'center'}}>
+              <Text style={{...FONTS.h3}}>
+                Have an account?
+              </Text>
+              <TouchableOpacity onPress={() => navigation.navigate("SignInScreen")}>
+                <Text style={{color:'blue',...FONTS.h3}}>Sign In</Text>
+              </TouchableOpacity>
+            </View>
+          </ScrollView>
+        </View>
+      </View>
+    </SafeAreaView>
+  );
+};
+const styles = StyleSheet.create({
+  text: {},
+  container: {
+    marginTop: StatusBar.currentHeight,
+    padding: 10,
+    paddingTop: topPadding
+  },
+  inputError: {
+    color: COLORS.Danger,
+    ...FONTS.body4
+  }
+});
+export default Register;

@@ -10,7 +10,7 @@ const Menu = ()=>{
     const Stack = createNativeStackNavigator()
     return(
         <NavigationContainer>
-            <Stack.Navigator initialRouteName = { 'SignInScreen' } screenOptions={{headerShown:false}}
+            <Stack.Navigator initialRouteName = { 'register' } screenOptions={{headerShown:false}}
              >
              <Stack.Screen name = { 'SplashScreen' } component={Splash}/>
               <Stack.Screen name={'home'} component={HomeScreen} />
