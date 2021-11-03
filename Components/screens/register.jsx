@@ -14,6 +14,7 @@ import * as Yup from "yup";
 import { TextInput } from "react-native-paper";
 import { CheckBox, Input, Icon, Button } from "react-native-elements";
 import { COLORS, SIZES, FONTS } from "../../constants/index";
+
 const topPadding = Dimensions.get("screen").height * 0.1;
 // import PasswordInputText from 'react-native-hide-show-password-input'
 
@@ -211,9 +212,9 @@ const Register = ({ navigation }) => {
                     style={{
                       marginTop: -40,
                       color: "#337af5",
-                      marginLeft: "70%"
+                      marginLeft: "80%"
                     }}
-                    onPress={() => navigation.navigate("terms&condition")}
+                    onPress={() =>navigation.navigate("terms&conditions")}
                   >
                     View More
                   </Text>
