@@ -10,8 +10,6 @@ export const COLORS={
     White:"#ffffff",
     LightBlack:"rgba(0,0,0,.45)",
     DarkBlack:"rgba(0,0,0,.8)",
-
-    
     
     AppBackgroundColor:"#ffffff",
     AppBluelink:'#0645AD',
