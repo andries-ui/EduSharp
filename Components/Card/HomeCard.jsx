@@ -1,6 +1,7 @@
 import React from 'react'
 import { View, Text, StyleSheet, StatusBar, Dimensions, TouchableOpacity } from 'react-native'
 import { Icon } from 'react-native-elements'
+
 const cardWidth = Dimensions.get('screen').width * .25
 const cardHeight = Dimensions.get('screen').height * .1
 
@@ -22,7 +23,6 @@ const styles = StyleSheet.create({
         },
         shadowOpacity: 0.20,
         shadowRadius: 1.41,
-
         elevation: 2,
         marginTop: StatusBar.currentHeight,
         width: cardWidth,
