@@ -77,7 +77,7 @@ const SignIn = ({ navigation }) => {
           <TouchableOpacity activeOpacity={0.7} style={{ padding: 10 }}>
             <Text style={{ textAlign: "right" ,fontStyle:'italic',...FONTS.body3}}>Forgot Password?</Text>
           </TouchableOpacity>
-          <Button
+          <Button onPress={() => navigation.navigate('DashBoard')}
             title="Sign In"
             containerStyle={{
               marginTop: 10,

@@ -12,13 +12,13 @@ const Menu = ()=>{
     const Stack = createNativeStackNavigator()
     return(
         <NavigationContainer>
-            <Stack.Navigator initialRouteName = { 'DashBoard' } screenOptions={{headerShown:false}}
+            <Stack.Navigator initialRouteName = { 'SplashScreen' } screenOptions={{headerShown:false}}
              >
              <Stack.Screen name = { 'SplashScreen' } component={Splash}/>
-              <Stack.Screen name={'home'} component={HomeScreen} />
               <Stack.Screen name={'register'} component={Register}/>
               <Stack.Screen name={'SignInScreen'} component={SignIn} />  
-              <Stack.Screen name ={'terms&conditions'} component={Terms}/>    
+              <Stack.Screen name ={'terms&conditions'} component={Terms}/> 
+              <Stack.Screen name={'home'} component={HomeScreen} />   
               <Stack.Screen name ={'DashBoard'} component={DashBoard}/>    
             </Stack.Navigator>
         </NavigationContainer>
