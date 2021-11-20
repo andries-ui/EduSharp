@@ -89,11 +89,10 @@ const Register = ({ navigation }) => {
 
 
 // backend code , verify if local database if open
+ useEffect(()=>{
 
-// useEffect(()=>{
-
-//   sqlite.
-// },[])
+sqlite
+},[])
 
 //================================================
   const createUser = () => {
