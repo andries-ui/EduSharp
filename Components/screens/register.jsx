@@ -92,7 +92,7 @@ const Register = ({ navigation }) => {
 
 useEffect(()=>{
 
-  sqlite.
+  sqlite
 },[])
 
 //================================================
