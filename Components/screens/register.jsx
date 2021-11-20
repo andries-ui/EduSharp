@@ -89,10 +89,9 @@ const Register = ({ navigation }) => {
 
 
 // backend code , verify if local database if open
+ useEffect(()=>{
 
-useEffect(()=>{
-
-  sqlite
+sqlite
 },[])
 
 //================================================
@@ -104,15 +103,16 @@ useEffect(()=>{
         email: email,
         password: password,
         confirm: confirm
-      }
+      },
     ]);
+   
   };
 
   return (
     <SafeAreaView style={styles.container}>
       <View>
         <View>
-          <Text style={{ ...FONTS.h1, fontWeight: "bold", marginBottom: 20 }}>
+          <Text style={{ ...FONTS.h1, fontWeight: "600", marginBottom: 20 }}>
             Sign Up
           </Text>
           <ScrollView>
@@ -132,8 +132,10 @@ useEffect(()=>{
                   values.email,
                   values.password,
                   values.confirm,
-                  values.checked
+                  values.checked,
+                
                 )
+              
               }
             >
               {({
@@ -151,7 +153,7 @@ useEffect(()=>{
                       placeholder={"Username"}
                       onChangeText={handleChange("name")}
                       onBlur={handleBlur("name")}
-                      leftIcon={<Icon name="user" type="font-awesome" />}
+                      leftIcon={<Icon name="user-o" type="font-awesome" />}
                     />
                     {errors.name && touched.name ? (
                       <Text style={styles.inputError}>{errors.name}</Text>
@@ -160,10 +162,10 @@ useEffect(()=>{
                   <View style={styles.text}>
                     <Input
                       value={values.email}
-                      placeholder={"Email Address"}
+                      placeholder={" Email Address"}
                       onBlur={handleBlur("email")}
                       onChangeText={handleChange("email")}
-                      leftIcon={<Icon name="envelope" type="font-awesome" />}
+                      leftIcon={<Icon name="envelope-o" type="font-awesome" />}
                     />
                     {errors.email && touched.email ? (
                       <Text style={styles.inputError}>{errors.email}</Text>
@@ -174,7 +176,7 @@ useEffect(()=>{
                       value={values.password}
                       onChangeText={handleChange("password")}
                       onBlur={handleBlur("password")}
-                      placeholder="Password"
+                      placeholder=" Password"
                       leftIcon={<Icon name="lock" type="font-awesome" />}
                       rightIcon={<PassWordViewState />}
                       secureTextEntry={isPasswordVisibility}
@@ -186,7 +188,7 @@ useEffect(()=>{
                     <Text
                       style={{
                         alignSelf: "flex-start",
-                        padding: 5
+                        // padding: 4
                       }}
                     >
                       Strong Password:EduSharp@123
@@ -217,7 +219,7 @@ useEffect(()=>{
                       onBlur={handleBlur("checked")}
                     />
                     {errors.checked && touched.checked ? (
-                      <Text style={{ color: "red" }}>{errors.checked}</Text>
+                      <Text style={{ color: COLORS.secondary, }}>{errors.checked}</Text>
                     ) : null}
                   </View>
                   <Text
@@ -245,6 +247,7 @@ useEffect(()=>{
                       titleStyle={{
                         color: COLORS.White
                       }}
+                      onPress={handleSubmit}
                     />
                   </View>
                 </View>
@@ -256,7 +259,7 @@ useEffect(()=>{
                 Have an account?
               </Text>
               <TouchableOpacity onPress={() => navigation.navigate("SignInScreen")}>
-                <Text style={{color:'blue',...FONTS.h3}}>Sign In</Text>
+                <Text style={{color:COLORS.primary,...FONTS.h3}}>Sign In</Text>
               </TouchableOpacity>
             </View>
           </ScrollView>

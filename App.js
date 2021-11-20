@@ -7,6 +7,8 @@ import Splash from './Components/screens/SplashScreen'
 import SignIn from './Components/screens/SignInScreen'
 import Terms from './Components/screens/terms&conditions'
 import DashBoard from './Components/screens/DashBoard'
+import Profile from './Components/screens/profile'
+import About from './Components/screens/about'
 
 const Menu = ()=>{
     const Stack = createNativeStackNavigator()

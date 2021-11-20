@@ -1,12 +1,12 @@
 import React,{Component, useEffect} from 'react';
 import {Text, StyleSheet,View,ImageBackground, Image,useWindowDimensions} from 'react-native';
-
+import { COLORS,icons,img } from '../../constants';
 
 const Splash = ({
     navigation,
 
     }) => {
-        const img={uri:'https://raw.githubusercontent.com/Makgathokln/DueSharp/main/images/edusharp.png'}
+       
         const layout=useWindowDimensions()
         useEffect(() => {
             setTimeout(() =>{
@@ -18,11 +18,13 @@ const Splash = ({
         
         
         <View style={styles.home}>
-            <Image source={require('../../assets/eduSharp.png')} resizeMode='contain' style={{
-                width:'100%',height:'30%'
+            <Image source={img.logo} resizeMode='contain' style={{
+                width:'100%',height:'20%'
             }}/>
-            <View style={styles.TextContainer}><Text style={styles.eduText}>Edu</Text>
+            <View style={styles.TextContainer}>
+                <Text style={styles.eduText}>Edu</Text>
             <Text style={styles.last}>Sharp</Text></View>
+            <Text style={styles.subtitle}>where education lives</Text>
                         
           
         
@@ -36,24 +38,29 @@ const styles = StyleSheet.create({
         flex:1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor:'white'
+        backgroundColor:COLORS.AppBackgroundColor
     },
     eduText:{
-        marginTop:-15,
+        marginTop:'-1%',
         fontWeight:'400',
         fontSize:45,
-        color:'#3b3c3d'
-        
+        color:'#898C8F',
+        fontWeight:'600'
     },
     last:{
-        marginTop:-15,
+        marginTop:'-1%',
         fontWeight:'500',
         fontSize:45,
-        color:'#269094',
+        color:COLORS.primary,
+        fontWeight:'600'
       
     },
     TextContainer:{
         flexDirection:'row'
+    },
+    subtitle:{
+        fontSize:14,
+        color:'#898C8F'
     }
 });
 

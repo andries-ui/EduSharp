@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import { View, Text,  StyleSheet, Dimensions, ScrollView, StatusBar } from 'react-native'
 import { CheckBox } from 'react-native-elements';
+
 const topPadding = Dimensions.get("screen").height * 0.1;
 const Terms = ({ navigation }) => {
     const [isChecked, setChecked] = useState(false)
-
     const Check = () => {
         setChecked(!isChecked)
         navigation.navigate('register')
