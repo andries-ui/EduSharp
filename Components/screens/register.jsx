@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   SafeAreaView,
   View,
@@ -14,6 +14,8 @@ import * as Yup from "yup";
 import { TextInput } from "react-native-paper";
 import { CheckBox, Input, Icon, Button } from "react-native-elements";
 import { COLORS, SIZES, FONTS } from "../../constants/index";
+import sqlite from "../Database/sqlite/sqlite";
+
 
 const topPadding = Dimensions.get("screen").height * 0.1;
 // import PasswordInputText from 'react-native-hide-show-password-input'
@@ -84,6 +86,16 @@ const Register = ({ navigation }) => {
       .required("Please enter confirm password"),
     checked: Yup.bool().oneOf([true], " ").required("*Required*")
   });
+
+
+// backend code , verify if local database if open
+
+// useEffect(()=>{
+
+//   sqlite.
+// },[])
+
+//================================================
   const createUser = () => {
     setUsers([
       ...users,
@@ -224,7 +236,8 @@ const Register = ({ navigation }) => {
 
                   <View style={{ marginTop: 18 }}>
                     <Button
-                      title="Register"
+                    onPress={() => navigation.navigate('DashBoard')}
+                      title="Sign In"
                       containerStyle={{
                         marginTop: 10,
                         borderRadius: 20
