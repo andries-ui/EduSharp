@@ -1,20 +1,23 @@
 import React from "react";
 import { StyleSheet, SafeAreaView, View, TouchableOpacity, Text, useWindowDimensions, Image } from 'react-native'
+import { COLORS,FONTS,icons,img, SIZES } from '../../constants';
 
 const HomeScreen = ({ navigation }) => {
 
-  const img = { uri: 'https://s3-alpha-sig.figma.com/img/de23/e554/ebdc307453e297e144715b1cca292de4?Expires=1635724800&Signature=NcDpb-b3oyY79hcr1Vkrz2rSZ~aKin3LL0DMt6bvMmOTrkuIM4icgTleI2zTBg9P67KwMxVn0Ulx7JOWluwnRkZIZVi14ZnZidNRipjaccD5MlyIlG0gFM5exs~nkZ-C1347by~HgMtQMA8bU1qiKYh0~5MVgycQZf~YTWCWii9fO3ycYzxgAIjDtpGaKcQweUfN1mVkXoxF96lmNjJgkGAPiZTXm1xTxcAR5HskdoAylf3Y2PQTRDQL0ITSbj1RBzPJVsshFfDMLU0OpjFGo0UuC4F6569dAPCdOs8xA4nFCosEc0SMJwLL8mxvLOTpHp6t97S9J9Fa8Xm~Gjv3pg__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA' }
   return (
     <>
       <View
         style={Styles.container}>
-        <View style={Styles.semiContainer}>
-          <Text style={Styles.WelcomeText}>
-            Welcome
-          </Text>
+          <TouchableOpacity style={Styles.about} onPress={()=>navigation.navigate('about')}>
+            <Text style={Styles.abouttext}>!</Text>
+            </TouchableOpacity>
+          <View style={Styles.semiContainer}>
+            <Text style={Styles.WelcomeText}>
+              Welcome
+            </Text>
          
           <View style={Styles.ImageView}>
-            <Image source={img} style={Styles.Image}></Image>
+            <Image source={img.welcome} style={Styles.Image}></Image>
           </View>
           <View style={Styles.ButtonsView}>
             <TouchableOpacity  onPress={() => navigation.navigate('SignInScreen')} style={Styles.Buttons}><Text style={Styles.ButtonText}>Sign In </Text></TouchableOpacity>
@@ -38,49 +41,66 @@ const Styles = StyleSheet.create({
     flex:1,
     margin: 8,
     borderColor: 'transparent',
-    marginTop:60
+    marginTop:30,
+    backgroundColor:COLORS.AppBackgroundColor
+  },
+  about:{
+    width:51,
+    height:55,
+    backgroundColor:COLORS.White,
+    borderRadius:50,
+    alignItems:'center',
+    justifyContent:'center',
+    alignSelf:'flex-end'
+  },
+  abouttext:{
+    fontWeight:'700'
   },
   semiContainer:{
     margin: 30 
   },
   WelcomeText:{
     fontWeight: '600',
-    fontSize: 45,
+    fontSize: SIZES.largeTitle,
     color: '#3b3c3d',
     alignSelf: 'center',
-   
+   ...FONTS.h1
   },
   ImageView:{
-    alignSelf: 'center', 
-    width: '100%'
+    justifyContent:'center', 
+    width: '100%',
+    alignItems:'center'
   },
   Image:{
     width: 280,
      height: 320, 
-    alignSelf: 'center'
+    
   },
   ButtonsView:{
-    marginTop: 15  },
+    alignItems:'center',
+    justifyContent:'center'
+  },
   Buttons:{
-    borderRadius: 20,
-     backgroundColor: '#2769ba',
-      alignSelf: 'center',
-       width: 300,
-     height: 40
+    borderRadius: 30,
+     backgroundColor: COLORS.primary,
+     alignItems:'center',
+     justifyContent:'center',
+       width: '100%',
+     height: '20%'
   },
   ButtonText:{
-    color: 'white',
+    color: COLORS.White,
      alignSelf: 'center',
-      paddingTop: 5, 
-    fontSize: 19
+    fontSize: 24
   },
   Button2:{
-    borderRadius: 20,
-     backgroundColor: '#cc1d32',
-      alignSelf: 'center', 
-      width: 300,
-       height: 40,
-     margin: 20
+    borderRadius: 30,
+     backgroundColor: COLORS.secondary,
+     alignItems:'center',
+     justifyContent:'center',
+      width: '100%',
+      height: '20%',
+     marginTop:'3%'
   }
 
 

@@ -1,5 +1,6 @@
 import React from 'react'
-import {View,Text,SafeAreaView,Image,StyleSheet,StatusBar,Dimensions} from 'react-native'
+import {View,Text,SafeAreaView,Image,StyleSheet,StatusBar,Dimensions,TextInput} from 'react-native'
+import { Icon,Input } from 'react-native-elements'
 const cardWidth = Dimensions.get('screen').width * .25
 const cardHeight = Dimensions.get('screen').height * .1
 const Profile = () =>{
@@ -17,7 +18,10 @@ const Profile = () =>{
                                 </View>
                         </View>
                         <View style={styles.UserProfile}>
-                            <View style={styles.circle}></View>
+                            <View style={styles.circle}>
+                            <Icon name="user" type="font-awesome" size={25} color={'black'} style={styles.ProfileIcon} />
+                            </View>
+                          
                         </View>
                    </View>
             </View>
@@ -31,6 +35,9 @@ const Profile = () =>{
         height: 280, 
         alignSelf: 'center',
       
+        },
+        Personal:{
+
         },
         Container:{
             width: '100%',
@@ -70,7 +77,6 @@ const Profile = () =>{
             borderTopStartRadius:0,
             borderBottomStartRadius:0,
             alignSelf: 'center',
-            
                 shadowColor: "#000",
                 shadowOffset: {
                     width: 0,
@@ -84,7 +90,6 @@ const Profile = () =>{
                
                 justifyContent: 'center',
                 alignItems: 'flex-start',
-              
                 borderColor:'rgba(0,0,0,.2)',
              
             
@@ -92,7 +97,8 @@ const Profile = () =>{
         Username:{
             paddingLeft:'8%',
             fontSize:22, 
-            fontWeight:'500'
+            fontWeight:'500',
+
         },
         Status:{
             paddingLeft:'10%',
@@ -111,14 +117,16 @@ const Profile = () =>{
             width:'90%',
             height: cardHeight,
            
-            justifyContent: 'center',
+            
             alignItems: 'flex-start',
           
             borderColor:'rgba(0,0,0,.2)',
             alignSelf: 'center',
+            display:'flex',
+            flexDirection:'row'
         },
         circle:{
-            borderRadius:70, 
+            borderRadius:50, 
              shadowColor: "#000",
             shadowOffset: {
                 width: 0,
@@ -129,13 +137,18 @@ const Profile = () =>{
             elevation: 2,
             width:'20%',
             height:'90%',
-            padding:'2%',
+            
             margin:'2%',
             justifyContent: 'center',
             alignItems: 'flex-start',
           
-            borderColor:'rgba(0,0,0,.2)',
+            borderColor:'rgba(0,0,0,.1)',
          
+        },
+        ProfileIcon:{
+            width:'90%',
+            alignSelf:'center',
+            margin:'10%'
         }
 
 

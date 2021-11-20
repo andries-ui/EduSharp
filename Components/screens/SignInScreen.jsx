@@ -11,15 +11,13 @@ import {
   StatusBar,
   Dimensions
 } from "react-native";
-// import Icon from "react-native-vector-icons/MaterialIcons";
-import { TextInput } from "react-native-paper";
 import { Icon, Input, Button } from "react-native-elements";
-import { FONTS, COLORS } from "../../constants/index";
+import { FONTS, COLORS,img } from "../../constants";
+
 const topPadding =Dimensions.get('screen').height*.2
 
-
-
 const SignIn = ({ navigation }) => {
+
   const [isPasswordVisibility, setIsPasswordVisibility] = useState(true);
 
   const changePasswordViewState = () => {
@@ -39,9 +37,9 @@ const SignIn = ({ navigation }) => {
     </TouchableOpacity>
   );
 
-  const img = {
-    uri: "https://s3-alpha-sig.figma.com/img/2dc7/d28f/2d79748dc83f65605ff2759929c7d3fe?Expires=1636329600&Signature=OrmiI4sx69i1NNGQJipZBZagYmvDbcEbiiqHPfQ5w1hXlU84-Azvx9uA5FnojqYULHtCYKDx3xbKwC7ZyKlvEWbq~4cRCVWOaqsbg4scBmUMpWfOCsv3AlUV-hnszmuMyeR2ncuA27ezjSbdQkdafAihaZqGifRKthe8dqUivIbiqJSWTMEwHBYQklErhdbQY6cCnJm0y7YiR5~Z8rkJTifvVOdXWx6ECPI6gdGxX6r3qGVRa1RLwuDVFJcwKVJOW57XiTa~9YF3WOLag9euWbwGBZbWGm2bKEkqDyLzJKAMqan8DErnBJTjUk-qKNCamhRus6r-16oAFrchDJjK~g__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
-  };
+  // const img = {
+  //   uri: "https://s3-alpha-sig.figma.com/img/2dc7/d28f/2d79748dc83f65605ff2759929c7d3fe?Expires=1636329600&Signature=OrmiI4sx69i1NNGQJipZBZagYmvDbcEbiiqHPfQ5w1hXlU84-Azvx9uA5FnojqYULHtCYKDx3xbKwC7ZyKlvEWbq~4cRCVWOaqsbg4scBmUMpWfOCsv3AlUV-hnszmuMyeR2ncuA27ezjSbdQkdafAihaZqGifRKthe8dqUivIbiqJSWTMEwHBYQklErhdbQY6cCnJm0y7YiR5~Z8rkJTifvVOdXWx6ECPI6gdGxX6r3qGVRa1RLwuDVFJcwKVJOW57XiTa~9YF3WOLag9euWbwGBZbWGm2bKEkqDyLzJKAMqan8DErnBJTjUk-qKNCamhRus6r-16oAFrchDJjK~g__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
+  // };
   return (
     <SafeAreaView style={STYLES.container}>
       <ScrollView  showsVerticalScrollIndicator={false}>
@@ -89,6 +87,7 @@ const SignIn = ({ navigation }) => {
             titleStyle={{
               color: COLORS.White,
             }}
+           onPress={()=> navigation.navigate('DashBoard')}
           />
 
           <Text
@@ -109,11 +108,9 @@ const SignIn = ({ navigation }) => {
           >
             <TouchableOpacity activeOpacity={.7} style={[STYLES.altSignInBtn,{marginRight:5}]}>
               <Image
-                source={img}
-                style={{
-                  width: 20,
-                  height: 20,
-                }}
+                source={img.google}
+                style={STYLES.Image}
+                resizeMode='contain'
               ></Image>
             </TouchableOpacity>
             <TouchableOpacity activeOpacity={.7} style={[STYLES.altSignInBtn,{marginLeft:5}]}>
@@ -138,7 +135,7 @@ const SignIn = ({ navigation }) => {
             Don`t have an account ?
           </Text>
           <TouchableOpacity onPress={() => navigation.navigate("register")}>
-            <Text style={{ fontWeight: "900",...FONTS.body2 ,color:'blue'}}>Sign up</Text>
+            <Text style={{ fontWeight: "900",...FONTS.body2 ,color:COLORS.primary}}>Sign up</Text>
           </TouchableOpacity>
         </View>
       </ScrollView>
@@ -179,7 +176,16 @@ const STYLES = StyleSheet.create({
     backgroundColor: "#2769ba",
     borderRadius: 40,
   },
-
+  ImageView:{
+    justifyContent:'center', 
+    width: '100%',
+    alignItems:'center'
+  },
+  Image:{
+    width: 30,
+     height: 20, 
+    
+  },
   btnSecondary: {
     height: 50,
     borderColor: "#a5a5a5",
