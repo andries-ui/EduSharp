@@ -26,6 +26,7 @@
     "react-native-sqlite-storage": "^6.0.1",
     "react-native-switch-selector": "^2.1.4",
     "react-native-web": "~0.13.12",
+    "toggle-switch-react-native": "^3.3.0",
     "yup": "^0.32.11"
   },
   "devDependencies": {
