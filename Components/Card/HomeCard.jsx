@@ -1,3 +1,4 @@
+import { NavigationContainer } from '@react-navigation/native'
 import React from 'react'
 import { View, Text, StyleSheet, StatusBar, Dimensions, TouchableOpacity } from 'react-native'
 import { Icon } from 'react-native-elements'
@@ -5,9 +6,9 @@ import { Icon } from 'react-native-elements'
 const cardWidth = Dimensions.get('screen').width * .25
 const cardHeight = Dimensions.get('screen').height * .1
 
-const HomeCard = ({ data }) => {
+const HomeCard = ({ data,navigation }) => {
     return (
-        <TouchableOpacity style={styles.shadowCard}>
+        <TouchableOpacity style={styles.shadowCard} onPress={()=>navigation.navigate(data.location,)}>
             <Icon name={data.icon} type="font-awesome" />
             <Text>{data.name}</Text>
         </TouchableOpacity>

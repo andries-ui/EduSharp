@@ -7,8 +7,7 @@ import Splash from './Components/screens/SplashScreen'
 import SignIn from './Components/screens/SignInScreen'
 import Terms from './Components/screens/terms&conditions'
 import DashBoard from './Components/screens/DashBoard'
-import Profile from './Components/screens/profile'
-import About from './Components/screens/about'
+import Questions from './Components/screens/QList'
 
 const Menu = ()=>{
     const Stack = createNativeStackNavigator()
@@ -21,7 +20,8 @@ const Menu = ()=>{
               <Stack.Screen name={'SignInScreen'} component={SignIn} />  
               <Stack.Screen name ={'terms&conditions'} component={Terms}/> 
               <Stack.Screen name={'home'} component={HomeScreen} />   
-              <Stack.Screen name ={'DashBoard'} component={DashBoard}/>    
+              <Stack.Screen name ={'DashBoard'} component={DashBoard}/>
+              <Stack.Screen name={'QList'} component={Questions}/>    
             </Stack.Navigator>
         </NavigationContainer>
     )
