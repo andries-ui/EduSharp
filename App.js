@@ -8,20 +8,24 @@ import SignIn from './Components/screens/SignInScreen'
 import Terms from './Components/screens/terms&conditions'
 import DashBoard from './Components/screens/DashBoard'
 import Questions from './Components/screens/QList'
+import Post from './Components/screens/PostQuestion'
+import Replies from './Components/screens/Replies'
 
 const Menu = ()=>{
     const Stack = createNativeStackNavigator()
     return(
         <NavigationContainer>
-            <Stack.Navigator initialRouteName = { 'SplashScreen' } screenOptions={{headerShown:false}}
+            <Stack.Navigator initialRouteName = { 'QList' } screenOptions={{headerShown:false}}
              >
-             <Stack.Screen name = { 'SplashScreen' } component={Splash}/>
+             {/* <Stack.Screen name = { 'SplashScreen' } component={Splash}/>
               <Stack.Screen name={'register'} component={Register}/>
               <Stack.Screen name={'SignInScreen'} component={SignIn} />  
               <Stack.Screen name ={'terms&conditions'} component={Terms}/> 
               <Stack.Screen name={'home'} component={HomeScreen} />   
-              <Stack.Screen name ={'DashBoard'} component={DashBoard}/>
-              <Stack.Screen name={'QList'} component={Questions}/>    
+              <Stack.Screen name ={'DashBoard'} component={DashBoard}/> */}
+              <Stack.Screen name={'QList'} component={Questions}/>   
+              <Stack.Screen name={'PostQuestion'} component={Post}/> 
+              <Stack.Screen name={'Replies'} component={Replies}/>
             </Stack.Navigator>
         </NavigationContainer>
     )
