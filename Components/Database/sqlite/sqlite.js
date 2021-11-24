@@ -12,6 +12,7 @@
 
 //   class sqlFunctions{
 
+<<<<<<< Updated upstream
 //      createTable=(tblName)=>{
 //             db.executeSql(
 //                 "CREATE TABLE IF NOT EXIST"
@@ -36,6 +37,32 @@
 //             + "Where ID ="+ id
 //         )
 //     }
+=======
+//     //  createTable=(tblName)=>{
+//     //         db.executeSql(
+//     //             "CREATE TABLE IF NOT EXIST"
+//     //             + tblName 
+//     //             + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, Name Text, Email Text, Password Text);"
+//     //         )
+//     // }
+
+//     // setData(tblName, names, email, password){
+//     //   await db.executeSql(
+//     //        "INSERT INTO "
+//     //        + tblName
+//     //        + "( Name, Email, Password) VALUES(?,?,?);",
+//     //        [names, email,password]
+//     //    ) 
+//     // }
+
+//     // getData(tblName,id){
+//     //     db.executeSql(
+//     //         "SELECT Email, Password from "
+//     //         + tblName 
+//     //         + "Where ID ="+ id
+//     //     )
+//     // }
+>>>>>>> Stashed changes
 //   }
 
 //   export default sqlFunctions()
