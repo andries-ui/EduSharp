@@ -18,7 +18,7 @@ const Menu = ()=>{
         <NavigationContainer>
             <Stack.Navigator initialRouteName = { "Q'AsList" } screenOptions={{headerShown:false}}
              >
-             <Stack.Screen name = { 'SplashScreen' } component={Splash}/>
+              <Stack.Screen name = { 'SplashScreen' } component={Splash}/>
               <Stack.Screen name={'register'} component={Register}/>
               <Stack.Screen name={'SignInScreen'} component={SignIn} />  
               <Stack.Screen name ={'terms&conditions'} component={Terms}/> 
