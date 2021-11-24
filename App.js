@@ -9,7 +9,8 @@ import Terms from './Components/screens/terms&conditions'
 import DashBoard from './Components/screens/DashBoard'
 import Questions from './Components/screens/QList'
 import Post from './Components/screens/PostQuestion'
-import Replies from './Components/screens/Replies'
+
+import RepliesContainer from './Components/screens/Replies'
 
 const Menu = ()=>{
     const Stack = createNativeStackNavigator()
@@ -25,7 +26,7 @@ const Menu = ()=>{
               <Stack.Screen name ={'DashBoard'} component={DashBoard}/>
               <Stack.Screen name={'QList'} component={Questions}/>   
               <Stack.Screen name={'PostQuestion'} component={Post}/> 
-              <Stack.Screen name={'Replies'} component={Replies}/>
+              <Stack.Screen name={'Replies'} component={RepliesContainer}/>
             </Stack.Navigator>
         </NavigationContainer>
     )
