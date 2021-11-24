@@ -122,10 +122,10 @@ const Styles = StyleSheet.create({
     cardHeader:{
         display:'flex',
         flexDirection:'row',
-    //   backgroundColor:'red',
+    
         width:'100%',
         height:70,
-        // paddingLeft:'2%'
+    
     },
     subtext:{
         margin:'2%',
