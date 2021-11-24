@@ -5,7 +5,7 @@ import { COLORS,FONTS, SIZES,icons } from "../../constants";
 import ToggleSwitch from 'toggle-switch-react-native'
 import Info from './Q&A'
 
-const QList = ()=>{
+const QList = ({navigation})=>{
                                                                
     const [toggle,setToggle]=useState(true)
     const option=()=>{
@@ -43,8 +43,9 @@ const QList = ()=>{
                 </Card.FeaturedTitle>
                 <Card.FeaturedTitle  style={{padding:'1%',marginTop:'4%'}}>
                     <View style={Styles.iconContainer}>
-                        <View style={{marginLeft:10,marginBottom:-20}}>
+                        <View style={{marginLeft:10,marginBottom:-20,display:'flex',flexDirection:'row'}}>
                         <Icon name={'thumbs-up'} type={'font-awesome'} style={{width:40,height:40}} color={'#3D93D1'}/>
+                        <Text>{data.number}</Text>
                         </View>
                         <View style={{marginLeft:35,marginBottom:-20}}>
                         <Icon name={'star-o'} type={'font-awesome'}  style={{width:40,height:40}} color={'#3D93D1'}/>
@@ -52,9 +53,9 @@ const QList = ()=>{
                         <View style={{marginLeft:35,marginBottom:-20}}>
                         <Icon name={'share-alt'} type={'font-awesome'} style={{width:38,height:38}}  color={'#3D93D1'}/>
                         </View>
-                        <View style={{marginLeft:35,alignSelf:'flex-end',marginBottom:-18}}>
-                        <Icon name={'comment'} type={'font-awesome'} style={{width:38,height:38}}  color={'#3D93D1'} />
-                        </View>
+                        <TouchableOpacity style={{marginLeft:35,alignSelf:'flex-end',marginBottom:-18}} onPress={()=>navigation.navigate(data.location)}>
+                        <Icon name={'comment'} type={'font-awesome'} style={{width:38,height:38}}  color={'#3D93D1'}  />
+                        </TouchableOpacity>
                     </View>
                 </Card.FeaturedTitle>
             </Card>
@@ -91,9 +92,9 @@ const QList = ()=>{
             <ScrollView>
                 <Postcard/>
             </ScrollView>
-            <View style={{width:60,height:60,borderRadius:40,backgroundColor:'#4B7BE8',justifyContent:'center',alignSelf:'flex-end',marginTop:'2%',marginBottom:'-5%'}}>
+            <TouchableOpacity onPress={()=>navigation.navigate('PostQuestion')} style={{width:60,height:60,borderRadius:40,backgroundColor:'#4B7BE8',justifyContent:'center',alignSelf:'flex-end',marginTop:'2%',marginBottom:'-5%'}}>
                 <Icon name={'plus'} type={'font-awesome'} size={30} color={COLORS.White}/>
-            </View>
+            </TouchableOpacity> 
         </View>
     </>
     )
