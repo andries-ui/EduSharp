@@ -3,7 +3,8 @@ import {View,ScrollView,Text,StyleSheet,TouchableOpacity} from 'react-native'
 import Info from './Q&A'
 import { img,COLORS,SIZES } from "../../constants";
 import {Card, Icon} from 'react-native-elements'
-const Replies = ()=>{
+
+const Replies = ({navigation})=>{
     const Postcard=()=>{
         return(
         <View style={{marginTop:'4%',width:'105%',marginLeft:'-4%'}}>
@@ -43,7 +44,7 @@ const Replies = ()=>{
                         <View style={{marginLeft:35,marginBottom:-20}}>
                         <Icon name={'share-alt'} type={'font-awesome'} style={{width:38,height:38}}  color={'#3D93D1'}/>
                         </View>
-                        <TouchableOpacity style={{marginLeft:35,alignSelf:'flex-end',marginBottom:-18}} onPress={()=>navigation.navigate(data.location)}>
+                        <TouchableOpacity style={{marginLeft:35,alignSelf:'flex-end',marginBottom:-18}} onPress={()=>navigation.goBack()}>
                         <Icon name={'comment'} type={'font-awesome'} style={{width:38,height:38}}  color={'#3D93D1'}  />
                         </TouchableOpacity>
                     </View>
