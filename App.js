@@ -7,16 +7,16 @@ import Splash from './Components/screens/SplashScreen'
 import SignIn from './Components/screens/SignInScreen'
 import Terms from './Components/screens/terms&conditions'
 import DashBoard from './Components/screens/DashBoard'
-import Questions from './Components/screens/QList'
-import Post from './Components/screens/PostQuestion'
-
+import Profile from './Components/screens/profile'
+import About from './Components/screens/about'
+import QList from './Components/screens/Q\'AsList'
 import RepliesContainer from './Components/screens/Replies'
 
 const Menu = ()=>{
     const Stack = createNativeStackNavigator()
     return(
         <NavigationContainer>
-            <Stack.Navigator initialRouteName = { 'SplashScreen' } screenOptions={{headerShown:false}}
+            <Stack.Navigator initialRouteName = { "Q'AsList" } screenOptions={{headerShown:false}}
              >
              <Stack.Screen name = { 'SplashScreen' } component={Splash}/>
               <Stack.Screen name={'register'} component={Register}/>

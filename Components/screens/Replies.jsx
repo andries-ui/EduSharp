@@ -5,6 +5,7 @@ import { img,COLORS,SIZES } from "../../constants";
 import {Card, Icon} from 'react-native-elements'
 
 const RepliesContainer=({ navigation }) =>{
+    
     const Postcard = () => {
         return (
             <View style={{ marginTop: '4%', width: '105%', marginLeft: '-4%' }}>
@@ -44,7 +45,7 @@ const RepliesContainer=({ navigation }) =>{
                             <View style={{ marginLeft: 35, marginBottom: -20 }}>
                                 <Icon name={'share-alt'} type={'font-awesome'} style={{ width: 38, height: 38 }} color={'#3D93D1'} />
                             </View>
-                            <TouchableOpacity style={{ marginLeft: 35, alignSelf: 'flex-end', marginBottom: -18 }} onPress={() => navigation.goBack()}>
+                            <TouchableOpacity style={{ marginLeft: 35, alignSelf: 'flex-end', marginBottom: -18 }} >
                                 <Icon name={'comment'} type={'font-awesome'} style={{ width: 38, height: 38 }} color={'#3D93D1'} />
                             </TouchableOpacity>
                         </View>
@@ -97,6 +98,9 @@ const RepliesContainer=({ navigation }) =>{
     return (
         <ScrollView style={Styles.container}>
             <View style={Styles.header}>
+                <TouchableOpacity  onPress={()=>navigation.goBack()}>
+                    <Icon name={'long-arrow-left'} type={'font-awesome'}/>
+                </TouchableOpacity>
                 <Text style={Styles.headertext}>Q' As</Text>
             </View>
             <View>

@@ -5,8 +5,7 @@ import { COLORS,FONTS, SIZES,icons } from "../../constants";
 import ToggleSwitch from 'toggle-switch-react-native'
 import Info from './Q&A'
 
-const QList = ({navigation})=>{
-                                                               
+const QList = ({navigation})=>{                                                
     const [toggle,setToggle]=useState(true)
     const option=()=>{
         setToggle(!toggle)
@@ -17,7 +16,7 @@ const QList = ({navigation})=>{
         <View style={{marginTop:'4%',width:'105%',marginLeft:'-4%'}}>
              {
           Info.info.map(data=>
-            <Card key={data.id} containerStyle={{borderRadius:10,}}>
+            <Card key={data.id} containerStyle={{borderRadius:10,}} onPress={()=>navigation.navigate(data.location)}>
                 <Card.FeaturedTitle style={Styles.cardHeader}>
                     <View style={{padding:'2%'}}>
                         <Card.Image source={data.pic} style={Styles.profile}/>
@@ -53,7 +52,7 @@ const QList = ({navigation})=>{
                         <View style={{marginLeft:35,marginBottom:-20}}>
                         <Icon name={'share-alt'} type={'font-awesome'} style={{width:38,height:38}}  color={'#3D93D1'}/>
                         </View>
-                        <TouchableOpacity style={{marginLeft:35,alignSelf:'flex-end',marginBottom:-18}} onPress={()=>navigation.navigate(data.location)}>
+                        <TouchableOpacity style={{marginLeft:35,alignSelf:'flex-end',marginBottom:-18}} >
                         <Icon name={'comment'} type={'font-awesome'} style={{width:38,height:38}}  color={'#3D93D1'}  />
                         </TouchableOpacity>
                     </View>
@@ -80,7 +79,7 @@ const QList = ({navigation})=>{
             <View style={Styles.subtitle}>
                 <Text style={Styles.text}>View only the content that is relevent to my course</Text>
               <ToggleSwitch 
-              isOn={option}
+              isOn={true}
               onColor={'#3D93D1'}
               offColor="red"
               labelStyle={{color:"black",fontWeight:'900'}}
