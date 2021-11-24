@@ -1,23 +1,23 @@
 import React,{useState} from "react";
-import {View,Text,ScrollView,TouchableOpacity,StyleSheet,Image,FlatList} from 'react-native'
+import {View,Text,ScrollView,TouchableOpacity,StyleSheet,Image,FlatList,Modal} from 'react-native'
 import {Card, Icon} from 'react-native-elements'
 import { COLORS,FONTS, SIZES,icons } from "../../constants";
 import ToggleSwitch from 'toggle-switch-react-native'
 import Info from './Q&A'
+import Post from "./PostQuestion";
 
-const QList = ()=>{
-                                                               
+const QList = ({navigation})=>{                                                
     const [toggle,setToggle]=useState(true)
     const option=()=>{
         setToggle(!toggle)
     }
-
+    const [modalVisible,setVisible] = useState(false)  
     const Postcard=()=>{
         return(
         <View style={{marginTop:'4%',width:'105%',marginLeft:'-4%'}}>
              {
           Info.info.map(data=>
-            <Card key={data.id} containerStyle={{borderRadius:10,}}>
+            <Card key={data.id} containerStyle={{borderRadius:10,}} onPress={()=>navigation.navigate(data.location)}>
                 <Card.FeaturedTitle style={Styles.cardHeader}>
                     <View style={{padding:'2%'}}>
                         <Card.Image source={data.pic} style={Styles.profile}/>
@@ -43,8 +43,9 @@ const QList = ()=>{
                 </Card.FeaturedTitle>
                 <Card.FeaturedTitle  style={{padding:'1%',marginTop:'4%'}}>
                     <View style={Styles.iconContainer}>
-                        <View style={{marginLeft:10,marginBottom:-20}}>
+                        <View style={{marginLeft:10,marginBottom:-20,display:'flex',flexDirection:'row'}}>
                         <Icon name={'thumbs-up'} type={'font-awesome'} style={{width:40,height:40}} color={'#3D93D1'}/>
+                        <Text>{data.number}</Text>
                         </View>
                         <View style={{marginLeft:35,marginBottom:-20}}>
                         <Icon name={'star-o'} type={'font-awesome'}  style={{width:40,height:40}} color={'#3D93D1'}/>
@@ -52,9 +53,9 @@ const QList = ()=>{
                         <View style={{marginLeft:35,marginBottom:-20}}>
                         <Icon name={'share-alt'} type={'font-awesome'} style={{width:38,height:38}}  color={'#3D93D1'}/>
                         </View>
-                        <View style={{marginLeft:35,alignSelf:'flex-end',marginBottom:-18}}>
-                        <Icon name={'comment'} type={'font-awesome'} style={{width:38,height:38}}  color={'#3D93D1'} />
-                        </View>
+                        <TouchableOpacity style={{marginLeft:35,alignSelf:'flex-end',marginBottom:-18}} >
+                        <Icon name={'comment'} type={'font-awesome'} style={{width:38,height:38}}  color={'#3D93D1'}  />
+                        </TouchableOpacity>
                     </View>
                 </Card.FeaturedTitle>
             </Card>
@@ -63,6 +64,7 @@ const QList = ()=>{
         </View>
         )
     }
+    
     return(
     <>
         <View style={Styles.container}>
@@ -79,21 +81,38 @@ const QList = ()=>{
             <View style={Styles.subtitle}>
                 <Text style={Styles.text}>View only the content that is relevent to my course</Text>
               <ToggleSwitch 
-              isOn={option}
+              isOn={true}
               onColor={'#3D93D1'}
               offColor="red"
               labelStyle={{color:"black",fontWeight:'900'}}
               size="medium"
               style={Styles.toggle}
-              onToggle={option}
+            //   onToggle={option}
               />
             </View>
             <ScrollView>
                 <Postcard/>
             </ScrollView>
-            <View style={{width:60,height:60,borderRadius:40,backgroundColor:'#4B7BE8',justifyContent:'center',alignSelf:'flex-end',marginTop:'2%',marginBottom:'-5%'}}>
+            <TouchableOpacity onPress={()=>setVisible(true)}  style={{width:60,height:60,borderRadius:40,backgroundColor:'#4B7BE8',justifyContent:'center',alignSelf:'flex-end',marginTop:'2%',marginBottom:'-5%'}}>
                 <Icon name={'plus'} type={'font-awesome'} size={30} color={COLORS.White}/>
-            </View>
+            </TouchableOpacity>
+            <View>
+                <Modal
+                     animationType={'slide'}
+                     transparent={false}
+                      visible={modalVisible}
+                      onRequestClose={()=>{alert('Modal closed')
+                        setVisible(!modalVisible)
+                    }
+                    }
+                    
+                >
+                    <View>
+                        <Text>Inside Modal</Text>
+                        <TouchableOpacity onPress={()=>setVisible(false)}><Text>Hide Modal</Text></TouchableOpacity>
+                    </View>
+                </Modal>
+            </View> 
         </View>
     </>
     )
