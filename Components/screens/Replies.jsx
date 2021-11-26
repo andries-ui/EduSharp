@@ -98,8 +98,8 @@ const RepliesContainer=({ navigation }) =>{
     return (
         <ScrollView style={Styles.container}>
             <View style={Styles.header}>
-                <TouchableOpacity  onPress={()=>navigation.goBack()}>
-                    <Icon name={'long-arrow-left'} type={'font-awesome'}/>
+                <TouchableOpacity style={{width:50,height:40,borderRadius:50,justifyContent:'center',opacity:0.5}} onPress={()=>navigation.goBack()}>
+                    <Icon name={'long-arrow-left'} type={'font-awesome'}  size={15}/>
                 </TouchableOpacity>
                 <Text style={Styles.headertext}>Q' As</Text>
             </View>
