@@ -13,10 +13,10 @@ import About from './Components/screens/about'
 const Menu = ()=>{
     const Stack = createNativeStackNavigator()
     return(
-        <NavigationContainer>
+        <NavigationContainer independent={true}>
             <Stack.Navigator initialRouteName = { 'SplashScreen' } screenOptions={{headerShown:false}}
              >
-             <Stack.Screen name = { 'SplashScreen' } component={Splash}/>
+             <Stack.Screen name = {'SplashScreen'} component={Splash}/>
               <Stack.Screen name={'register'} component={Register}/>
               <Stack.Screen name={'SignInScreen'} component={SignIn} />  
               <Stack.Screen name ={'terms&conditions'} component={Terms}/> 
