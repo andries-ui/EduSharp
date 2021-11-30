@@ -15,7 +15,7 @@ const Menu = ()=>{
     const Stack = createNativeStackNavigator()
     return(
         <NavigationContainer>
-            <Stack.Navigator initialRouteName = { 'QList' } screenOptions={{headerShown:false}}
+            <Stack.Navigator initialRouteName = { 'SplashScreen' } screenOptions={{headerShown:false}}
              >
            <Stack.Screen name = { 'SplashScreen' } component={Splash}/>
               <Stack.Screen name={'register'} component={Register}/>
