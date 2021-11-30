@@ -10,20 +10,14 @@ import HomeScreen from './HomeScreen';
 import Pro from './Pro';
 import About from './about';
 import Starred from './Starred';
-
+import NotificationsScreen from './NotificationsScreen';
 import CustomDrawer from './CustomDrawer';
 import Preference from './Preference';
 
 //import Icon from 'react-native-vector-icons/Ionicons';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
-function NotificationsScreen({ navigation }) {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Button onPress={() => navigation.goBack()} title="Go back home" />
-    </View>
-  );
-}
+
 
 const Drawer = createDrawerNavigator();
 
@@ -71,7 +65,7 @@ export default function App() {
     }}
      
      />
-        <Drawer.Screen name="My Files" component={NotificationsScreen} 
+        <Drawer.Screen name="NotificationsScreen" component={NotificationsScreen} 
         
         options={{ title: 'My Files',
         drawerIcon: ({focused, size}) => (
@@ -84,7 +78,7 @@ export default function App() {
    ),
 }}
         />
-        <Drawer.Screen name="My Post" component={NotificationsScreen}
+        {/* <Drawer.Screen name="NotificationsScreen" component={NotificationsScreen}
          options={{ title: 'My Post',
          drawerIcon: ({focused, size}) => (
     <Icon
@@ -96,7 +90,7 @@ export default function App() {
     ),
  }}
         
-        />
+        /> */}
         <Drawer.Screen name="Starred" component={Starred}
          options={{ title:"Starred",
          drawerIcon: ({focused, size}) => (
