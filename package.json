@@ -22,9 +22,12 @@
     "react-native-elements": "^3.4.2",
     "react-native-gesture-handler": "^1.10.3",
     "react-native-paper": "^4.9.2",
+    "react-native-progress": "^5.0.0",
     "react-native-screens": "^3.8.0",
     "react-native-sqlite-storage": "^6.0.1",
+    "react-native-switch-selector": "^2.1.4",
     "react-native-web": "~0.13.12",
+    "toggle-switch-react-native": "^3.3.0",
     "yup": "^0.32.11"
   },
   "devDependencies": {
