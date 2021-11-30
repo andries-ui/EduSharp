@@ -43,3 +43,5 @@ const styles = StyleSheet.create({
     }
 })
 export default Questions
+import * as Progress from 'react-native-progress';
+
