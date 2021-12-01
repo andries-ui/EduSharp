@@ -15,7 +15,6 @@ const HomeScreen = ({ navigation }) => {
             <Text style={Styles.WelcomeText}>
               Welcome
             </Text>
-         
           <View style={Styles.ImageView}>
             <Image source={img.welcome} style={Styles.Image}></Image>
           </View>

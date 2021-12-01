@@ -21,7 +21,7 @@ const RepliesContainer=({ navigation }) =>{
                         <Icon name={'ellipsis-v'} type={'font-awesome'} style={{ marginLeft: 90, marginBottom: 20, width: 8, height: 24 }} />
                     </Card.FeaturedTitle>
                     <Card.FeaturedTitle style={Styles.post}>
-                        <View>
+                        <TouchableOpacity onPress={()=>navigation.goBack()}>
                             <Text style={Styles.question}>
                                 Lorem ipsum dolor sit amet, consectetur a
                             </Text>
@@ -31,7 +31,7 @@ const RepliesContainer=({ navigation }) =>{
                             <Text>
                                 Lorem ipsum dolor sit amet, consectetur a
                             </Text>
-                        </View>
+                        </TouchableOpacity>
                     </Card.FeaturedTitle>
                     <Card.FeaturedTitle style={{ padding: '1%', marginTop: '4%' }}>
                         <View style={Styles.iconContainer}>
@@ -51,15 +51,14 @@ const RepliesContainer=({ navigation }) =>{
                         </View>
                     </Card.FeaturedTitle>
                 </Card>
-
-
             </View>
         );
     };
     const Replies = () => {
         return (
-            <View style={{ width: '97%' }}>
-                {Info.replies.map(data => <Card key={data.id} containerStyle={{ borderRadius: 5, }}>
+            <View style={{ width: '97%',alignItems:'flex-start',marginLeft:1 }}>
+                {Info.replies.map(data => 
+                <Card key={data.id} containerStyle={{ borderRadius: 20, }}>
                     <Card.FeaturedTitle style={Styles.cardHeader}>
                         <View style={{ padding: '2%' }}>
                             <Card.Image source={data.pic} style={Styles.profile} />
@@ -68,7 +67,7 @@ const RepliesContainer=({ navigation }) =>{
                             <Text style={Styles.repliyHeader}>{data.username}</Text>
                             <Text style={{ marginLeft: 10 }}>{data.time}</Text>
                         </View>
-
+                        <Icon name={'ellipsis-v'} type={'font-awesome'} style={{ marginLeft: 145, marginBottom: 20, width: 8, height: 24 }} />
                     </Card.FeaturedTitle>
                     <Card.FeaturedTitle style={Styles.post}>
                         <View>
@@ -81,16 +80,15 @@ const RepliesContainer=({ navigation }) =>{
 
                         </View>
                     </Card.FeaturedTitle>
-                    <Card.FeaturedTitle style={{ padding: '1%', marginTop: '4%' }}>
+                    <Card.FeaturedTitle style={{ padding: '1%', marginTop: '1%' }}>
                         <View style={Styles.iconContainer}>
-                            <TouchableOpacity style={{ marginLeft: 200, marginBottom: -18, display: 'flex', flexDirection: 'row' }}>
+                            <TouchableOpacity style={{ marginLeft: 200, marginBottom: -30, display: 'flex', flexDirection: 'row' }}>
                                 <Icon name={'thumbs-up'} type={'font-awesome'} style={{ width: 40, height: 40 }} color={'#3D93D1'} />
                                 <Text>{data.number}</Text>
                             </TouchableOpacity>
                         </View>
                     </Card.FeaturedTitle>
                 </Card>
-
                 )}
             </View>
         );
@@ -98,9 +96,6 @@ const RepliesContainer=({ navigation }) =>{
     return (
         <ScrollView style={Styles.container}>
             <View style={Styles.header}>
-                <TouchableOpacity style={{width:50,height:40,borderRadius:50,justifyContent:'center',opacity:0.5}} onPress={()=>navigation.goBack()}>
-                    <Icon name={'long-arrow-left'} type={'font-awesome'}  size={15}/>
-                </TouchableOpacity>
                 <Text style={Styles.headertext}>Q' As</Text>
             </View>
             <View>
@@ -108,7 +103,7 @@ const RepliesContainer=({ navigation }) =>{
             </View>
             <View>
                 <Text style={Styles.subtext}>Replies</Text>
-                <View>
+                <View style={Styles.repliesContainer}>
                     <Replies />
                 </View>
             </View>
@@ -131,28 +126,25 @@ const Styles = StyleSheet.create({
     },
     subtext:{
         margin:'2%',
-        fontSize:SIZES.h2
+        fontSize:SIZES.h4
     },
     headertext:{
         fontSize:SIZES.h1,
-        marginLeft:20
+        
     
     },
     header:{
         display:'flex',
         flexDirection:'row',
     
-        marginTop:'6%',
-        borderBottomWidth:0.5,
-        borderBottomColor:'#E9E9E9'
-        
+        marginTop:'2%',   
     },
     post:{
         alignItems:'center',
         justifyContent:'center',
         width:'100%',
        padding:'3%',
-        marginTop:'-2%',
+        marginTop:'-3%',
         textAlign:'center'
     },
     question:{
@@ -162,7 +154,6 @@ const Styles = StyleSheet.create({
     iconContainer:{
         display:'flex',
         flexDirection:'row',
-      
        width:'100%'
     },
     profile:{
@@ -173,6 +164,9 @@ const Styles = StyleSheet.create({
     repliyHeader:{
         fontSize:SIZES.h3,
         marginLeft:10
+    },
+    repliesContainer:{
+    
     }
 })
 export default RepliesContainer
