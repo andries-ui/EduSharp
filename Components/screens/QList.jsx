@@ -177,73 +177,8 @@ const QList = ({ navigation }) => {
 
                         </View>
                     </Modal>
-                    <View>
-                        <BottomSheet
-                            modalProps={{}}
-                            isVisible={isVisible}>
-                            <View style={{ paddingBottom: '1%' }}>
-                                <TouchableOpacity onPress={() => setIsVisible(false)}>
-                                    <Icon name={'arrow-down'} type={'font-awesome'} color={'#EAEAEA'} />
-                                </TouchableOpacity >
-                                {
-                                    Info.items.map((item, l) =>
-                                        <ListItem key={item.id} style={{ color: '#7DB4DA', borderRadius: 20 }} >
-                                            <ListItem.Content style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', justifyContent: 'flex-start', }}>
-                                                <Icon type={'font-awesome'} name={item.icon} size={20} color={'#7DB4DA'} style={{ margin: '2%' }} />
-                                                <ListItem.Title style={{ color: '#7DB4DA', fontWeight: '700', paddingLeft: '2%', fontSize: 16 }}>{item.name}</ListItem.Title>
-                                            </ListItem.Content>
-                                        </ListItem>
-                                    )
-                                }
-                            </View>
-                        </BottomSheet>
-                    </View>
-                    <View style={{alignContent:'center'}} >
-                        <BottomSheet
-                            modalProps={{}}
-                            isVisible={share}>
-                            <View style={{ backgroundColor: 'white',borderTopEndRadius:25,borderTopStartRadius:25,margin:'auto',alignItems:'center' }}>
-                                    <View style={Styles.bottomInputDes}>
-                                        <Input
-                                            placeholder={'Share your answer'}
-                                            containerStyle={{ backgroundColor: '#f2f2f2', borderRadius: 10, padding: '2%',height:'100%' }}
-                                            inputContainerStyle={{ borderColor: '#f2f2f2' }}
-                                           
-                                        />
-                                    </View>
-                                    <View style={{width:'100%',margin:'auto',alignItems:'center'}}>
-                                        <TouchableOpacity style={Styles.SheetfileContainer}>
-                                            <Input
-                                                placeholder={'Add a Photo'}
-                                                containerStyle={{ borderRadius: 20 }}
-                                                inputContainerStyle={{ borderColor: '#f2f2f2' }}
-                                                rightIcon={<Icon name={'image'} type={'font-awesome'} size={18} color={COLORS.primary} />}
-                                            />
-                                        </TouchableOpacity>
-                                        <TouchableOpacity style={Styles.SheetfileContainer}>
-                                            <Input
-                                                placeholder={'Take a Picture'}
-                                                containerStyle={{ borderRadius: 1, padding: '1%' }}
-                                                inputContainerStyle={{ borderColor: '#f2f2f2' }}
-                                                rightIcon={<Icon name={'camera'} type={'font-awesome'} size={18} color={COLORS.primary} />}
-                                            />
-                                        </TouchableOpacity>
-                                        <TouchableOpacity style={Styles.SheetfileContainer}>
-                                            <Input
-                                                placeholder={'Add pdf,doc, or'}
-                                                containerStyle={{ borderRadius: 1, padding: '1%', }}
-                                                inputContainerStyle={{ borderColor: '#f2f2f2' }}
-                                                rightIcon={<Icon name={'file'} type={'font-awesome'} size={18} color={COLORS.primary} />}
-                                            />
-                                        </TouchableOpacity>
-                                        <View style={Styles.buttons}>
-                                            <TouchableOpacity onPress={() => setShare(false)} style={Styles.cancel}><Text style={Styles.cancelText}>Cancel</Text></TouchableOpacity>
-                                            <TouchableOpacity onPress={() => alert('Post successfully uploaded')} style={Styles.postbutton} ><Text style={Styles.postText}>Post</Text></TouchableOpacity>
-                                        </View>
-                                    </View>
-                                </View>
-                        </BottomSheet>
-                    </View>
+                   
+                    
                 </View>
             </View>
     </>
