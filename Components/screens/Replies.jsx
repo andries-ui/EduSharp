@@ -119,7 +119,8 @@ const RepliesContainer=({ navigation }) =>{
                 <Text style={Styles.subtext}>Replies</Text>
                 <View style={{width:'100%'}}>
                     <Replies />
-                    <Text>    </Text>
+                    <Text>        </Text>
+                    <Text>        </Text>
                 </View>
             </ScrollView>
             <View>

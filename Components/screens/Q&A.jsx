@@ -15,7 +15,7 @@ class Info{
 ]
 replies=[{
     
-        id:'1',username:'Katlego',time:'2h ago',reply:'Lorem ipsum dolor sit amet, consectetur a',pic:img.user,number:'1K'    
+        id:'1',username:'Katlego ',time:'2h ago',reply:'Lorem ipsum dolor sit amet, consectetur a',pic:img.user,number:'1K'    
    },
    {
        id:'2',username:'Makoma',time:'20min ago',reply:'Lorem ipsum dolor sit amet, consectetur a',pic:img.user,number:'1K' 
