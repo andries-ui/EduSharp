@@ -8,7 +8,7 @@ const About = ({navigation})=>{
        <ScrollView>
            <View>
                 <TouchableOpacity style={styles.view} onPress={()=>navigation.goBack()}>
-                    <Icon name={'long-arrow-left'} type={'font-awesome'} style={styles.icon}/>
+                    <Icon name={'back-arrow'}  style={styles.icon}/>
                 </TouchableOpacity>
            </View>
             <View style={styles.container}>      

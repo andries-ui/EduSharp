@@ -5,6 +5,7 @@ import { COLORS, FONTS, SIZES, icons } from "../../constants";
 import ToggleSwitch from 'toggle-switch-react-native'
 import Info from './Q&A'
 import Post from "./PostQuestion";
+
 const QList = ({ navigation }) => {
     const [toggle, setToggle] = useState(true)
     const option = () => {
@@ -12,27 +13,29 @@ const QList = ({ navigation }) => {
     }
     const [isVisible, setIsVisible] = useState(false)
     const [share, setShare] = useState(false)
-
     const [modalVisible, setVisible] = useState(false)
+
     const Postcard = () => {
         return (
-            <View style={{ marginTop: '4%', width: '105%', marginLeft: '-4%' }}>
+            <View style={{width:'100%',marginLeft:'-2%' }}>
                 {
                     Info.info.map(data =>
-                        <Card key={data.id} containerStyle={{ borderRadius: 10, }} >
+                        <Card key={data.id} containerStyle={{ borderRadius: 10,marginRight:'1%' }} >
                             <Card.FeaturedTitle style={Styles.cardHeader}>
                                 <View style={{ padding: '2%' }}>
                                     <Card.Image source={data.pic} style={Styles.profile} />
                                 </View>
-                                <View>
-                                    <Text style={Styles.headertext}>{data.username}</Text>
-                                    <Text style={{ marginLeft: 20 }}>{data.time}</Text>
-                                </View>
-                                <TouchableOpacity onPress={() => setIsVisible(true)}>
-                                    <Icon name={'ellipsis-v'} type={'font-awesome'} style={{ right:'0%', marginBottom: 20, width: 8, height: 24 }} />
-                                </TouchableOpacity>
+                              <View style={{display:'flex',flexDirection:'row',justifyContent:'space-between',width:250}}>
+                                    <View>
+                                        <Text style={Styles.headertext}>{data.username}</Text>
+                                        <Text style={{ marginLeft: 20 }}>{data.time}</Text>
+                                    </View>
+                                    <TouchableOpacity onPress={() => setIsVisible(true)} style={{alignSelf:"flex-end"}}>
+                                        <Icon name={'ellipsis-v'} type={'font-awesome'} style={{ right:'0%', marginBottom: 20, width: 8, height: 24 }} />
+                                    </TouchableOpacity>
+                              </View>
                             </Card.FeaturedTitle>
-                            <Card.FeaturedTitle style={Styles.post} onPress={() => navigation.navigate(data.location)}>
+                            <Card.FeaturedTitle style={Styles.post} >
                                 <View  >
                                     <Text style={Styles.question} >
                                         {data.question}
@@ -47,8 +50,8 @@ const QList = ({ navigation }) => {
                             </Card.FeaturedTitle>
                             <Card.FeaturedTitle style={{ padding: '1%', marginTop: '4%' }}>
                                 <View style={Styles.iconContainer}>
-                                    <View style={{ marginLeft: 10, marginBottom: -20, display: 'flex', flexDirection: 'row' }}>
-                                        <Icon name={'thumbs-up'} type={'font-awesome'} style={{ width: 40, height: 40 }} color={'#3D93D1'} />
+                                    <View style={{ marginLeft: 5, marginBottom: -20, display: 'flex', flexDirection: 'row' }}>
+                                        <Icon name={'thumbs-up'} type={'font-awesome'} style={{ width: 45, height: 45 }} color={'#3D93D1'} />
                                         <Text>{data.number}</Text>
                                     </View>
                                     <View style={{ marginLeft: 35, marginBottom: -20 }}>
@@ -57,7 +60,7 @@ const QList = ({ navigation }) => {
                                     <View style={{ marginLeft: 35, marginBottom: -20 }}>
                                         <Icon name={'share-alt'} type={'font-awesome'} style={{ width: 38, height: 38 }} color={'#3D93D1'} />
                                     </View>
-                                    <TouchableOpacity style={{ marginLeft: 35, alignSelf: 'flex-end', marginBottom: -18 }} onPress={() => setShare(true)} >
+                                    <TouchableOpacity style={{ marginLeft: 35, alignSelf: 'flex-end', marginBottom: -18 }} onPress={() => navigation.navigate(data.location)} >
                                         <Icon name={'comment'} type={'font-awesome'} style={{ width: 38, height: 38 }} color={'#3D93D1'} />
                                     </TouchableOpacity>
                                 </View>
@@ -81,7 +84,8 @@ const QList = ({ navigation }) => {
                     <TouchableOpacity style={Styles.touchable}>
                         <Icon name='search' type='font-awesome' size={23} color={COLORS.primary} />
                     </TouchableOpacity>
-                </View>
+                </View> 
+                <ScrollView>
                 <View style={Styles.subtitle}>
                     <Text style={Styles.text}>View only the content that is relevent to my course</Text>
                     <ToggleSwitch
@@ -94,11 +98,9 @@ const QList = ({ navigation }) => {
                     //   onToggle={option}
                     />
                 </View>
-
-                <ScrollView>
                     <Postcard />
                 </ScrollView>
-                <TouchableOpacity onPress={() => setVisible(true)} style={{ width: 60, height: 60, borderRadius: 40, backgroundColor: '#4B7BE8', justifyContent: 'center', alignSelf: 'flex-end', marginTop: '2%', marginBottom: '-5%' }}>
+                <TouchableOpacity onPress={() => setVisible(true)} style={{ width: 60, height: 60, borderRadius: 40, backgroundColor: '#4B7BE8', justifyContent: 'center', alignSelf: 'flex-end', marginTop: '1%', marginBottom: '-1%' }}>
                     <Icon name={'plus'} type={'font-awesome'} size={30} color={COLORS.White} />
                 </TouchableOpacity>
                 <View>
@@ -119,11 +121,12 @@ const QList = ({ navigation }) => {
                                 <View style={Styles.picker}>
                                     <Picker>
                                         <Picker.Item label='Select grade' />
+                                       
                                     </Picker>
                                 </View>
                                 <View style={Styles.picker}>
                                     <Picker>
-                                        <Picker.Item label='Select grade' />
+                                        <Picker.Item label='Select Subject' />
                                     </Picker>
                                 </View>
                                 <View style={Styles.modalInput}>
@@ -199,39 +202,37 @@ const QList = ({ navigation }) => {
                         <BottomSheet
                             modalProps={{}}
                             isVisible={share}>
-                            <View style={{ backgroundColor: 'white',borderTopEndRadius:20,borderTopStartRadius:20,alignItems:'center',justifyContent:'center',width:'90%' }}>
-                            <View style={{ marginTop:'2%'}}>
-                               
-                                <View>
+                            <View style={{ backgroundColor: 'white',borderTopEndRadius:25,borderTopStartRadius:25,margin:'auto',alignItems:'center' }}>
                                     <View style={Styles.bottomInputDes}>
                                         <Input
                                             placeholder={'Share your answer'}
-                                            containerStyle={{ backgroundColor: '#EAEAEA', height: '100%', borderRadius: 10, padding: '2%' }}
-                                            inputContainerStyle={{ borderColor: '#EAEAEA' }}
+                                            containerStyle={{ backgroundColor: '#f2f2f2', borderRadius: 10, padding: '2%',height:'100%' }}
+                                            inputContainerStyle={{ borderColor: '#f2f2f2' }}
+                                           
                                         />
                                     </View>
-                                    <View>
+                                    <View style={{width:'100%',margin:'auto',alignItems:'center'}}>
                                         <TouchableOpacity style={Styles.SheetfileContainer}>
                                             <Input
                                                 placeholder={'Add a Photo'}
-                                                containerStyle={{ height: '100%', borderRadius: 20 }}
-                                                inputContainerStyle={{ borderColor: '#EAEAEA' }}
+                                                containerStyle={{ borderRadius: 20 }}
+                                                inputContainerStyle={{ borderColor: '#f2f2f2' }}
                                                 rightIcon={<Icon name={'image'} type={'font-awesome'} size={18} color={COLORS.primary} />}
                                             />
                                         </TouchableOpacity>
                                         <TouchableOpacity style={Styles.SheetfileContainer}>
                                             <Input
                                                 placeholder={'Take a Picture'}
-                                                containerStyle={{ height: '100%', borderRadius: 1, padding: '1%' }}
-                                                inputContainerStyle={{ borderColor: '#EAEAEA' }}
+                                                containerStyle={{ borderRadius: 1, padding: '1%' }}
+                                                inputContainerStyle={{ borderColor: '#f2f2f2' }}
                                                 rightIcon={<Icon name={'camera'} type={'font-awesome'} size={18} color={COLORS.primary} />}
                                             />
                                         </TouchableOpacity>
                                         <TouchableOpacity style={Styles.SheetfileContainer}>
                                             <Input
                                                 placeholder={'Add pdf,doc, or'}
-                                                containerStyle={{ borderRadius: 1, padding: '1%', height: '100%' }}
-                                                inputContainerStyle={{ borderColor: '#EAEAEA' }}
+                                                containerStyle={{ borderRadius: 1, padding: '1%', }}
+                                                inputContainerStyle={{ borderColor: '#f2f2f2' }}
                                                 rightIcon={<Icon name={'file'} type={'font-awesome'} size={18} color={COLORS.primary} />}
                                             />
                                         </TouchableOpacity>
@@ -241,34 +242,10 @@ const QList = ({ navigation }) => {
                                         </View>
                                     </View>
                                 </View>
-                            </View>
-                            </View>
                         </BottomSheet>
                     </View>
                 </View>
-                <TouchableOpacity style={Styles.touchable}>
-                    <Icon name='search' type='font-awesome' size={23} color={COLORS.primary}/>
-                </TouchableOpacity>
             </View>
-            <View style={Styles.subtitle}>
-                <Text style={Styles.text}>View only the content that is relevent to my course</Text>
-              <ToggleSwitch 
-              isOn={true}
-              onColor={'#3D93D1'}
-              offColor="red"
-              labelStyle={{color:"black",fontWeight:'900'}}
-              size="medium"
-              style={Styles.toggle}
-              onToggle={option}
-              />
-            </View>
-            <ScrollView>
-                <Postcard/>
-            </ScrollView>
-            <TouchableOpacity onPress={()=>navigation.navigate('PostQuestion')} style={{width:60,height:60,borderRadius:40,backgroundColor:'#4B7BE8',justifyContent:'center',alignSelf:'flex-end',marginTop:'2%',marginBottom:'-5%'}}>
-                <Icon name={'plus'} type={'font-awesome'} size={30} color={COLORS.White}/>
-            </TouchableOpacity> 
-      
     </>
     )
 }
@@ -276,16 +253,15 @@ const Styles = StyleSheet.create({
     container: {
         backgroundColor: COLORS.AppBackgroundColor,
         flex: 1,
-        padding: '6%'
+        padding: '2%',
+        opacity:1
     }
     , header: {
         display: 'flex',
         flexDirection: 'row',
-
-        marginTop: '6%',
+        marginTop: '2%',
         borderBottomWidth: 0.5,
         borderBottomColor: '#E9E9E9'
-
     },
 
     headingtext: {
@@ -300,7 +276,7 @@ const Styles = StyleSheet.create({
     subtitle: {
         display: 'flex',
         flexDirection: 'row',
-        marginTop: '5%'
+        marginTop: '4%'
     },
     text: {
         width: '72%',
@@ -308,22 +284,17 @@ const Styles = StyleSheet.create({
     },
     toggle: {
         alignContent: 'flex-end',
-        marginLeft: '15%',
+        marginLeft: '10%',
         marginTop: '2%'
     },
     profile: {
         width: 50,
         height: 50,
-
     },
     cardHeader: {
         display: 'flex',
-        flexDirection: 'row',
-        //   backgroundColor:'red',
-        width: '100%',
-        height: 70,
-        justifyContent:'space-between'
-        // paddingLeft:'2%'
+        flexDirection: 'row'
+        ,height: 60,
     },
     headertext: {
         fontSize: SIZES.h2,
@@ -338,7 +309,7 @@ const Styles = StyleSheet.create({
         textAlign: 'center'
     },
     question: {
-        padding: '4%',
+        padding: '2%',
         fontSize: SIZES.body4
     },
     iconContainer: {
@@ -407,15 +378,17 @@ const Styles = StyleSheet.create({
         marginTop: '4%',
         width: '40%',
         height: 40,
-        alignItems: 'center', justifyContent: 'center'
+        alignItems: 'center', justifyContent: 'center',
+        marginBottom:'4%'
     },
     postbutton: {
         marginTop: '4%',
-        width: '40%',
+        width: '45%',
         height: 45,
         alignItems: 'center', justifyContent: 'center',
         backgroundColor: COLORS.primary,
-        borderRadius: 10
+        borderRadius: 10,
+        marginBottom:'4%'
     },
     postText: {
         color: 'white',
@@ -427,18 +400,20 @@ const Styles = StyleSheet.create({
         paddingRight: '14%'
     },
     bottomInputDes: {
-        width: '89%',
-        backgroundColor:'#EAEAEA',
-        margin: '2%',
-        borderRadius: 10,
-        height: '25%'
+        backgroundColor: '#f2f2f2',
+        margin: 'auto',
+        borderRadius: 15,
+        padding:'auto',
+        width:'85%',height:150,
+        marginTop:'6%'
     },
     SheetfileContainer:{
-        width: '90%',
-        backgroundColor: '#EAEAEA',
-        margin: '1%',
-        height: '17%',
-        borderRadius: 20
+        backgroundColor: '#f2f2f2',
+        margin: 'auto',
+        borderRadius: 25,
+        height:55,
+        marginTop:'2%',
+        width:'85%'
     }
 
 })

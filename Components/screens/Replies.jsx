@@ -1,27 +1,34 @@
-import React from "react";
+import React,{useState} from "react";
 import {View,ScrollView,Text,StyleSheet,TouchableOpacity} from 'react-native'
 import Info from './Q&A'
 import { img,COLORS,SIZES } from "../../constants";
-import {Card, Icon} from 'react-native-elements'
+import {Card, Icon,BottomSheet,ListItem,Input} from 'react-native-elements'
 
 const RepliesContainer=({ navigation }) =>{
-    
+    const [isVisible, setIsVisible] = useState(false)
+    const [share, setShare] = useState(false)
+   
     const Postcard = () => {
         return (
-            <View style={{ marginTop: '4%', width: '105%', marginLeft: '-4%' }}>
-                <Card containerStyle={{ borderRadius: 10, }}>
+            <View style={{paddingLeft:'3%'}}>
+                <Card containerStyle={{ borderRadius: 10,width:'98%',marginLeft:'-1%',padding:'2%' }}>
                     <Card.FeaturedTitle style={Styles.cardHeader}>
-                        <View style={{ padding: '2%' }}>
+                        <View >
                             <Card.Image source={img.user} style={Styles.profile} />
                         </View>
-                        <View>
-                            <Text style={Styles.headertext}>Monicca</Text>
-                            <Text style={{ marginLeft: 20 }}>2h ago</Text>
+                        <View style={{display:'flex',flexDirection:'row',justifyContent:'space-between',width:270}}>
+                            <View>
+                                <Text style={Styles.headertext}>Monicca</Text>
+                                <Text style={{ marginLeft: 20 }}>2h ago</Text>
+                            </View>
+                            <TouchableOpacity  onPress={() => setIsVisible(true)}>
+                                <Icon name={'ellipsis-v'} type={'font-awesome'}  style={{ right:'0%', marginBottom: 25, width: 8, height: 24 }} />
+                            </TouchableOpacity>
+                            
                         </View>
-                        <Icon name={'ellipsis-v'} type={'font-awesome'} style={{ marginLeft: 90, marginBottom: 20, width: 8, height: 24 }} />
                     </Card.FeaturedTitle>
                     <Card.FeaturedTitle style={Styles.post}>
-                        <View>
+                        <View >
                             <Text style={Styles.question}>
                                 Lorem ipsum dolor sit amet, consectetur a
                             </Text>
@@ -33,9 +40,9 @@ const RepliesContainer=({ navigation }) =>{
                             </Text>
                         </View>
                     </Card.FeaturedTitle>
-                    <Card.FeaturedTitle style={{ padding: '1%', marginTop: '4%' }}>
+                    <Card.FeaturedTitle style={{ padding: '2%', marginTop: '8%' }}>
                         <View style={Styles.iconContainer}>
-                            <View style={{ marginLeft: 10, marginBottom: -20, display: 'flex', flexDirection: 'row' }}>
+                            <View style={{ marginLeft: 15, marginBottom: -20, display: 'flex', flexDirection: 'row' }}>
                                 <Icon name={'thumbs-up'} type={'font-awesome'} style={{ width: 40, height: 40 }} color={'#3D93D1'} />
                                 <Text>1K</Text>
                             </View>
@@ -45,30 +52,34 @@ const RepliesContainer=({ navigation }) =>{
                             <View style={{ marginLeft: 35, marginBottom: -20 }}>
                                 <Icon name={'share-alt'} type={'font-awesome'} style={{ width: 38, height: 38 }} color={'#3D93D1'} />
                             </View>
-                            <TouchableOpacity style={{ marginLeft: 35, alignSelf: 'flex-end', marginBottom: -18 }} >
+                            <TouchableOpacity style={{ marginLeft: 35, alignSelf: 'flex-end', marginBottom: -18 }} onPress={() => setShare(true)} >
                                 <Icon name={'comment'} type={'font-awesome'} style={{ width: 38, height: 38 }} color={'#3D93D1'} />
                             </TouchableOpacity>
                         </View>
                     </Card.FeaturedTitle>
                 </Card>
-
-
             </View>
         );
     };
     const Replies = () => {
         return (
-            <View style={{ width: '97%' }}>
-                {Info.replies.map(data => <Card key={data.id} containerStyle={{ borderRadius: 5, }}>
+            <View >
+                {Info.replies.map(data => 
+                <Card key={data.id} containerStyle={{ borderRadius: 5,marginLeft:'6%',marginRight:'4%',width:'88%' }}>
                     <Card.FeaturedTitle style={Styles.cardHeader}>
-                        <View style={{ padding: '2%' }}>
+                        <View>
                             <Card.Image source={data.pic} style={Styles.profile} />
                         </View>
-                        <View>
-                            <Text style={Styles.repliyHeader}>{data.username}</Text>
-                            <Text style={{ marginLeft: 10 }}>{data.time}</Text>
+                        <View style={{display:'flex',flexDirection:'row',justifyContent:'space-between',width:240}}>
+                            <View>
+                                <Text style={Styles.repliyHeader}>{data.username}</Text>
+                                <Text style={{ marginLeft: 10 }}>{data.time}</Text>
+                            </View>
+                            <TouchableOpacity onPress={() => setIsVisible(true)}>
+                            <Icon name={'ellipsis-v'} type={'font-awesome'}  />
+                            </TouchableOpacity>
+                               
                         </View>
-
                     </Card.FeaturedTitle>
                     <Card.FeaturedTitle style={Styles.post}>
                         <View>
@@ -78,19 +89,17 @@ const RepliesContainer=({ navigation }) =>{
                             <Text>
                                 {data.reply}
                             </Text>
-
                         </View>
                     </Card.FeaturedTitle>
-                    <Card.FeaturedTitle style={{ padding: '1%', marginTop: '4%' }}>
+                    <Card.FeaturedTitle style={{ padding: '1%' ,alignItems:'flex-end'}}>
                         <View style={Styles.iconContainer}>
-                            <TouchableOpacity style={{ marginLeft: 200, marginBottom: -18, display: 'flex', flexDirection: 'row' }}>
-                                <Icon name={'thumbs-up'} type={'font-awesome'} style={{ width: 40, height: 40 }} color={'#3D93D1'} />
+                            <TouchableOpacity style={{ alignSelf:'flex-end', display: 'flex', flexDirection: 'row' ,marginLeft:220}}>
+                                <Icon name={'thumbs-up'} type={'font-awesome'} style={{ width: 40,  }} color={'#3D93D1'} />
                                 <Text>{data.number}</Text>
                             </TouchableOpacity>
                         </View>
                     </Card.FeaturedTitle>
                 </Card>
-
                 )}
             </View>
         );
@@ -99,60 +108,122 @@ const RepliesContainer=({ navigation }) =>{
         <ScrollView style={Styles.container}>
             <View style={Styles.header}>
                 <TouchableOpacity style={{width:50,height:40,borderRadius:50,justifyContent:'center',opacity:0.5}} onPress={()=>navigation.goBack()}>
-                    <Icon name={'long-arrow-left'} type={'font-awesome'}  size={15}/>
+                    <Icon name={'arrow-back'} size={25}/>
                 </TouchableOpacity>
                 <Text style={Styles.headertext}>Q' As</Text>
             </View>
-            <View>
+            <View style={{width:'100%'}}>
                 <Postcard />
             </View>
-            <View>
+            <ScrollView>
                 <Text style={Styles.subtext}>Replies</Text>
-                <View>
+                <View style={{width:'100%'}}>
                     <Replies />
+                    <Text>    </Text>
                 </View>
-            </View>
+            </ScrollView>
+            <View>
+                        <BottomSheet
+                            modalProps={{}}
+                            isVisible={isVisible}>
+                            <View style={{ paddingBottom: '1%' }}>
+                                <TouchableOpacity onPress={() => setIsVisible(false)}>
+                                    <Icon name={'arrow-down'} type={'font-awesome'} color={'#EAEAEA'} />
+                                </TouchableOpacity >
+                                {
+                                    Info.items.map((item, l) =>
+                                        <ListItem key={item.id} style={{ color: '#7DB4DA', borderRadius: 20 }} >
+                                            <ListItem.Content style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', justifyContent: 'flex-start', }}>
+                                                <Icon type={'font-awesome'} name={item.icon} size={20} color={'#7DB4DA'} style={{ margin: '2%' }} />
+                                                <ListItem.Title style={{ color: '#7DB4DA', fontWeight: '700', paddingLeft: '2%', fontSize: 16 }}>{item.name}</ListItem.Title>
+                                            </ListItem.Content>
+                                        </ListItem>
+                                    )
+                                }
+                            </View>
+                        </BottomSheet>
+                    </View>
+                    <View style={{alignContent:'center'}} >
+                        <BottomSheet
+                            modalProps={{}}
+                            isVisible={share}>
+                            <View style={{ backgroundColor: 'white',borderTopEndRadius:25,borderTopStartRadius:25,margin:'auto',alignItems:'center' }}>
+                                    <View style={Styles.bottomInputDes}>
+                                        <Input
+                                            placeholder={'Share your answer'}
+                                            containerStyle={{ backgroundColor: '#f2f2f2', borderRadius: 10, padding: '2%',height:'100%' }}
+                                            inputContainerStyle={{ borderColor: '#f2f2f2' }}
+                                           
+                                        />
+                                    </View>
+                                    <View style={{width:'100%',margin:'auto',alignItems:'center'}}>
+                                        <TouchableOpacity style={Styles.SheetfileContainer}>
+                                            <Input
+                                                placeholder={'Add a Photo'}
+                                                containerStyle={{ borderRadius: 20 }}
+                                                inputContainerStyle={{ borderColor: '#f2f2f2' }}
+                                                rightIcon={<Icon name={'image'} type={'font-awesome'} size={18} color={COLORS.primary} />}
+                                            />
+                                        </TouchableOpacity>
+                                        <TouchableOpacity style={Styles.SheetfileContainer}>
+                                            <Input
+                                                placeholder={'Take a Picture'}
+                                                containerStyle={{ borderRadius: 1, padding: '1%' }}
+                                                inputContainerStyle={{ borderColor: '#f2f2f2' }}
+                                                rightIcon={<Icon name={'camera'} type={'font-awesome'} size={18} color={COLORS.primary} />}
+                                            />
+                                        </TouchableOpacity>
+                                        <TouchableOpacity style={Styles.SheetfileContainer}>
+                                            <Input
+                                                placeholder={'Add pdf,doc, or'}
+                                                containerStyle={{ borderRadius: 1, padding: '1%', }}
+                                                inputContainerStyle={{ borderColor: '#f2f2f2' }}
+                                                rightIcon={<Icon name={'file'} type={'font-awesome'} size={18} color={COLORS.primary} />}
+                                            />
+                                        </TouchableOpacity>
+                                        <View style={Styles.buttons}>
+                                            <TouchableOpacity onPress={() => setShare(false)} style={Styles.cancel}><Text style={Styles.cancelText}>Cancel</Text></TouchableOpacity>
+                                            <TouchableOpacity onPress={() => alert('Post successfully uploaded')} style={Styles.postbutton} ><Text style={Styles.postText}>Post</Text></TouchableOpacity>
+                                        </View>
+                                    </View>
+                                </View>
+                        </BottomSheet>
+                    </View>
+                
         </ScrollView>
     );
 }
 const Styles = StyleSheet.create({
     container:{
-        backgroundColor:COLORS.AppBackgroundColor,
+        backgroundColor:'#F4F4F4',
         flex:1,
-        padding:'6%'
+        padding:'1%'
     },
     cardHeader:{
         display:'flex',
         flexDirection:'row',
-    
-        width:'100%',
-        height:70,
-    
+        
     },
     subtext:{
-        margin:'2%',
-        fontSize:SIZES.h2
+        margin:'1%',
+        fontSize:SIZES.h4,
+        paddingLeft:'2%'
     },
     headertext:{
         fontSize:SIZES.h1,
         marginLeft:20
-    
     },
     header:{
         display:'flex',
         flexDirection:'row',
-    
-        marginTop:'6%',
+        marginTop:'5%',
         borderBottomWidth:0.5,
         borderBottomColor:'#E9E9E9'
-        
     },
     post:{
-        alignItems:'center',
-        justifyContent:'center',
         width:'100%',
-       padding:'3%',
-        marginTop:'-2%',
+        paddingLeft:'-4%',
+        marginTop:'2%',
         textAlign:'center'
     },
     question:{
@@ -168,11 +239,65 @@ const Styles = StyleSheet.create({
     profile:{
         width:50,
         height:50,
-        
     },
     repliyHeader:{
         fontSize:SIZES.h3,
         marginLeft:10
+    },
+    fileContainer: {
+        width: '90%',
+        backgroundColor: '#EAEAEA',
+        margin: '1%',
+        height: '9%',
+        borderRadius: 20
+    },
+    buttons: {
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'flex-end',
+        alignItems: 'flex-end',
+        marginLeft: '40%'
+    },
+    cancel: {
+        marginTop: '4%',
+        width: '40%',
+        height: 40,
+        alignItems: 'center', justifyContent: 'center',
+        marginBottom:'4%'
+    },
+    postbutton: {
+        marginTop: '4%',
+        width: '45%',
+        height: 45,
+        alignItems: 'center', justifyContent: 'center',
+        backgroundColor: COLORS.primary,
+        borderRadius: 10,
+        marginBottom:'4%'
+    },
+    postText: {
+        color: 'white',
+        fontSize: 18
+    },
+    cancelText: {
+        color: 'black',
+        fontSize: 18,
+        paddingRight: '14%'
+    },
+    bottomInputDes: {
+        backgroundColor: '#f2f2f2',
+        margin: 'auto',
+        borderRadius: 15,
+        padding:'auto',
+        width:'85%',height:150,
+        marginTop:'6%'
+    },
+    SheetfileContainer:{
+        backgroundColor: '#f2f2f2',
+        margin: 'auto',
+        borderRadius: 25,
+        height:55,
+        marginTop:'2%',
+        width:'85%'
     }
 })
 export default RepliesContainer
