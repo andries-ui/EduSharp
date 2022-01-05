@@ -28,7 +28,11 @@ const RepliesContainer=({ navigation }) =>{
                         </View>
                     </Card.FeaturedTitle>
                     <Card.FeaturedTitle style={Styles.post}>
+<<<<<<< HEAD
                         <View >
+=======
+                        <TouchableOpacity onPress={()=>navigation.goBack()}>
+>>>>>>> master
                             <Text style={Styles.question}>
                                 Lorem ipsum dolor sit amet, consectetur a
                             </Text>
@@ -38,7 +42,7 @@ const RepliesContainer=({ navigation }) =>{
                             <Text>
                                 Lorem ipsum dolor sit amet, consectetur a
                             </Text>
-                        </View>
+                        </TouchableOpacity>
                     </Card.FeaturedTitle>
                     <Card.FeaturedTitle style={{ padding: '2%', marginTop: '8%' }}>
                         <View style={Styles.iconContainer}>
@@ -63,9 +67,15 @@ const RepliesContainer=({ navigation }) =>{
     };
     const Replies = () => {
         return (
+<<<<<<< HEAD
             <View >
                 {Info.replies.map(data => 
                 <Card key={data.id} containerStyle={{ borderRadius: 5,marginLeft:'6%',marginRight:'4%',width:'88%' }}>
+=======
+            <View style={{ width: '97%',alignItems:'flex-start',marginLeft:1 }}>
+                {Info.replies.map(data => 
+                <Card key={data.id} containerStyle={{ borderRadius: 20, }}>
+>>>>>>> master
                     <Card.FeaturedTitle style={Styles.cardHeader}>
                         <View>
                             <Card.Image source={data.pic} style={Styles.profile} />
@@ -80,6 +90,10 @@ const RepliesContainer=({ navigation }) =>{
                             </TouchableOpacity>
                                
                         </View>
+<<<<<<< HEAD
+=======
+                        <Icon name={'ellipsis-v'} type={'font-awesome'} style={{ marginLeft: 145, marginBottom: 20, width: 8, height: 24 }} />
+>>>>>>> master
                     </Card.FeaturedTitle>
                     <Card.FeaturedTitle style={Styles.post}>
                         <View>
@@ -91,10 +105,17 @@ const RepliesContainer=({ navigation }) =>{
                             </Text>
                         </View>
                     </Card.FeaturedTitle>
+<<<<<<< HEAD
                     <Card.FeaturedTitle style={{ padding: '1%' ,alignItems:'flex-end'}}>
                         <View style={Styles.iconContainer}>
                             <TouchableOpacity style={{ alignSelf:'flex-end', display: 'flex', flexDirection: 'row' ,marginLeft:220}}>
                                 <Icon name={'thumbs-up'} type={'font-awesome'} style={{ width: 40,  }} color={'#3D93D1'} />
+=======
+                    <Card.FeaturedTitle style={{ padding: '1%', marginTop: '1%' }}>
+                        <View style={Styles.iconContainer}>
+                            <TouchableOpacity style={{ marginLeft: 200, marginBottom: -30, display: 'flex', flexDirection: 'row' }}>
+                                <Icon name={'thumbs-up'} type={'font-awesome'} style={{ width: 40, height: 40 }} color={'#3D93D1'} />
+>>>>>>> master
                                 <Text>{data.number}</Text>
                             </TouchableOpacity>
                         </View>
@@ -107,9 +128,12 @@ const RepliesContainer=({ navigation }) =>{
     return (
         <ScrollView style={Styles.container}>
             <View style={Styles.header}>
+<<<<<<< HEAD
                 <TouchableOpacity style={{width:50,height:40,borderRadius:50,justifyContent:'center',opacity:0.5}} onPress={()=>navigation.goBack()}>
                     <Icon name={'arrow-back'} size={25}/>
                 </TouchableOpacity>
+=======
+>>>>>>> master
                 <Text style={Styles.headertext}>Q' As</Text>
             </View>
             <View style={{width:'100%'}}>
@@ -117,7 +141,11 @@ const RepliesContainer=({ navigation }) =>{
             </View>
             <ScrollView>
                 <Text style={Styles.subtext}>Replies</Text>
+<<<<<<< HEAD
                 <View style={{width:'100%'}}>
+=======
+                <View style={Styles.repliesContainer}>
+>>>>>>> master
                     <Replies />
                     <Text>        </Text>
                     <Text>        </Text>
@@ -206,6 +234,7 @@ const Styles = StyleSheet.create({
         
     },
     subtext:{
+<<<<<<< HEAD
         margin:'1%',
         fontSize:SIZES.h4,
         paddingLeft:'2%'
@@ -213,18 +242,37 @@ const Styles = StyleSheet.create({
     headertext:{
         fontSize:SIZES.h1,
         marginLeft:20
+=======
+        margin:'2%',
+        fontSize:SIZES.h4
+    },
+    headertext:{
+        fontSize:SIZES.h1,
+        
+    
+>>>>>>> master
     },
     header:{
         display:'flex',
         flexDirection:'row',
+<<<<<<< HEAD
         marginTop:'5%',
         borderBottomWidth:0.5,
         borderBottomColor:'#E9E9E9'
+=======
+    
+        marginTop:'2%',   
+>>>>>>> master
     },
     post:{
         width:'100%',
+<<<<<<< HEAD
         paddingLeft:'-4%',
         marginTop:'2%',
+=======
+       padding:'3%',
+        marginTop:'-3%',
+>>>>>>> master
         textAlign:'center'
     },
     question:{
@@ -234,7 +282,6 @@ const Styles = StyleSheet.create({
     iconContainer:{
         display:'flex',
         flexDirection:'row',
-      
        width:'100%'
     },
     profile:{
@@ -245,6 +292,7 @@ const Styles = StyleSheet.create({
         fontSize:SIZES.h3,
         marginLeft:10
     },
+<<<<<<< HEAD
     fileContainer: {
         width: '90%',
         backgroundColor: '#EAEAEA',
@@ -299,6 +347,10 @@ const Styles = StyleSheet.create({
         height:55,
         marginTop:'2%',
         width:'85%'
+=======
+    repliesContainer:{
+    
+>>>>>>> master
     }
 })
 export default RepliesContainer
