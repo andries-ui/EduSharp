@@ -10,25 +10,33 @@ import DashBoard from './Components/screens/DashBoard'
 import Questions from './Components/screens/QList'
 import Post from './Components/screens/PostQuestion'
 import RepliesContainer from './Components/screens/Replies'
+import Material from './Components/screens/Material'
+import MyFiles from './Components/screens/MyFiles'
+import FileImages from './Components/screens/images'
+import DownloadFiles from './Components/screens/downloads'
+import VideoFiles from './Components/screens/videos'
 
 const Menu = ()=>{
     const Stack = createNativeStackNavigator()
     return(
         <NavigationContainer>
            
-            <Stack.Navigator initialRouteName = { 'QList' } screenOptions={{headerShown:false}}
+            <Stack.Navigator initialRouteName = {  ' SplashScreen'} screenOptions={{headerShown:false}}
              >
-           {/* <Stack.Screen name = { 'SplashScreen' } component={Splash}/>
+           <Stack.Screen name = { 'SplashScreen' } component={Splash}/>
               <Stack.Screen name={'register'} component={Register}/>
               <Stack.Screen name={'SignInScreen'} component={SignIn} />  
               <Stack.Screen name ={'terms&conditions'} component={Terms}/> 
               <Stack.Screen name={'home'} component={HomeScreen} />   
-              <Stack.Screen name ={'DashBoard'} component={DashBoard}/>  */}
+              <Stack.Screen name ={'DashBoard'} component={DashBoard}/> 
               <Stack.Screen name={'QList'} component={Questions}/>   
               <Stack.Screen name={'Replies'} component={RepliesContainer}/>
               <Stack.Screen name={'PostQuestion'} component={Post}/> 
-              
-            
+              <Stack.Screen name={'Material'} component={Material}/>
+              <Stack.Screen name={'MyFiles'} component={MyFiles}/>
+              <Stack.Screen name={'images'} component={FileImages}/>
+              <Stack.Screen name={'downloads'} component={DownloadFiles}/>
+              <Stack.Screen name={'videos'} component={VideoFiles}/>
             </Stack.Navigator>
         </NavigationContainer>
     )

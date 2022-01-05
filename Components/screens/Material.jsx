@@ -1,12 +1,12 @@
-import React, { useState } from "react";
-import { View, Text, ScrollView, TouchableOpacity, StyleSheet, Image, FlatList, Modal, Picker } from 'react-native'
-import { Card, Icon, Input, ListItem, BottomSheet, BottomSheetProps, Avatar } from 'react-native-elements'
+import React,{useState} from 'react';
+import {View,Text,Image,ScrollView,TouchableOpacity,StyleSheet,Modal,Picker} from 'react-native'
+import { Icon,Card, BottomSheet,Input,ListItem } from 'react-native-elements';
 import { COLORS, FONTS, SIZES, icons } from "../../constants";
 import ToggleSwitch from 'toggle-switch-react-native'
 import Info from './Q&A'
-import Post from "./PostQuestion";
 
-const QList = ({ navigation }) => {
+
+const Material = ()=> {
     const [toggle, setToggle] = useState(true)
     const option = () => {
         setToggle(!toggle)
@@ -15,95 +15,66 @@ const QList = ({ navigation }) => {
     const [share, setShare] = useState(false)
     const [modalVisible, setVisible] = useState(false)
 
-    const Postcard = () => {
-        return (
-            <View style={{width:'100%',marginLeft:'-2%' }}>
-                {
-                    Info.info.map(data =>
-                        <Card key={data.id} containerStyle={{ borderRadius: 10,marginRight:'1%' }} >
-                            <Card.FeaturedTitle style={Styles.cardHeader}>
-                                <View style={{ padding: '2%' }}>
-                                    <Card.Image source={data.pic} style={Styles.profile} />
-                                </View>
-                              <View style={{display:'flex',flexDirection:'row',justifyContent:'space-between',width:250}}>
-                                    <View>
-                                        <Text style={Styles.headertext}>{data.username}</Text>
-                                        <Text style={{ marginLeft: 20 }}>{data.time}</Text>
+    const MaterialCard = ()=>{
+        return(
+            <View>
+                {Info.material.map(data=>
+                    <Card key={data.id} containerStyle={{borderRadius:10,}} >
+                        <Card.FeaturedTitle>
+                            <View style={Styles.cardHeader}>
+                                <Image source={data.picUser} style={{width:40,height:40,borderRadius:50}}/>
+                                <View style={{display:'flex',flexDirection:'row',justifyContent:'space-between',width:250}}>
+                                    <View style={{marginLeft:'4%'}}>
+                                        <Text style={{fontSize:18}}>{data.name}</Text>
+                                        <Text>{data.time}</Text>
                                     </View>
                                     <TouchableOpacity onPress={() => setIsVisible(true)} style={{alignSelf:"flex-end"}}>
                                         <Icon name={'ellipsis-v'} type={'font-awesome'} style={{ right:'0%', marginBottom: 20, width: 8, height: 24 }} />
                                     </TouchableOpacity>
-                              </View>
-                            </Card.FeaturedTitle>
-                            <Card.FeaturedTitle style={Styles.post} >
-                                <View  >
-                                    <Text style={Styles.question} >
-                                        {data.question}
-                                    </Text>
-                                    <Text >
-                                        {data.question}
-                                    </Text>
-                                    <Text>
-                                        {data.question}
-                                    </Text>
                                 </View>
-                            </Card.FeaturedTitle>
-                            <Card.FeaturedTitle style={{ padding: '1%', marginTop: '4%' }}>
-                                <View style={Styles.iconContainer}>
-                                    <View style={{ marginLeft: 5, marginBottom: -20, display: 'flex', flexDirection: 'row' }}>
-                                        <Icon name={'thumbs-up'} type={'font-awesome'} style={{ width: 45, height: 45 }} color={'#3D93D1'} />
-                                        <Text>{data.number}</Text>
-                                    </View>
-                                    <View style={{ marginLeft: 35, marginBottom: -20 }}>
-                                        <Icon name={'star-o'} type={'font-awesome'} style={{ width: 40, height: 40 }} color={'#3D93D1'} />
-                                    </View>
-                                    <View style={{ marginLeft: 35, marginBottom: -20 }}>
-                                        <Icon name={'share-alt'} type={'font-awesome'} style={{ width: 38, height: 38 }} color={'#3D93D1'} />
-                                    </View>
-                                    <TouchableOpacity style={{ marginLeft: 35, alignSelf: 'flex-end', marginBottom: -18 }} onPress={() => navigation.navigate(data.location)} >
-                                        <Icon name={'comment'} type={'font-awesome'} style={{ width: 38, height: 38 }} color={'#3D93D1'} />
-                                    </TouchableOpacity>
-                                </View>
-                            </Card.FeaturedTitle>
-                        </Card>
-                    )
-                }
+                            </View>
+                        </Card.FeaturedTitle>
+                        <Card.Image source={data.pic} style={{width:'100%',height:200}}>
+                           <View style={{backgroundColor:'black',opacity:0.7,marginTop:'auto',borderRadius:10}}>
+                               <Text style={{color:'white',padding:'2%',fontWeight:'600',fontSize:25,paddingLeft:'4%'}}>{data.title}</Text>
+                               <Text style={{color:'white',padding:'2%',paddingLeft:'4%',fontSize:15}}>{data.subtitle}</Text>
+                           </View>
+                        </Card.Image>
+                    </Card>
+                    )}
+   
             </View>
         )
     }
-
-    return (
+    return(
         <>
             <View style={Styles.container}>
                 <View style={Styles.header}>
-                    <View>
-                        <Text style={Styles.headingtext}>
-                            Q' As
-                        </Text>
-                    </View>
-                    <TouchableOpacity style={Styles.touchable}>
+                    <Text style={Styles.headerText}>Material</Text>
+                    <TouchableOpacity style={Styles.searchIcon}>
                         <Icon name='search' type='font-awesome' size={23} color={COLORS.primary} />
                     </TouchableOpacity>
-                </View> 
-                <ScrollView>
-                <View style={Styles.subtitle}>
-                    <Text style={Styles.text}>View only the content that is relevent to my course</Text>
-                    <ToggleSwitch
-                        isOn={true}
-                        onColor={'#3D93D1'}
-                        offColor="red"
-                        labelStyle={{ color: "black", fontWeight: '900' }}
-                        size="medium"
-                        style={Styles.toggle}
-                    //   onToggle={option}
-                    />
                 </View>
-                    <Postcard />
+                <ScrollView>
+                    <View style={Styles.subtitle}>
+                        <Text style={Styles.text}>View only the content that is relevent to my course</Text>
+                        <ToggleSwitch
+                            isOn={true}
+                            onColor={'#3D93D1'}
+                            offColor="red"
+                            labelStyle={{ color: "black", fontWeight: '900' }}
+                            size="medium"
+                            style={Styles.toggle}
+                        />
+                    </View>
+                    <MaterialCard/>
+        
                 </ScrollView>
-                <TouchableOpacity onPress={() => setVisible(true)} style={{ width: 60, height: 60, borderRadius: 40, backgroundColor: '#4B7BE8', justifyContent: 'center', alignSelf: 'flex-end', marginTop: '-16%', marginBottom: '1%'}}>
+                <TouchableOpacity  onPress={() => setVisible(true)} style={{ width: 60, height: 60, borderRadius: 40, backgroundColor: '#4B7BE8', justifyContent: 'center', alignSelf: 'flex-end', marginTop: '-16%', marginBottom: '1%',marginRight:'2%' }}>
                     <Icon name={'plus'} type={'font-awesome'} size={30} color={COLORS.White} />
                 </TouchableOpacity>
                 <View>
+                
                     <Modal
                         animationType={'slide'}
                         transparent={true}
@@ -117,7 +88,7 @@ const QList = ({ navigation }) => {
                     >
                         <View style={Styles.modalContainer}>
                             <View style={Styles.postContainer}>
-                                <Text style={Styles.modalheadertext}>Make Post</Text>
+                                <Text style={Styles.modalheadertext}>Add Material</Text>
                                 <View style={Styles.picker}>
                                     <Picker>
                                         <Picker.Item label='Select grade' />
@@ -171,25 +142,24 @@ const QList = ({ navigation }) => {
                                 </TouchableOpacity>
                                 <View style={Styles.buttons}>
                                     <TouchableOpacity onPress={() => setVisible(false)} style={Styles.cancel}><Text style={Styles.cancelText}>Cancel</Text></TouchableOpacity>
-                                    <TouchableOpacity onPress={() => alert('Post successfully uploaded')} style={Styles.postbutton} ><Text style={Styles.postText}>Post</Text></TouchableOpacity>
+                                    <TouchableOpacity onPress={() => alert('Material successfully uploaded')} style={Styles.postbutton} ><Text style={Styles.postText}>Upload</Text></TouchableOpacity>
                                 </View>
                             </View>
 
                         </View>
                     </Modal>
-                   
-                    
                 </View>
-                <View>
+                <View style={{alignContent:'center'}}>
                         <BottomSheet
                             modalProps={{}}
                             isVisible={isVisible}>
-                            <View style={{ paddingBottom: '1%' }}>
+                            <View>
                                 <TouchableOpacity onPress={() => setIsVisible(false)}>
                                     <Icon name={'arrow-down'} type={'font-awesome'} color={'#EAEAEA'} />
                                 </TouchableOpacity >
-                                {
-                                    Info.items.map((item, l) =>
+                               <View  style={{ borderTopEndRadius:20 ,padding:'2%',borderTopStartRadius:60,paddingBottom:'-2%'}}>
+                               {
+                                    Info.materialItems.map((item, l) =>
                                         <ListItem key={item.id} style={{ color: '#7DB4DA', borderRadius: 20 }} >
                                             <ListItem.Content style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', justifyContent: 'flex-start', }}>
                                                 <Icon type={'font-awesome'} name={item.icon} size={20} color={'#7DB4DA'} style={{ margin: '2%' }} />
@@ -198,80 +168,52 @@ const QList = ({ navigation }) => {
                                         </ListItem>
                                     )
                                 }
+                               </View>
                             </View>
                         </BottomSheet>
                     </View>
             </View>
-    </>
+        </>
     )
 }
 const Styles = StyleSheet.create({
-    container: {
+    container:{
+        flex:1,
         backgroundColor: COLORS.AppBackgroundColor,
-        flex: 1,
-        padding: '2%',
-        opacity:1
-    }
-    , header: {
-        display: 'flex',
-        flexDirection: 'row',
-        marginTop: '4%',
-        borderBottomWidth: 0.5,
-        borderBottomColor: '#E9E9E9'
-    },
-
-    headingtext: {
-        fontSize: SIZES.h1,
-        fontWeight: '100'
-    },
-    touchable: {
-        alignContent: 'flex-end',
-        marginLeft: '70%',
-        marginTop: '4%'
+        padding:'3%'
     },
     subtitle: {
         display: 'flex',
         flexDirection: 'row',
-        marginTop: '4%'
+        marginTop: '5%',
+        justifyContent:'space-between'
     },
     text: {
-        width: '72%',
-        fontSize: 15
+        fontSize: 15,
+        width:'50%'
     },
     toggle: {
-        alignContent: 'flex-end',
-        marginLeft: '10%',
-        marginTop: '2%'
+       marginRight:'2%'
     },
-    profile: {
-        width: 50,
-        height: 50,
-    },
-    cardHeader: {
-        display: 'flex',
-        flexDirection: 'row'
-        ,height: 60,
-    },
-    headertext: {
-        fontSize: SIZES.h2,
-        marginLeft: 20,
-    },
-    post: {
-        alignItems: 'center',
-        justifyContent: 'center',
-        width: '100%',
-        padding: '3%',
-        marginTop: '-2%',
-        textAlign: 'center'
-    },
-    question: {
-        padding: '2%',
-        fontSize: SIZES.body4
-    },
-    iconContainer: {
+    header:{
         display: 'flex',
         flexDirection: 'row',
-        width: '100%'
+        marginTop: '4%',
+        justifyContent:'space-between',
+        borderBottomWidth: 0.5,
+        borderBottomColor: '#E9E9E9'
+    },
+    headerText:{
+        fontWeight:'600',
+        fontSize:25
+    },
+    searchIcon:{
+        marginRight:'2%'
+    },
+    cardHeader:{
+        display:'flex',
+        flexDirection:'row',
+        width:'100%'
     },
     modalContainer: {
         justifyContent: 'center',
@@ -373,4 +315,4 @@ const Styles = StyleSheet.create({
     }
 
 })
-export default QList
+export default Material
