@@ -4,6 +4,10 @@ import { Card, Icon, Input, ListItem, BottomSheet, } from 'react-native-elements
 import { COLORS,  SIZES } from "../../constants";
 import ToggleSwitch from 'toggle-switch-react-native'
 import Info from './Q&A'
+<<<<<<< HEAD
+import Post from "./PostQuestion";
+=======
+>>>>>>> master
 
 const QList = ({ navigation }) => {
     const [toggle, setToggle] = useState(true)
@@ -12,19 +16,30 @@ const QList = ({ navigation }) => {
     }
     const [isVisible, setIsVisible] = useState(false)
     const [share, setShare] = useState(false)
-
     const [modalVisible, setVisible] = useState(false)
+
     const Postcard = () => {
         return (
-            <View style={{ marginTop: '4%', width: '105%', marginLeft: '-4%' }}>
+            <View style={{width:'100%',marginLeft:'-2%' }}>
                 {
                     Info.info.map(data =>
-                        <Card key={data.id} containerStyle={{ borderRadius: 10, }} >
+                        <Card key={data.id} containerStyle={{ borderRadius: 10,marginRight:'1%' }} >
                             <Card.FeaturedTitle style={Styles.cardHeader}>
                              <View style={Styles.headerContainer}>
                              <View style={{ padding: '2%' }}>
                                     <Card.Image source={data.pic} style={Styles.profile} />
                                 </View>
+<<<<<<< HEAD
+                              <View style={{display:'flex',flexDirection:'row',justifyContent:'space-between',width:250}}>
+                                    <View>
+                                        <Text style={Styles.headertext}>{data.username}</Text>
+                                        <Text style={{ marginLeft: 20 }}>{data.time}</Text>
+                                    </View>
+                                    <TouchableOpacity onPress={() => setIsVisible(true)} style={{alignSelf:"flex-end"}}>
+                                        <Icon name={'ellipsis-v'} type={'font-awesome'} style={{ right:'0%', marginBottom: 20, width: 8, height: 24 }} />
+                                    </TouchableOpacity>
+                              </View>
+=======
                                 <View>
                                     <Text style={Styles.headertext}>{data.username}</Text>
                                     <Text style={{ marginLeft: 20 }}>{data.time}</Text>
@@ -33,8 +48,9 @@ const QList = ({ navigation }) => {
                                     <Icon name={'ellipsis-v'} type={'font-awesome'} style={{  marginBottom: 20, width: 8, height: 24 }} />
                                 </TouchableOpacity>
                              </View>
+>>>>>>> master
                             </Card.FeaturedTitle>
-                            <Card.FeaturedTitle style={Styles.post} onPress={() => navigation.navigate(data.location)}>
+                            <Card.FeaturedTitle style={Styles.post} >
                                 <View  >
                                     <Text style={Styles.question} >
                                         {data.question}
@@ -49,8 +65,8 @@ const QList = ({ navigation }) => {
                             </Card.FeaturedTitle>
                             <Card.FeaturedTitle style={{ padding: '1%', marginTop: '4%' }}>
                                 <View style={Styles.iconContainer}>
-                                    <View style={{ marginLeft: 10, marginBottom: -20, display: 'flex', flexDirection: 'row' }}>
-                                        <Icon name={'thumbs-up'} type={'font-awesome'} style={{ width: 40, height: 40 }} color={'#3D93D1'} />
+                                    <View style={{ marginLeft: 5, marginBottom: -20, display: 'flex', flexDirection: 'row' }}>
+                                        <Icon name={'thumbs-up'} type={'font-awesome'} style={{ width: 45, height: 45 }} color={'#3D93D1'} />
                                         <Text>{data.number}</Text>
                                     </View>
                                     <View style={{ marginLeft: 35, marginBottom: -20 }}>
@@ -59,7 +75,7 @@ const QList = ({ navigation }) => {
                                     <View style={{ marginLeft: 35, marginBottom: -20 }}>
                                         <Icon name={'share-alt'} type={'font-awesome'} style={{ width: 38, height: 38 }} color={'#3D93D1'} />
                                     </View>
-                                    <TouchableOpacity style={{ marginLeft: 35, alignSelf: 'flex-end', marginBottom: -18 }} onPress={() => setShare(true)} >
+                                    <TouchableOpacity style={{ marginLeft: 35, alignSelf: 'flex-end', marginBottom: -18 }} onPress={() => navigation.navigate(data.location)} >
                                         <Icon name={'comment'} type={'font-awesome'} style={{ width: 38, height: 38 }} color={'#3D93D1'} />
                                     </TouchableOpacity>
                                 </View>
@@ -82,9 +98,15 @@ const QList = ({ navigation }) => {
                     <TouchableOpacity style={Styles.touchable}>
                         <Icon name='search' type='font-awesome' size={23} color={COLORS.primary} />
                     </TouchableOpacity>
+<<<<<<< HEAD
+                </View> 
+                <ScrollView>
+                <View style={Styles.subtitle}>
+=======
                 </View>
               <ScrollView style={{width:'100%'}}>
               <View style={Styles.subtitle}>
+>>>>>>> master
                     <Text style={Styles.text}>View only the content that is relevent to my course</Text>
                     <ToggleSwitch
                         isOn={true}
@@ -95,13 +117,21 @@ const QList = ({ navigation }) => {
                         style={Styles.toggle}
                     />
                 </View>
+<<<<<<< HEAD
+=======
 
                 <View>
+>>>>>>> master
                     <Postcard />
                 </View>
                 </ScrollView>
+<<<<<<< HEAD
+                <TouchableOpacity onPress={() => setVisible(true)} style={{ width: 60, height: 60, borderRadius: 40, backgroundColor: '#4B7BE8', justifyContent: 'center', alignSelf: 'flex-end', marginTop: '-16%', marginBottom: '1%'}}>
+                    <Icon name={'plus'} type={'font-awesome'} size={30} color={COLORS.White} />
+=======
                 <TouchableOpacity onPress={() => setVisible(true)} style={{ width: 60, height: 58, borderRadius: 40, backgroundColor: '#4B7BE8', justifyContent: 'center', alignSelf: 'flex-end', marginTop: '1%', marginBottom: '-10%' }}>
                     <Icon name={'plus'} type={'font-awesome'} size={40} color={COLORS.White} style={{opacity:0.8}} />
+>>>>>>> master
                 </TouchableOpacity>
                 <View>
                     <Modal
@@ -121,11 +151,12 @@ const QList = ({ navigation }) => {
                                 <View style={Styles.picker}>
                                     <Picker>
                                         <Picker.Item label='Select grade' />
+                                       
                                     </Picker>
                                 </View>
                                 <View style={Styles.picker}>
                                     <Picker>
-                                        <Picker.Item label='Select grade' />
+                                        <Picker.Item label='Select Subject' />
                                     </Picker>
                                 </View>
                                 <View style={Styles.modalInput}>
@@ -175,7 +206,10 @@ const QList = ({ navigation }) => {
                             </View>
                         </View>
                     </Modal>
-                    <View>
+                   
+                    
+                </View>
+                <View>
                         <BottomSheet
                             modalProps={{}}
                             isVisible={isVisible}>
@@ -196,6 +230,8 @@ const QList = ({ navigation }) => {
                             </View>
                         </BottomSheet>
                     </View>
+<<<<<<< HEAD
+=======
                     <View style={Styles.PostQuestion} >
                         <BottomSheet
                             modalProps={{}}
@@ -244,24 +280,33 @@ const QList = ({ navigation }) => {
                         </BottomSheet>
                     </View>
                 </View>
+>>>>>>> master
             </View>
-        </>
+    </>
     )
 }
 const Styles = StyleSheet.create({
     container: {
         backgroundColor: COLORS.AppBackgroundColor,
         flex: 1,
+<<<<<<< HEAD
+        padding: '2%',
+        opacity:1
+=======
         padding: '6%',
         
+>>>>>>> master
     }
     , header: {
         display: 'flex',
         flexDirection: 'row',
+<<<<<<< HEAD
+        marginTop: '4%',
+=======
         marginTop: '6%',
+>>>>>>> master
         borderBottomWidth: 0.5,
         borderBottomColor: '#E9E9E9'
-
     },
     headingtext: {
         fontSize: SIZES.h1,
@@ -275,7 +320,7 @@ const Styles = StyleSheet.create({
     subtitle: {
         display: 'flex',
         flexDirection: 'row',
-        marginTop: '5%'
+        marginTop: '4%'
     },
     text: {
         width: '72%',
@@ -289,6 +334,14 @@ const Styles = StyleSheet.create({
     profile: {
         width: 50,
         height: 50,
+<<<<<<< HEAD
+    },
+    cardHeader: {
+        display: 'flex',
+        flexDirection: 'row'
+        ,height: 60,
+=======
+>>>>>>> master
     },
     headertext: {
         fontSize: SIZES.h2,
@@ -303,7 +356,7 @@ const Styles = StyleSheet.create({
         textAlign: 'center'
     },
     question: {
-        padding: '4%',
+        padding: '2%',
         fontSize: SIZES.body4
     },
     iconContainer: {
@@ -371,15 +424,17 @@ const Styles = StyleSheet.create({
         marginTop: '4%',
         width: '40%',
         height: 40,
-        alignItems: 'center', justifyContent: 'center'
+        alignItems: 'center', justifyContent: 'center',
+        marginBottom:'4%'
     },
     postbutton: {
         marginTop: '4%',
-        width: '40%',
+        width: '45%',
         height: 45,
         alignItems: 'center', justifyContent: 'center',
         backgroundColor: COLORS.primary,
-        borderRadius: 10
+        borderRadius: 10,
+        marginBottom:'4%'
     },
     postText: {
         color: 'white',
@@ -391,6 +446,22 @@ const Styles = StyleSheet.create({
         paddingRight: '14%'
     },
     bottomInputDes: {
+<<<<<<< HEAD
+        backgroundColor: '#f2f2f2',
+        margin: 'auto',
+        borderRadius: 15,
+        padding:'auto',
+        width:'85%',height:150,
+        marginTop:'6%'
+    },
+    SheetfileContainer:{
+        backgroundColor: '#f2f2f2',
+        margin: 'auto',
+        borderRadius: 25,
+        height:55,
+        marginTop:'2%',
+        width:'85%'
+=======
         backgroundColor:'#EAEAEA',
         marginTop: '4%',
         marginBottom:'-2%',
@@ -412,6 +483,7 @@ const Styles = StyleSheet.create({
     },
     PostQuestion:{
         margin:'2%'
+>>>>>>> master
     }
 
 })

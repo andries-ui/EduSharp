@@ -3,7 +3,6 @@ import {View,Text,ScrollView,StyleSheet,TouchableOpacity,Modal} from 'react-nati
 
 const Post =()=>{
     const [modalVisible,setVisible] = useState(false)
-
     return(
         <View>
             <Modal

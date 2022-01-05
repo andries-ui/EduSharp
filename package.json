@@ -26,12 +26,14 @@
     "react-native-screens": "^3.8.0",
     "react-native-sqlite-storage": "^6.0.1",
     "react-native-switch-selector": "^2.1.4",
+    "react-native-video": "^5.2.0",
     "react-native-web": "~0.13.12",
     "toggle-switch-react-native": "^3.3.0",
     "yup": "^0.32.11"
   },
   "devDependencies": {
-    "@babel/core": "^7.9.0"
+    "@babel/core": "^7.9.0",
+    "@types/react-native-video": "^5.0.11"
   },
   "private": true
 }
