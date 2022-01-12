@@ -27,11 +27,11 @@ const Menu = ()=>{
               <Stack.Screen name={'SignInScreen'} component={SignIn} />  
               <Stack.Screen name ={'terms&conditions'} component={Terms}/> 
               <Stack.Screen name={'home'} component={HomeScreen} />   
-              <Stack.Screen name ={'DashBoard'} component={DashBoard}/> 
-              <Stack.Screen name={'QList'} component={Questions}/>   
+              <Stack.Screen name ={'DashBoard'} component={DashBoard}/>  
+             <Stack.Screen name={'QList'} component={Questions}/>   
               <Stack.Screen name={'Replies'} component={RepliesContainer}/>
-              <Stack.Screen name={'PostQuestion'} component={Post}/> 
-              <Stack.Screen name={'Material'} component={Material}/>
+              <Stack.Screen name={'PostQuestion'} component={Post}/>  
+               <Stack.Screen name={'Material'} component={Material}/>
               <Stack.Screen name={'MyFiles'} component={MyFiles}/>
               <Stack.Screen name={'images'} component={FileImages}/>
               <Stack.Screen name={'downloads'} component={DownloadFiles}/>

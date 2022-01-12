@@ -3,9 +3,9 @@ import {View,ScrollView,Text,FlatList,TouchableOpacity,StyleSheet} from 'react-n
 import {Card,Icon } from 'react-native-elements'
 import Info from './Q&A'
 import { COLORS } from '../../constants';
-import Video from 'react-native-video';
 
-const VideoFiles = ()=>{
+
+const VideoFiles = ({navigation})=>{
 //     const [isBuffer,setBuffer] = useState(true)
 //     const videoBuffer = ()=>{
 //         console.log(isBuffer)

@@ -63,9 +63,9 @@ const RepliesContainer=({ navigation }) =>{
     };
     const Replies = () => {
         return (
-            <View style={{ width: '97%',alignItems:'flex-start',marginLeft:1 }}>
+            <View style={{ width: '98%',alignItems:'flex-start',marginLeft:1 }}>
                 {Info.replies.map(data => 
-                <Card key={data.id} containerStyle={{ borderRadius: 20, }}>
+                <Card key={data.id} containerStyle={{ borderRadius: 20,width:'92%' }}>
                     <Card.FeaturedTitle style={Styles.cardHeader}>
                         <View>
                             <Card.Image source={data.pic} style={Styles.profile} />
@@ -80,7 +80,7 @@ const RepliesContainer=({ navigation }) =>{
                             </TouchableOpacity>
                                
                         </View>
-                        <Icon name={'ellipsis-v'} type={'font-awesome'} style={{ marginLeft: 145, marginBottom: 20, width: 8, height: 24 }} />
+                        
                     </Card.FeaturedTitle>
                     <Card.FeaturedTitle style={Styles.post}>
                         <View>

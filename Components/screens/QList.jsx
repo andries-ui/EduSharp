@@ -24,10 +24,8 @@ const QList = ({ navigation }) => {
                         <Card key={data.id} containerStyle={{ borderRadius: 10, marginRight: '1%' }} >
                             <Card.FeaturedTitle style={Styles.cardHeader}>
                                 <View style={Styles.headerContainer}>
-                                    <View style={{ padding: '2%' }}>
                                         <Card.Image source={data.pic} style={Styles.profile} />
-                                    </View>
-                                    <View style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', backgroundColor: '#4545ede', width:'100%' }}>
+                                        <View style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', backgroundColor: '#4545ede', width:'100%' }}>
                                         <View>
                                             <Text style={Styles.headertext}>{data.username}</Text>
                                             <Text style={{ marginLeft: 20 }}>{data.time}</Text>
@@ -111,7 +109,7 @@ const QList = ({ navigation }) => {
                         transparent={true}
                         visible={modalVisible}
                         onRequestClose={() => {
-                            alert('Modal closed')
+                          
                             setVisible(!modalVisible)
                         }
                         }
@@ -368,6 +366,12 @@ const Styles = StyleSheet.create({
         height: 55,
         marginTop: '2%',
         width: '85%'
+    },
+    headerContainer:{
+      
+        display:'flex',
+        flexDirection:'row',
+        width:250
     }
 
 })
