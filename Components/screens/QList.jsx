@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { View, Text, ScrollView, TouchableOpacity, StyleSheet, Image, FlatList, Modal, Picker } from 'react-native'
 import { Card, Icon, Input, ListItem, BottomSheet, } from 'react-native-elements'
 import { COLORS, SIZES } from "../../constants";
-import ToggleSwitch from 'toggle-switch-react-native'
+// import ToggleSwitch from 'toggle-switch-react-native'
 import Info from './Q&A'
 import Post from "./PostQuestion";
 
@@ -81,21 +81,14 @@ const QList = ({ navigation }) => {
                         Q' As
                     </Text>
                 </View>
-                <TouchableOpacity style={Styles.touchable}>
+                <TouchableOpacity style={Styles.touchable}  onPress={() => navigation.navigate("search")}>
                     <Icon name='search' type='font-awesome' size={23} color={COLORS.primary} />
                 </TouchableOpacity>
             </View>
             <ScrollView>
                 <View style={Styles.subtitle}>
                     <Text style={Styles.text}>View only the content that is relevent to my course</Text>
-                    <ToggleSwitch
-                        isOn={true}
-                        onColor={'#3D93D1'}
-                        offColor="red"
-                        labelStyle={{ color: "black", fontWeight: '900' }}
-                        size="medium"
-                        style={Styles.toggle}
-                    />
+                  
                 </View>
                 <Postcard />
           

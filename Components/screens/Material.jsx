@@ -2,7 +2,7 @@ import React,{useState} from 'react';
 import {View,Text,Image,ScrollView,TouchableOpacity,StyleSheet,Modal,Picker} from 'react-native'
 import { Icon,Card, BottomSheet,Input,ListItem } from 'react-native-elements';
 import { COLORS, FONTS, SIZES, icons } from "../../constants";
-import ToggleSwitch from 'toggle-switch-react-native'
+// import ToggleSwitch from 'toggle-switch-react-native'
 import Info from './Q&A'
 
 
@@ -58,14 +58,14 @@ const Material = ()=> {
                 <ScrollView>
                     <View style={Styles.subtitle}>
                         <Text style={Styles.text}>View only the content that is relevent to my course</Text>
-                        <ToggleSwitch
+                        {/* <ToggleSwitch
                             isOn={true}
                             onColor={'#3D93D1'}
                             offColor="red"
                             labelStyle={{ color: "black", fontWeight: '900' }}
                             size="medium"
                             style={Styles.toggle}
-                        />
+                        /> */}
                     </View>
                     <MaterialCard/>
         
