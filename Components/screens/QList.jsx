@@ -2,16 +2,16 @@ import React, { useState } from "react";
 import { View, Text, ScrollView, TouchableOpacity, StyleSheet, Image, FlatList, Modal, Picker } from 'react-native'
 import { Card, Icon, Input, ListItem, BottomSheet, } from 'react-native-elements'
 import { COLORS, SIZES } from "../../constants";
-import ToggleSwitch from 'toggle-switch-react-native'
+// import ToggleSwitch from 'toggle-switch-react-native'
 import Info from './Q&A'
 import Post from "./PostQuestion";
 
 
 const QList = ({ navigation }) => {
-    const [toggle, setToggle] = useState(true)
-    const option = () => {
-        setToggle(!toggle)
-    }
+    // const [toggle, setToggle] = useState(true)
+    // const option = () => {
+    //     setToggle(!toggle)
+    // }
     const [isVisible, setIsVisible] = useState(false)
     const [share, setShare] = useState(false)
     const [modalVisible, setVisible] = useState(false)
@@ -88,14 +88,14 @@ const QList = ({ navigation }) => {
             <ScrollView>
                 <View style={Styles.subtitle}>
                     <Text style={Styles.text}>View only the content that is relevent to my course</Text>
-                    <ToggleSwitch
+                    {/* <ToggleSwitch
                         isOn={true}
                         onColor={'#3D93D1'}
                         offColor="red"
                         labelStyle={{ color: "black", fontWeight: '900' }}
                         size="medium"
                         style={Styles.toggle}
-                    />
+                    /> */}
                 </View>
                 <Postcard />
           
