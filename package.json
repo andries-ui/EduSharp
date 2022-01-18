@@ -25,7 +25,13 @@
     "react-native-screens": "^3.8.0",
     "react-native-sqlite-storage": "^6.0.1",
     "react-native-web": "~0.13.12",
+<<<<<<< Updated upstream
     "yup": "^0.32.11"
+=======
+    "react-navigation": "^4.4.4",
+    "yup": "^0.32.11",
+    "firebase": "8.2.3"
+>>>>>>> Stashed changes
   },
   "devDependencies": {
     "@babel/core": "^7.9.0"
