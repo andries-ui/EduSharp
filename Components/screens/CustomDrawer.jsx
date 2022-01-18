@@ -23,10 +23,7 @@ const CustomDrawer = (props) =>{
         </View>
 
              
-                  {/* <ImageBackground source={require('../images/background.jpg')} style={{width:200, height:200}}>  */}
-                  {/* <Image source={require('../images/Use.png')} style={{height:90, width:80,margin:40, borderRadius:40, marginBottom:10  }}/> 
-             <Text style={{color:'red', fontSize:18, margin:40, fontWeight:'bold'}}>Leah Makgatho</Text> 
-        </ImageBackground>  */}
+              
 
         
                 

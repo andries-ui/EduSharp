@@ -16,7 +16,8 @@ const HomeScreen = ({ navigation })=> {
     <>
     <SafeAreaView>
             <View style ={{top:10, margin:30, borderTopRadius: 5, borderTopRightRadius: 5 }}>
-         <Slideshow 
+        
+         <Slideshow style={{borderTopRightRadius:20}} 
          dataSource={[
            { url:'http://placeimg.com/640/480/any' },
           { url:'http://placeimg.com/640/480/any' },
@@ -32,121 +33,57 @@ const HomeScreen = ({ navigation })=> {
  flexDirection: 'row', justifyContent:'space-between', paddingHorizontal:20}}>
 
 <Card style={{width:150,height:150, }}>
-               <View style={{ top:40, left:60}}>
-            <FontAwesome5 name="copy" size={50} color="#4B7BE8" margin={20}/>
-            </View>
+   <TouchableOpacity  onPress={()=>navigation.navigate('Material')}>
 
-            <Text style={{fontSize:20, fontWeight:'normal', textAlign:'center', top:60}}>Papers</Text>         
-
-
-           </Card>
- 
-            <Card style={{width:150,height:150, }}>
-               <View style={{ top:40, left:60}}>
-            <FontAwesome5 name="copy" size={50} color="#4B7BE8" margin={20}/>
-            </View>
-
-            <Text style={{fontSize:20, fontWeight:'normal', textAlign:'center', top:60}}>Papers</Text>         
-
-
-           </Card>
-         
-{/* <Card style={{width:'43%',height:'125%', paddingHorizontal:30, borderRadius:10}} >
-         <TouchableOpacity  onPress={()=>navigation.navigate('Material')}>
-            <View style={{marginTop:20, paddingHorizontal:10}}>
-            <FontAwesome5 name="folder-open" size={30} color="#4B7BE8"/>
-           
-           </View>
-           <View>         
-                 <Text style={{fontWeight:'bold'}}>Material</Text>
-            </View>
-           </TouchableOpacity>
-            </Card>
- 
-
-            <Card style={{width:'43%',height:'125%', paddingHorizontal:30, borderRadius:10}} >
-         <TouchableOpacity >
-            <View style={{marginTop:20, }}>
-               <View style={{paddingHorizontal:10}}>
-               <FontAwesome5 name="edit" size={30} color="#4B7BE8"/>
-
-               </View>
-           <Text style={{fontWeight:'bold'}}>Lessons</Text>
-           </View>
-           </TouchableOpacity>
-            </Card> */}
-
-      {/* <Card style={{width:150,height:150, margin:30}}>
-               <View style={{ top:40, left:60}}>
+               <View style={{ top:40, left:40}}>
             <FontAwesome5 name="folder-open" size={50} color="#4B7BE8" margin={20}/>
             </View>
 
             <Text style={{fontSize:20, fontWeight:'normal', textAlign:'center', top:60}}>Materials</Text>         
 
-
+   </TouchableOpacity>
            </Card>
+ 
+            <Card style={{width:150,height:150, }}>
+            <TouchableOpacity  onPress={()=>navigation.navigate('Material')}>
 
-<Card style={{width:150,height:150, margin:30}}>
-              
-              
-               <View style={{ top:40, left:60}}>
+               <View style={{ top:40, left:50}}>
             <FontAwesome5 name="edit" size={50} color="#4B7BE8" margin={20}/>
             </View>
 
-            <Text style={{fontSize:20, fontWeight:'normal', textAlign:'center', top:60}}>Lessons</Text>         
-
-
-           </Card>  */}
-
-           
-
-           
-</View>
+            <Text style={{fontSize:20, fontWeight:'normal', textAlign:'center', top:60, right:10}}>Lessons</Text>         
+            </TouchableOpacity >
+      </Card>
+  </View>
 
 <View style={{flex:1, display:'flex',
  flexDirection: 'row', justifyContent:'space-between', paddingHorizontal:20, paddingTop:180}}>
 
 
 <Card style={{width:150,height:150, }}>
-               <View style={{ top:40, left:60}}>
-            <FontAwesome5 name="copy" size={50} color="#4B7BE8" margin={20}/>
+<TouchableOpacity  onPress={()=>navigation.navigate('QList')}>
+
+               <View style={{ top:40, left:50}}>
+            <FontAwesome5 name="question-circle" size={50} color="#4B7BE8" margin={20}/>
             </View>
 
-            <Text style={{fontSize:20, fontWeight:'normal', textAlign:'center', top:60}}>Papers</Text>         
-
+            <Text style={{fontSize:20, fontWeight:'normal', textAlign:'center', top:60, right:10}}>Q'Ans</Text>         
+</TouchableOpacity>
 
            </Card>
  
             <Card style={{width:150,height:150, }}>
-               <View style={{ top:40, left:60}}>
+            <TouchableOpacity  onPress={()=>navigation.navigate('Material')}>
+
+               <View style={{ top:40, left:50}}>
             <FontAwesome5 name="copy" size={50} color="#4B7BE8" margin={20}/>
             </View>
 
-            <Text style={{fontSize:20, fontWeight:'normal', textAlign:'center', top:60}}>Papers</Text>         
-
+            <Text style={{fontSize:20, fontWeight:'normal', textAlign:'center', top:60, right:10}}>Papers</Text>         
+            </TouchableOpacity>
 
            </Card>
- 
-{/* <Card style={{width:150,height:150, margin:30}}>
-               <View style={{ top:40, left:60}}>
-            <FontAwesome5 name="file" size={50} color="#4B7BE8" margin={20}/>
-            </View>
 
-            <Text style={{fontSize:20, fontWeight:'normal',textAlign:'center', top:60}}>Q's A's</Text>         
-
-
-           </Card> 
-          
-
-           <Card style={{width:150,height:150, margin:30}}>
-               <View style={{ top:40, left:60}}>
-            <FontAwesome5 name="copy" size={50} color="#4B7BE8" margin={20}/>
-            </View>
-
-            <Text style={{fontSize:20, fontWeight:'normal', textAlign:'center', top:60}}>Papers</Text>         
-
-
-           </Card>  */}
 
 
 
