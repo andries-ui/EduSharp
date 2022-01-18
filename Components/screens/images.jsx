@@ -7,7 +7,7 @@ import Info from './Q&A'
 const FileImages = ({navigation})=>{
     const CardFiles = ()=> {
         return(
-            <View style={{width:'50%'}}>
+            <View style={{width:'45%',alignSelf:'center',marginLeft:'2%'}}>
                 {Info.docs.map(data=>
                   <Card key={data.id} containerStyle={{borderRadius:20}}>  
                       <Card.Image source={data.pic} style={{width:'100%',}}>
@@ -23,9 +23,9 @@ const FileImages = ({navigation})=>{
       return(
           <View style={styles.container}>
               <View style={styles.header}>
-                  <Text style={{fontSize:35,fontWeight:'600'}}>My Files</Text>
+                  <Text style={{fontSize:25,fontWeight:'600'}}>My Files</Text>
                      <View style={styles.iconContainer}>
-                     <Icon name={'table'} type={'font-awesome'} size={25}/>
+                     <Icon name={'border-all'} type={'font-awesome-5'} size={22}/>
                       <TouchableOpacity style={{marginLeft:'2%'}}>
                           <Icon name={'ellipsis-v'} type={'font-awesome'}/>
                       </TouchableOpacity>
@@ -33,19 +33,19 @@ const FileImages = ({navigation})=>{
               </View>
               <View style={{marginTop:'2%',borderBottomColor:'#C4C4C4',borderBottomWidth:0.5,}}>
                   <ScrollView horizontal contentContainerStyle={{justifyContent:"space-evenly",paddingVertical:'2%'}} >
-                      <TouchableOpacity onPress={()=>navigation.navigate('MyFiles')} style={{backgroundColor:'#FFFFFF',width:120,height:60,borderRadius:50,alignItems:'center',justifyContent:'center'}} >
+                      <TouchableOpacity onPress={()=>navigation.navigate('MyFiles')} style={{backgroundColor:'#FFFFFF',width:90,height:40,borderRadius:50,alignItems:'center',justifyContent:'center'}} >
                           <Text>Docs</Text>
                       </TouchableOpacity>
                       <TouchableOpacity><Text>    </Text></TouchableOpacity>
-                      <TouchableOpacity onPress={()=>navigation.navigate('videos')} style={{backgroundColor:'#FFFFFF',width:120,height:60,borderRadius:50,alignItems:'center',justifyContent:'center'}} >
+                      <TouchableOpacity onPress={()=>navigation.navigate('videos')} style={{backgroundColor:'#FFFFFF',width:90,height:40,borderRadius:50,alignItems:'center',justifyContent:'center'}} >
                       <Text>Videos</Text>
                       </TouchableOpacity >
                       <TouchableOpacity><Text>     </Text></TouchableOpacity>
-                      <TouchableOpacity style={{backgroundColor:COLORS.AppPrimary,width:120,height:60,borderRadius:50,alignItems:'center',justifyContent:'center'}}>
-                          <Text  style={{color:'white',fontSize:20,fontWeight:'700'}}>Images</Text>
+                      <TouchableOpacity style={{backgroundColor:COLORS.AppPrimary,width:90,height:40,borderRadius:50,alignItems:'center',justifyContent:'center'}}>
+                          <Text  style={{color:'white',fontSize:18,fontWeight:'600'}}>Images</Text>
                       </TouchableOpacity>
                       <TouchableOpacity><Text>  </Text></TouchableOpacity>
-                      <TouchableOpacity onPress={()=>navigation.navigate('downloads')} style={{backgroundColor:'#FFFFFF',width:90,width:150,height:60,borderRadius:50,alignItems:'center',justifyContent:'center'}}>
+                      <TouchableOpacity onPress={()=>navigation.navigate('downloads')} style={{backgroundColor:'#FFFFFF',width:90,height:40,borderRadius:50,alignItems:'center',justifyContent:'center'}}>
                           <Text>Downloads</Text>
                       </TouchableOpacity>
                   

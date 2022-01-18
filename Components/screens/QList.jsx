@@ -2,26 +2,23 @@ import React, { useState } from "react";
 import { View, Text, ScrollView, TouchableOpacity, StyleSheet, Image, FlatList, Modal, Picker } from 'react-native'
 import { Card, Icon, Input, ListItem, BottomSheet, } from 'react-native-elements'
 import { COLORS, SIZES } from "../../constants";
-// import ToggleSwitch from 'toggle-switch-react-native'
+import { Switch } from "react-native-switch";
 import Info from './Q&A'
 import Post from "./PostQuestion";
 
 
 const QList = ({ navigation }) => {
-    const [toggle, setToggle] = useState(true)
-    const option = () => {
-        setToggle(!toggle)
-    }
+   
     const [isVisible, setIsVisible] = useState(false)
     const [share, setShare] = useState(false)
     const [modalVisible, setVisible] = useState(false)
 
     const Postcard = () => {
         return (
-            <View style={{ width: '100%', marginLeft: '-2%' }}>
+            <View >
                 {
                     Info.info.map(data =>
-                        <Card key={data.id} containerStyle={{ borderRadius: 10, marginRight: '1%' }} >
+                        <Card key={data.id}  containerStyle={{ borderRadius: 10, }} >
                             <Card.FeaturedTitle style={Styles.cardHeader}>
                                 <View style={Styles.headerContainer}>
                                         <Card.Image source={data.pic} style={Styles.profile} />
@@ -31,7 +28,7 @@ const QList = ({ navigation }) => {
                                             <Text style={{ marginLeft: 20 }}>{data.time}</Text>
                                         </View>
                                         <TouchableOpacity onPress={() => setIsVisible(true)} style={{ alignSelf: "flex-end" }}>
-                                            <Icon name={'ellipsis-v'} type={'font-awesome'} style={{ right: '0%', marginBottom: 20, width: 8, height: 24 }} />
+                                            <Icon name={'ellipsis-v'} type={'font-awesome'} style={{ marginBottom: 20, width: 8, height: 24 }} />
                                         </TouchableOpacity>
                                     </View>
                                 </View>
@@ -49,19 +46,19 @@ const QList = ({ navigation }) => {
                                     </Text>
                                 </View>
                             </Card.FeaturedTitle>
-                            <Card.FeaturedTitle style={{ padding: '1%', marginTop: '4%' }}>
+                            <Card.FeaturedTitle style={{ padding: '1%', marginTop: 'auto' }}>
                                 <View style={Styles.iconContainer}>
                                     <View style={{ marginLeft: 5, marginBottom: -20, display: 'flex', flexDirection: 'row' }}>
                                         <Icon name={'thumbs-up'} type={'font-awesome'} style={{ width: 45, height: 45 }} color={'#3D93D1'} />
                                         <Text>{data.number}</Text>
                                     </View>
                                     <View style={{ marginLeft: 35, marginBottom: -20 }}>
-                                        <Icon name={'star-o'} type={'font-awesome'} style={{ width: 40, height: 40 }} color={'#3D93D1'} />
+                                        <Icon name={'star-o'} type={'font-awesome'} style={{ width: 40, height: 40 }} color={'#f79f45'} />
                                     </View>
                                     <View style={{ marginLeft: 35, marginBottom: -20 }}>
                                         <Icon name={'share-alt'} type={'font-awesome'} style={{ width: 38, height: 38 }} color={'#3D93D1'} />
                                     </View>
-                                    <TouchableOpacity style={{ marginLeft: 35, alignSelf: 'flex-end', marginBottom: -18 }} onPress={() => navigation.navigate(data.location)} >
+                                    <TouchableOpacity style={{ marginLeft: 35, alignSelf: 'flex-end', marginBottom: -15 }} onPress={() => navigation.navigate(data.location)} >
                                         <Icon name={'comment'} type={'font-awesome'} style={{ width: 38, height: 38 }} color={'#3D93D1'} />
                                     </TouchableOpacity>
                                 </View>
