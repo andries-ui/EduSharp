@@ -16,25 +16,14 @@ import NotificationsScreen from './NotificationsScreen';
 import CustomDrawer from './CustomDrawer';
 import Preference from './Preference';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+import MyFiles from './MyFiles';
 
 const Drawer = createDrawerNavigator();
 
 export default function DashBoard() {
 
     return (
-        // <SafeAreaView style={{ justifyContent: 'center', alignItems: 'center',}}>
-        //     <FlatList
-        //         data={services}
-        //         renderItem={({item})=>(
-        //             <HomeCard data={item} navigation={navigation}/>
-        //         )}
-            
-        //         horizontal={false}
-        //         numColumns={2}
-            
-        //     />
-           
-        // </SafeAreaView>
+     
 
         <Drawer.Navigator drawerContent={props =><CustomDrawer {...props}
         // drawerActiveBackgroundColor='#4B7BE8'
@@ -77,7 +66,7 @@ export default function DashBoard() {
         }}
          
          />
-            <Drawer.Screen name="NotificationsScreen" component={NotificationsScreen} 
+            <Drawer.Screen name="MyFiles" component={MyFiles} 
             
             options={{ title: 'My Files',
             drawerIcon: ({focused, size}) => (

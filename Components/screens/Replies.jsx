@@ -125,13 +125,13 @@ const RepliesContainer=({ navigation }) =>{
                         <BottomSheet
                             modalProps={{}}
                             isVisible={isVisible}>
-                            <View style={{ paddingBottom: '1%' }}>
+                            <View style={{  }}>
                                 <TouchableOpacity onPress={() => setIsVisible(false)}>
                                     <Icon name={'arrow-down'} type={'font-awesome'} color={'#EAEAEA'} />
                                 </TouchableOpacity >
                                 {
                                     Info.items.map((item, l) =>
-                                        <ListItem key={item.id} style={{ color: '#7DB4DA', borderRadius: 20 }} >
+                                        <ListItem key={item.id} style={{ color: '#7DB4DA', }} >
                                             <ListItem.Content style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', justifyContent: 'flex-start', }}>
                                                 <Icon type={'font-awesome'} name={item.icon} size={20} color={'#7DB4DA'} style={{ margin: '2%' }} />
                                                 <ListItem.Title style={{ color: '#7DB4DA', fontWeight: '700', paddingLeft: '2%', fontSize: 16 }}>{item.name}</ListItem.Title>

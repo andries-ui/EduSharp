@@ -6,30 +6,10 @@ import { COLORS } from '../../constants';
 
 
 const VideoFiles = ({navigation})=>{
-//     const [isBuffer,setBuffer] = useState(true)
-//     const videoBuffer = ()=>{
-//         console.log(isBuffer)
-//     }
-//     return (
-//         <View style={{ alignItems: 'center', flex: 1, justifyContent: 'center' }}>
-//         <Text>My video project!</Text>
-//         <View>
-//         <Video
-//         source={{ uri: 'https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-mp4-file.mp4?_=1' }}
-//         style={{ width: 300, height: 300 }}
-//         controls={true}
-//         onBuffer={videoBuffer}
-//         ref={(ref) => {
-//         this.player = ref
-//         }} />
-//         </View>
-//         </View>
-//         )
-        
-// }
+
 const CardFiles = ()=> {
     return(
-        <View style={{width:'50%'}}>
+        <View style={{width:'45%',alignSelf:'center',marginLeft:'2%'}}>
             {Info.docs.map(data=>
               <Card key={data.id} containerStyle={{borderRadius:20}}>  
                   <Card.Image source={data.pic} style={{width:'100%',}}>
@@ -48,29 +28,29 @@ const CardFiles = ()=> {
   return(
       <View style={styles.container}>
           <View style={styles.header}>
-              <Text style={{fontSize:35,fontWeight:'600'}}>My Files</Text>
+              <Text style={{fontSize:25,fontWeight:'600'}}>My Files</Text>
                  <View style={styles.iconContainer}>
-                 <Icon name={'table'} type={'font-awesome'} size={25}/>
+                 <Icon name={'border-all'} type={'font-awesome-5'} size={22}/>
                   <TouchableOpacity style={{marginLeft:'2%'}}>
                       <Icon name={'ellipsis-v'} type={'font-awesome'}/>
                   </TouchableOpacity>
                  </View>
           </View>
-          <View style={{marginTop:'2%',borderBottomColor:'#C4C4C4',borderBottomWidth:0.5,}}>
+          <View style={{marginTop:'2%',borderBottomColor:'#eff1f0',borderBottomWidth:0.5,}}>
               <ScrollView horizontal contentContainerStyle={{justifyContent:"space-evenly",paddingVertical:'2%'}} >
-                  <TouchableOpacity onPress={()=>navigation.navigate('MyFiles')} style={{backgroundColor:'#FFFFFF',width:120,height:60,borderRadius:50,alignItems:'center',justifyContent:'center'}} >
+                  <TouchableOpacity onPress={()=>navigation.navigate('MyFiles')} style={{backgroundColor:'#FFFFFF',width:90,height:40,borderRadius:50,alignItems:'center',justifyContent:'center'}} >
                       <Text>Docs</Text>
                   </TouchableOpacity>
                   <TouchableOpacity><Text>    </Text></TouchableOpacity>
-                  <TouchableOpacity onPress={()=>navigation.navigate('videos')} style={{backgroundColor:COLORS.AppPrimary,width:120,height:60,borderRadius:50,alignItems:'center',justifyContent:'center'}} >
-                  <Text style={{color:'white',fontSize:20,fontWeight:'700'}}>Videos</Text>
+                  <TouchableOpacity onPress={()=>navigation.navigate('videos')} style={{backgroundColor:COLORS.AppPrimary,width:90,height:40,borderRadius:50,alignItems:'center',justifyContent:'center'}} >
+                  <Text style={{color:'white',fontSize:18,fontWeight:'700'}}>Videos</Text>
                   </TouchableOpacity >
                   <TouchableOpacity><Text>     </Text></TouchableOpacity>
-                  <TouchableOpacity onPress={()=>navigation.navigate('images')} style={{backgroundColor:'#FFFFFF',width:120,height:60,borderRadius:50,alignItems:'center',justifyContent:'center'}}>
+                  <TouchableOpacity onPress={()=>navigation.navigate('images')} style={{backgroundColor:'#FFFFFF',width:90,height:40,borderRadius:50,alignItems:'center',justifyContent:'center'}}>
                       <Text >Images</Text>
                   </TouchableOpacity>
                   <TouchableOpacity><Text>  </Text></TouchableOpacity>
-                  <TouchableOpacity style={{backgroundColor:'#FFFFFF',width:90,width:150,height:60,borderRadius:50,alignItems:'center',justifyContent:'center'}}>
+                  <TouchableOpacity style={{backgroundColor:'#FFFFFF',width:90,height:40,borderRadius:50,alignItems:'center',justifyContent:'center'}}>
                       <Text>Downloads</Text>
                   </TouchableOpacity>
               
