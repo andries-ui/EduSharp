@@ -4,7 +4,6 @@ import {Card,Icon } from 'react-native-elements'
 import Info from './Q&A'
 import { COLORS } from '../../constants';
 
-
 const VideoFiles = ({navigation})=>{
 
 const CardFiles = ()=> {
@@ -26,7 +25,7 @@ const CardFiles = ()=> {
     )
 }
   return(
-      <View style={styles.container}>
+      <ScrollView style={styles.container}>
           <View style={styles.header}>
               <Text style={{fontSize:25,fontWeight:'600'}}>My Files</Text>
                  <View style={styles.iconContainer}>
@@ -64,7 +63,7 @@ const CardFiles = ()=> {
             numColumns={2}
             />
             
-      </View>
+      </ScrollView>
   )
 }
 const styles = StyleSheet.create({
