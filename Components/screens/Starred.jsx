@@ -62,11 +62,11 @@ const Starred = ({ navigation }) => {
               </View>
             </Card.FeaturedTitle>
             <Card.FeaturedTitle style={Styles.post}>
-              <View>
+              <TouchableOpacity onPress={()=>navigation.navigate('StarredReplies')}>
                 <Text style={Styles.question}>{data.question}</Text>
                 <Text>{data.question}</Text>
                 <Text>{data.question}</Text>
-              </View>
+              </TouchableOpacity>
             </Card.FeaturedTitle>
           </Card>
         ))}
@@ -77,8 +77,15 @@ const Starred = ({ navigation }) => {
   return (
     <View style={Styles.container}>
       <View style={Styles.header}>
-        <Icon name={"star"} type={"font-awesome"} />
-        <View style={{ display: "flex", justifyContent: "space-between",flexDirection:'row',width:350 }}>
+        <Icon name={"star"} type={"font-awesome"} color={'#FFBE3F'} />
+        <View
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            flexDirection: "row",
+            width: 350,
+          }}
+        >
           <Text style={Styles.headingtext}>Starred Posts</Text>
           <TouchableOpacity style={Styles.touchable}>
             <Icon
@@ -153,17 +160,14 @@ const Styles = StyleSheet.create({
   header: {
     display: "flex",
     flexDirection: "row",
-   
   },
   headingtext: {
     fontSize: SIZES.h3,
-    fontWeight: "100",
-    paddingLeft:'5%'
-  },
-  touchable: {
+    fontWeight: "600",
+    paddingLeft: "10%",
 
-  
   },
+  touchable: {},
   subtitle: {
     display: "flex",
     flexDirection: "row",

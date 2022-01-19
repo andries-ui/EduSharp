@@ -16,6 +16,7 @@ import FileImages from './Components/screens/images'
 import DownloadFiles from './Components/screens/downloads'
 import VideoFiles from './Components/screens/videos'
 import Search from './Components/screens/search'
+import StarredReplies from './Components/screens/StarredReplies'
 
 
 
@@ -40,7 +41,7 @@ const Menu = ()=>{
               <Stack.Screen name={'downloads'} component={DownloadFiles}/>
               <Stack.Screen name={'videos'} component={VideoFiles}/>
               <Stack.Screen name={'search'} component={Search}/>
-            
+              <Stack.Screen name={'StarredReplies'} component={StarredReplies}/>
             </Stack.Navigator>
         </NavigationContainer>
     )
