@@ -15,6 +15,7 @@
     "expo": "~42.0.1",
     "expo-sqlite": "^10.0.3",
     "expo-status-bar": "~1.0.4",
+    "firebase": "8.2.3",
     "formik": "^2.2.9",
     "react": "16.13.1",
     "react-dom": "16.13.1",
@@ -25,13 +26,8 @@
     "react-native-screens": "^3.8.0",
     "react-native-sqlite-storage": "^6.0.1",
     "react-native-web": "~0.13.12",
-<<<<<<< Updated upstream
-    "yup": "^0.32.11"
-=======
     "react-navigation": "^4.4.4",
-    "yup": "^0.32.11",
-    "firebase": "8.2.3"
->>>>>>> Stashed changes
+    "yup": "^0.32.11"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0"
