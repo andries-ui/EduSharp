@@ -1,4 +1,6 @@
-import { auth } from "./Firebase";
+import { auth,database } from "./Firebase";
+
+const db=database.ref("/users")
 
 class EduSharp {
   async SignUp(data) {
@@ -12,7 +14,13 @@ class EduSharp {
       .createUserWithEmailandPassword(data.email, data.password)
       .then((userCredentials) => {
         //app user to database
-        const user = userCredentials.user;
+        const user = {user:userCredentials.user,email:data.email,username:data.username};
+        db.set(user).then((result)=>{
+            return JSON.stringify({ status: "success",
+            message: "sign up successful",result})
+        }).catch(error=>{
+            return JSON.stringify({ status: "Error", message: error.message });
+        })
       })
       .catch((error) => {
         return JSON.stringify({ status: "Error", message: error.message });
