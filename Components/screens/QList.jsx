@@ -78,7 +78,7 @@ const QList = ({ navigation }) => {
                         Q' As
                     </Text>
                 </View>
-                <TouchableOpacity style={Styles.touchable}>
+                <TouchableOpacity style={Styles.touchable}  onPress={() => navigation.navigate("search")}>
                     <Icon name='search' type='font-awesome' size={23} color={COLORS.primary} />
                 </TouchableOpacity>
             </View>

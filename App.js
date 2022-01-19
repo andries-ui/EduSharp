@@ -15,6 +15,9 @@ import MyFiles from './Components/screens/MyFiles'
 import FileImages from './Components/screens/images'
 import DownloadFiles from './Components/screens/downloads'
 import VideoFiles from './Components/screens/videos'
+import Search from './Components/screens/search'
+
+
 
 const Menu = ()=>{
     const Stack = createNativeStackNavigator()
@@ -36,6 +39,8 @@ const Menu = ()=>{
               <Stack.Screen name={'images'} component={FileImages}/>
               <Stack.Screen name={'downloads'} component={DownloadFiles}/>
               <Stack.Screen name={'videos'} component={VideoFiles}/>
+              <Stack.Screen name={'search'} component={Search}/>
+            
             </Stack.Navigator>
         </NavigationContainer>
     )

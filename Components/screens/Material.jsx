@@ -2,7 +2,7 @@ import React,{useState} from 'react';
 import {View,Text,Image,ScrollView,TouchableOpacity,StyleSheet,Modal,Picker} from 'react-native'
 import { Icon,Card, BottomSheet,Input,ListItem } from 'react-native-elements';
 import { COLORS, FONTS, SIZES, icons } from "../../constants";
-//import ToggleSwitch from 'toggle-switch-react-native'
+
 import Info from './Q&A'
 
 
