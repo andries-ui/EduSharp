@@ -18,6 +18,8 @@ const topPadding =Dimensions.get('screen').height*.2
 
 const SignIn = ({ navigation }) => {
 
+
+
   const [isPasswordVisibility, setIsPasswordVisibility] = useState(true);
 
   const changePasswordViewState = () => {

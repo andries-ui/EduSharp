@@ -1,5 +1,8 @@
 // Import the functions you need from the SDKs you need
-import * as firebase from 'firebase'
+import firebase from "firebase";
+import 'firebase/auth';
+import 'firebase/database';
+// import { REACT_APP_GOOGLE_PLACES_API_KEY } from "@env";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -17,13 +20,13 @@ const firebaseConfig = {
 
 // Initialize Firebase
 let app;
-if(firebase.apps.length===0){
-    app=firebase.initializeApp(firebaseConfig)
+if(!firebase.apps.length){
+     app = firebase.initializeApp(firebaseConfig);
 }else{
-    app=firebase.app();
+    firebase.app;
 }
-
 const auth=firebase.auth();
-const database=firebase.database();
+const database=app.database();
+
 
 export {auth,database};
