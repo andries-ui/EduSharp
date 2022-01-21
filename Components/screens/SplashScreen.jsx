@@ -2,6 +2,7 @@ import React,{Component, useEffect} from 'react';
 import {Text, StyleSheet,View,ImageBackground, Image,useWindowDimensions} from 'react-native';
 import { COLORS,icons,img } from '../../constants';
 
+
 const Splash = ({
     navigation,
 
@@ -26,7 +27,7 @@ const Splash = ({
             <Text style={styles.last}>Sharp</Text></View>
             <Text style={styles.subtitle}>where education lives</Text>
                         
-          
+          {/* <Progress.Bar progress={0.3} width={200} animationType={'timing'} style={styles.progress}/> */}
         
         </View>
     )
@@ -61,7 +62,12 @@ const styles = StyleSheet.create({
     subtitle:{
         fontSize:14,
         color:'#898C8F'
+    },
+    progress:{
+        bottom:1,
+        zIndex:0
     }
+
 });
 
 export default Splash;

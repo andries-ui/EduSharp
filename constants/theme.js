@@ -10,7 +10,7 @@ export const COLORS={
     LightBlack:"rgba(0,0,0,.45)",
     DarkBlack:"rgba(0,0,0,.8)",
     
-    AppBackgroundColor:"#F4F4F4",
+    AppBackgroundColor: '#f2f2f2',
     AppBluelink:'#0645AD',
     AppPrimary:'#3D93D1',
     AppSecondary:'#FC2B4D',
