@@ -15,6 +15,7 @@ import { TextInput } from "react-native-paper";
 import { CheckBox, Input, Icon, Button } from "react-native-elements";
 import { COLORS, SIZES, FONTS } from "../../constants/index";
 import sqlite from "../Database/sqlite/sqlite";
+import FirebaseApi from "../../BackendFirebase/FirebaseApi";
 
 
 const topPadding = Dimensions.get("screen").height * 0.1;
@@ -32,6 +33,14 @@ const Register = ({ navigation }) => {
   const [isConfirmPasswordVisibility, setIsConfirmPasswordVisibility] =
     useState(true);
 
+useEffect(()=>{
+  handleRegister()
+},)
+
+    const handleRegister=()=>{
+      console.log("sign in")
+      FirebaseApi.currentUser().then((res)=>{console.log(res,"<---")}).catch(error=>console.log(error))
+    }
   const changePasswordViewState = () => {
     setIsPasswordVisibility(!isPasswordVisibility);
   };

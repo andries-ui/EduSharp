@@ -1,156 +1,106 @@
-import React from 'react'
-import {View,Text,SafeAreaView,Image,StyleSheet,StatusBar,Dimensions,TextInput} from 'react-native'
-import { Icon,Input } from 'react-native-elements'
-const cardWidth = Dimensions.get('screen').width * .25
-const cardHeight = Dimensions.get('screen').height * .1
-const Profile = () =>{
-    
-    return(
-        <View >
-            <View style={styles.Profile}>
-                    <Image source = {require('../../assets/first.jpg')} style= {styles.Image}></Image>
-                   <View style={styles.Container}>
-                        <View style={styles.PicContainer}>
-                                <Image source = {require('../../assets/Second.png')} style={styles.Pic} ></Image>
-                                <View style={styles.Name}>
-                                    <Text style={styles.Username}>UserName</Text>
-                                    <Text style={styles.Status}>Learner</Text>
-                                </View>
-                        </View>
-                        <View style={styles.UserProfile}>
-                            <View style={styles.circle}>
-                            <Icon name="user" type="font-awesome" size={25} color={'black'} style={styles.ProfileIcon} />
-                            </View>
-                          
-                        </View>
-                   </View>
-            </View>
-           
+import React, { useState } from "react";
+import {
+  View,
+  Text,
+  SafeAreaView,
+  Image,
+  StyleSheet,
+  StatusBar,
+  Dimensions,
+  TextInput,
+  ImageBackground
+} from "react-native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+
+import { Icon, Input,Avatar } from "react-native-elements";
+import ProfileHome from "../Card/ProfileHome";
+import EditProfile from "../Card/EditProfile";
+import EducProfile from "../Card/EducProfile";
+import { Button } from "react-native-elements/dist/buttons/Button";
+const imagesize=100
+const imageradius=imagesize/2
+const height = Dimensions.get("screen").height;
+const row1Height = height * 0.3;
+const row2Height = height * 0.7;
+const Stack = createNativeStackNavigator();
+
+const Profile = () => {
+  const LocationArray = ["Home", "Profile", "Education"];
+  const [location, setLocation] = useState("Education");
+  const backgroundImg = {
+    uri: "https://images.pexels.com/photos/265076/pexels-photo-265076.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+  };
+  const backgroundImg2 = {
+    uri: "https://images.pexels.com/photos/3646172/pexels-photo-3646172.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+  };
+
+  const profilimg={uri:'https://images.pexels.com/photos/1858175/pexels-photo-1858175.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'}
+  return (
+    <View style={styles.container}>
+      <ImageBackground source={backgroundImg} resizeMode="cover" style={styles.row1}></ImageBackground>
+      <View style={styles.row2}>
+        <View style={styles.imgContainer}>
+            <Avatar      source={profilimg}  style={styles.image} rounded/>
+            <Button   icon={{ name: "camera", type: "font-awesome", size: 15, color: "black" }} containerStyle={{position:'absolute',bottom:-10,right:0}}/>
         </View>
-    )
+        <View style={styles.usernames}>
+          <Text style={{color:"rgba(0,0,0,1)",fontSize:16,fontWeight:'bold'}}>username</Text>
+          <Text style={{color:"rgba(0,0,0,.5)",fontStyle:'italic'}}>learner grade 11</Text>
+        </View>
+        {location === "Home" ? (
+          <ProfileHome setLocation={setLocation} />
+        ) : location === "Profile" ? (
+          <EditProfile />
+        ) : (
+          <EducProfile />
+        )}
+      </View>
+    </View>
+  );
+};
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  row1: {
+    height: row1Height,
+  },
+  row2: {
+    backgroundColor: "white",
+    flex: 1,
+    marginTop: -80,
+    borderTopRightRadius: 30,
+    borderTopLeftRadius: 30,
+    alignItems: "center",
+  },
+  imgContainer: {
+    width: imagesize,
+    height: imagesize,
+    marginTop: -50,
+    borderRadius: imageradius,
+    borderWidth: 2,
+    borderColor: "white",
+    overflow:'hidden'
+    
+  },
+  usernames: {
+    alignItems: "center",
+  },
+  image:{
+      width:'100%',
+      height:'100%'
+  }
+});
+export default Profile;
+
+{
+  /* <Stack.Navigator
+      screenOptions={{
+        headerShown: false
+      }}
+    >
+      <Stack.Screen name="HomeScreen" component={HomeScreen} />
+      <Stack.Screen name="HotelsView" component={HotelsView} /> 
+      <Stack.Screen name="Search" component={Search} />
+    </Stack.Navigator> */
 }
-    const styles = StyleSheet.create({
-        Image:{
-            width: '100%',
-        height: 280, 
-        alignSelf: 'center',
-      
-        },
-        Personal:{
-
-        },
-        Container:{
-            width: '100%',
-            backgroundColor:'white',
-            height:'100%',
-            marginTop:'-12%',
-            borderTopEndRadius:30,
-            borderTopStartRadius:30,
-        },
-
-        Profile:{
-            margin:'0%',
-            padding:'0%',
-            width: '100%',
-            alignSelf: 'center',
-
-        },
-        Pic:{
-            width:63,
-            height:110,borderRadius:12,
-            marginTop:'-5%',
-            marginLeft:'2%'
-        },
-        PicContainer:{
-            display:'flex',
-            flexDirection:'row',
-            margin:'4%',
-            padding:'4%',
-            marginTop:'-20%',
-            
-        },Name:{
-            marginTop:'5%',
-            backgroundColor:'white',
-            width:'70%',
-            borderBottomEndRadius:20,
-            borderTopEndRadius:20,
-            borderTopStartRadius:0,
-            borderBottomStartRadius:0,
-            alignSelf: 'center',
-                shadowColor: "#000",
-                shadowOffset: {
-                    width: 0,
-                    height: 1,
-                },
-                shadowOpacity: 0.20,
-                shadowRadius: 1.41,
-                elevation: 2,
-                width:'80%',
-                height: cardHeight,
-               
-                justifyContent: 'center',
-                alignItems: 'flex-start',
-                borderColor:'rgba(0,0,0,.2)',
-             
-            
-        },
-        Username:{
-            paddingLeft:'8%',
-            fontSize:22, 
-            fontWeight:'500',
-
-        },
-        Status:{
-            paddingLeft:'10%',
-            fontWeight:'600',
-            fontSize:18
-        },
-        UserProfile:{
-            shadowColor: "#000",
-            shadowOffset: {
-                width: 0,
-                height: 1,
-            },
-            shadowOpacity: 0.20,
-            shadowRadius: 1.41,
-            elevation: 2,
-            width:'90%',
-            height: cardHeight,
-           
-            
-            alignItems: 'flex-start',
-          
-            borderColor:'rgba(0,0,0,.2)',
-            alignSelf: 'center',
-            display:'flex',
-            flexDirection:'row'
-        },
-        circle:{
-            borderRadius:50, 
-             shadowColor: "#000",
-            shadowOffset: {
-                width: 0,
-                height: 1,
-            },
-            shadowOpacity: 0.20,
-            shadowRadius: 1.41,
-            elevation: 2,
-            width:'20%',
-            height:'90%',
-            
-            margin:'2%',
-            justifyContent: 'center',
-            alignItems: 'flex-start',
-          
-            borderColor:'rgba(0,0,0,.1)',
-         
-        },
-        ProfileIcon:{
-            width:'90%',
-            alignSelf:'center',
-            margin:'10%'
-        }
-
-
-    })
-export default Profile
