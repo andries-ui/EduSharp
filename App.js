@@ -27,7 +27,7 @@ const Menu = ()=>{
             <Stack.Navigator initialRouteName = { 'SplashScreen' } screenOptions={{headerShown:false}}
              >
            <Stack.Screen name = { 'SplashScreen' } component={Splash}/>
-              <Stack.Screen name={'register'} component={Register}/>
+              {/* <Stack.Screen name={'register'} component={Register}/>
               <Stack.Screen name={'SignInScreen'} component={SignIn} />  
               <Stack.Screen name ={'terms&conditions'} component={Terms}/>    
               <Stack.Screen name ={'Profile'} component={Profile}/>    
@@ -36,7 +36,7 @@ const Menu = ()=>{
              <Stack.Screen name={'QList'} component={Questions}/>   
               <Stack.Screen name={'Replies'} component={RepliesContainer}/>
               <Stack.Screen name={'PostQuestion'} component={Post}/>  
-               <Stack.Screen name={'Material'} component={Material}/>
+               <Stack.Screen name={'Material'} component={Material}/> */}
               <Stack.Screen name={'MyFiles'} component={MyFiles}/>
               <Stack.Screen name={'images'} component={FileImages}/>
               <Stack.Screen name={'downloads'} component={DownloadFiles}/>

@@ -1,28 +1,16 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {View,Text,ScrollView, TouchableOpacity,StyleSheet, FlatList} from 'react-native'
 import {Icon,Input,BottomSheet,Card} from 'react-native-elements'
 import { COLORS } from '../../constants'
 import Info from './Q&A'
+import FilesHome from '../Card/FilesHome'
+import ImageFileCard from '../Card/ImageFileCard'
+import VideoCard from '../Card/VideoCard'
+import DownloadsCard from '../Card/DownloadsCard'
 
 const MyFiles = ({navigation})=>{
-  const CardFiles = ()=>{
-      return(
-          <View style={{width:'45%',alignSelf:'center',marginLeft:'2%'}}>
-              {Info.docs.map(data=>
-                <Card key={data.id} containerStyle={{borderRadius:20}}>
-                    <TouchableOpacity style={{alignSelf:'flex-end'}}>
-                    <Icon name={data.icon} type={data.typeIcon} size={20} />  
-                    </TouchableOpacity>
-                    <Card.Image source={data.pic} style={{width:'100%',paddingTop:'-5%'}}>
-                        <View  style={{alignSelf:'flex-end',justifyContent:'flex-end',marginTop:'-2%'}}>
-
-                        </View>
-                    </Card.Image>
-                </Card>
-                )}
-          </View>
-      )
-  }
+ const LocationArray = ["Home","Downloads","Video","Image","Files"]
+ const [location,setLocation] = useState("Images")
     return(
         <View style={styles.container}>
             <View style={styles.header}>
@@ -35,32 +23,15 @@ const MyFiles = ({navigation})=>{
                    </View>
             </View>
             <View style={{marginTop:'1%',borderBottomColor:'#eff1f0',borderBottomWidth:0.5,}}>
-                <ScrollView horizontal contentContainerStyle={{justifyContent:"space-evenly",paddingVertical:'2%'}} >
-                    <TouchableOpacity style={{backgroundColor:COLORS.AppPrimary,width:90,height:40,borderRadius:50,alignItems:'center',justifyContent:'center'}} >
-                        <Text style={{color:'white',fontSize:18,fontWeight:'700'}}>Docs</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity><Text>    </Text></TouchableOpacity>
-                    <TouchableOpacity onPress={()=>navigation.navigate('videos')} style={{backgroundColor:'#FFFFFF',width:90,height:40,borderRadius:50,alignItems:'center',justifyContent:'center',}}>
-                        <Text>Videos</Text>
-                    </TouchableOpacity >
-                    <TouchableOpacity><Text>     </Text></TouchableOpacity>
-                    <TouchableOpacity onPress={()=>navigation.navigate('images')} style={{backgroundColor:'#FFFFFF',width:90,height:40,borderRadius:50,alignItems:'center',justifyContent:'center',}}>
-                        <Text>Images</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity><Text>  </Text></TouchableOpacity>
-                    <TouchableOpacity onPress={()=>navigation.navigate('downloads')} style={{backgroundColor:'#FFFFFF',width:90,height:40,borderRadius:50,alignItems:'center',justifyContent:'center'}}>
-                        <Text>Downloads</Text>
-                    </TouchableOpacity>
-                
-                </ScrollView>
-               
+              {location === "Home" ?(
+                  <FilesHome setLocation={setLocation} />
+              ): location === "Files" ?(
+                  <ImageFileCard/>
+              ) :(
+                  <VideoCard/>
+              )}
             </View>
-           <FlatList
-            data={Info.docs}
-            renderItem={CardFiles}
-            keyExtractor={item=>item.id}
-            numColumns={2}
-           />
+         
         </View>
     )
 }
