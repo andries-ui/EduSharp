@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { View, Text, ScrollView, TouchableOpacity, StyleSheet, Image, FlatList, Modal, Picker } from 'react-native'
-import { Card, Icon, Input, ListItem, BottomSheet, } from 'react-native-elements'
+import { Card, Icon, Input, ListItem, BottomSheet,Divider } from 'react-native-elements'
 import { COLORS, SIZES } from "../constants";
 import { Switch } from "react-native-switch";
-import Info from './Q&A'
+import Info from '../mock/Q&A'
 import Post from "./PostQuestion";
 
 
@@ -46,6 +46,7 @@ const QList = ({ navigation }) => {
                                     </Text>
                                 </View>
                             </Card.FeaturedTitle>
+                            <Divider style={{height:5, width:'100%' ,backgroundColor:COLORS.AppBackgroundColor}}/>
                             <Card.FeaturedTitle style={{ padding: '1%', marginTop: 'auto' }}>
                                 <View style={Styles.iconContainer}>
                                     <View style={{ marginLeft: 5, marginBottom: -20, display: 'flex', flexDirection: 'row' }}>

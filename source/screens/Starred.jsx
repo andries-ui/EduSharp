@@ -19,7 +19,7 @@ import {
 } from "react-native-elements";
 import { COLORS, SIZES } from "../constants";
 import { Switch } from "react-native-switch";
-import Info from "./Q&A";
+import Info from "../mock/Q&A";
 import Post from "./PostQuestion";
 
 const Starred = ({ navigation }) => {

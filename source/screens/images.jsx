@@ -2,7 +2,7 @@ import React from 'react';
 import {View,Text,ScrollView,StyleSheet,TouchableOpacity,FlatList} from 'react-native'
 import {Card,Icon,} from 'react-native-elements'
 import { COLORS } from '../constants'
-import Info from './Q&A'
+import Info from '../mock/Q&A'
 
 const FileImages = ({navigation})=>{
     const CardFiles = ()=> {

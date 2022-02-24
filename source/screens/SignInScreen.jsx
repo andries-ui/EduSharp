@@ -10,7 +10,7 @@ import {
   StatusBar,
   Dimensions
 } from "react-native";
-import { Checkbox, TextInput } from "react-native-paper";
+import { Checkbox, Snackbar, TextInput } from "react-native-paper";
 import { Icon, Input, Button } from "react-native-elements";
 import icons from '../constants/Icons';
 import appTheme from '../constants/theme';
@@ -22,8 +22,10 @@ import { Formik } from 'formik';
 import ProgressIndicator from "../components/progressIndicator";
 import Auth from "../BackendFirebase/services/Auth";
 import * as Yup from 'yup';
+import LottieView from 'lottie-react-native';
+import Anim from "../components/LottieComponent";
 
-const topPadding = Dimensions.get('screen').height * .2
+const width = Dimensions.get('screen').width;
 
 const SignIn = ({ navigation }) => {
 
@@ -31,6 +33,9 @@ const SignIn = ({ navigation }) => {
 
   const [isPasswordVisibility, setIsPasswordVisibility] = useState(true);
   const [loading, setloading] = useState(false);
+  const [alert, setalert] = useState(true);
+  const [alertMessage, setalertMessage] = useState('');
+
   const changePasswordViewState = () => {
     setIsPasswordVisibility(!isPasswordVisibility);
   };
@@ -53,10 +58,20 @@ const SignIn = ({ navigation }) => {
   };
 
   const handleSignin = (values) => {
+    setloading(true);
     Auth.SignIn(values, navigation).then(res => {
-
+      if (res.status == 'Failed') {
+        setalert(true);
+        setalertMessage(res.details);
+        setloading(false)
+      }
+      setalert(true);
+      setalertMessage(res.details);
+      setloading(false)
     }).catch(err => {
-      console.log(err);
+      setalert(true);
+      setloading(false)
+      setalertMessage(err);
     });
   }
 
@@ -70,17 +85,21 @@ const SignIn = ({ navigation }) => {
   });
 
   return (
-    <View style={Styles.container}>
+    <View style={[Styles.container, {}]}>
       <APPStatusBar background={COLORS.AppBackgroundColor} style={'dark-content'} />
+     <View style={{ justifyContent: 'center', alignItems: 'center' }}>
+     {loading ?null: <View style={{ height: 10 }}><ProgressIndicator /></View> }
+     </View>
       
-      {loading ?<ProgressIndicator />: null}
+      <View style={{ backgroundColor: COLORS.White, paddingVertical: 10, height: 250, justifyContent: 'center', alignItems: 'center' }}>
+        <Anim json={require('../../assets/lootie/69437-academic-hut-banner.json')} autoplay={true} autosize={false} loop={true} speed={1} style={{ height: '100%', width: '100%' }} />
+      </View>
       <ScrollView showsVerticalScrollIndicator={false}>
 
-        <View style={{ justifyContent: 'center', alignItems: 'center', height: Dimensions.get('window').height }}>
+        <View style={{ height: width, justifyContent: 'center', alignItems: 'center', }}>
           <Text style={Styles.labSignin}>
             Sign In
           </Text>
-
           <Formik
             initialValues={{
               email: "",
@@ -185,6 +204,13 @@ const SignIn = ({ navigation }) => {
           </View>
         </View>
       </ScrollView>
+      <Snackbar
+        onDismiss={() => setalert(false)}
+        duration={615}
+        style={{ backgroundColor: COLORS.Danger }}
+        visible={alert}>
+        {alertMessage}
+      </Snackbar>
     </View>
   );
 };

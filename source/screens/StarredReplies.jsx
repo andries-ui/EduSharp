@@ -1,6 +1,6 @@
 import React,{useState} from "react";
 import {View,ScrollView,Text,StyleSheet,TouchableOpacity} from 'react-native'
-import Info from './Q&A'
+import Info from '../mock/Q&A'
 import { img,COLORS,SIZES } from "../constants";
 import {Card, Icon,BottomSheet,ListItem,Input} from 'react-native-elements'
 

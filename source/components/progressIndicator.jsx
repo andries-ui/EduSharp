@@ -9,8 +9,7 @@ const ProgressIndicator = () => {
         <View style={style.container}>
             <LottieView
                 style={{
-                    width: 400,
-                    height: 400,
+                    height: 3,
                     backgroundColor: '#eee',
                 }}
                 source={require('../../assets/lootie/23692-progress-bar-in-dodger-blue.json')}

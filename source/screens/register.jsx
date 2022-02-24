@@ -10,8 +10,8 @@ import {
 } from "react-native";
 import { Formik } from "formik";
 import * as Yup from "yup";
-import { Checkbox, TextInput } from "react-native-paper";
-import {  Icon, Button } from "react-native-elements";
+import { Checkbox, TextInput, Snackbar } from "react-native-paper";
+import { Icon, Button } from "react-native-elements";
 import { COLORS, SIZES, FONTS } from "../constants/index";
 
 
@@ -22,6 +22,8 @@ import APPStatusBar from "../components/statusBar";
 import Auth from "../BackendFirebase/services/Auth";
 import { auth } from "../BackendFirebase/configue/Firebase";
 import ProgressIndicator from "../components/progressIndicator";
+import Anim from "../components/LottieComponent";
+import style from './../components/style/progressIndicator';
 
 const Register = ({ navigation }) => {
   const [checked, setChecked] = useState(false);
@@ -33,12 +35,25 @@ const Register = ({ navigation }) => {
   const [showpassword, setShowPassword] = useState(true);
   const [isPasswordVisibility, setIsPasswordVisibility] = useState(true);
   const [isConfirmPasswordVisibility, setIsConfirmPasswordVisibility] = useState(true);
+  const [alert, setAlert] = useState(false);
+  const [alertMessage, setalertMessage] = useState('');
 
-const [loading, setloading] = useState(false);
+  const [loading, setloading] = useState(false);
 
   const handleRegister = (values) => {
     setloading(true);
-    Auth.SignUp(values, navigation )
+    Auth.SignUp(values, navigation).then(res => {
+      console.log(res.status, "====>>>>>>>");
+      setloading(false);
+
+      if (res.status == 'Failed') {
+        setAlert(true);
+        setalertMessage(res.details);
+      }
+    }).catch(err => {
+      setAlert(true);
+      setalertMessage(err);
+    })
   }
   const changePasswordViewState = () => {
     setIsPasswordVisibility(!isPasswordVisibility);
@@ -73,7 +88,7 @@ const [loading, setloading] = useState(false);
   );
 
   const checkIcon = () => {
-    setChecked(!checked);
+   checked? setChecked(false):setChecked(true);
   };
   const show = () => {
     setShowPassword(!showpassword);
@@ -93,7 +108,6 @@ const [loading, setloading] = useState(false);
       .min(6, "Atleast 6 Characters ")
       .required("Please enter confirm password")
   });
-
 
   // backend code , verify if local database if open
   //  useEffect(()=>{
@@ -116,30 +130,35 @@ const [loading, setloading] = useState(false);
   };
 
   return (
-    <View style={[styles.container, {justifyContent: 'center', alignItems: 'center'}]}>
-    <APPStatusBar background={COLORS.AppBackgroundColor} style={'dark-content'} />
-   {loading? <ProgressIndicator/>:null}
-    <View style={{ backgroundColor: COLORS.AppBackgroundColor, }}>
-
-      <Text style={styles.lblSignUp}>
-        Sign Up
-      </Text>
+    <View style={[styles.container, { justifyContent: 'center', alignItems: 'center' }]}>
+      <APPStatusBar background={COLORS.AppBackgroundColor} style={'dark-content'} />
+      {loading ? <View style={{ height: 10 }}><ProgressIndicator /></View> : null}
+      <View style={{ backgroundColor: COLORS.White, paddingVertical: 10, height: 200, width: '100%', justifyContent: 'center', alignItems: 'center' }}>
+        <Anim json={require('../../assets/lootie/65013-english-teacher.json')} autoplay={true} autosize={false} loop={true} speed={1} style={{ height: '100%', width: '100%' }} />
+      </View>
 
       <ScrollView>
-        <View style={{  }}>
+        <View >
+          <Text style={styles.lblSignUp}>Sign Up</Text>
           <Formik
             initialValues={{
               name: "",
               email: "",
               password: "",
               confirm: "",
-              checked: false
+              checked: true
             }}
             validateOnMount={true}
             validationSchema={validate}
-            onSubmit={(values) =>
+            onSubmit={(values) =>{
+
+              if(values.password != values.confirm){
+                  setAlert(true);
+                  setalertMessage("Password does not match");
+                  return;
+              }
               handleRegister(values)
-            }
+            }}
           >
             {(props) => (
               <View>
@@ -207,12 +226,10 @@ const [loading, setloading] = useState(false);
                   <Checkbox
                     title={"Accept T's & Cs"}
                     onPress={checkIcon}
-
                     checked={checked}
-                    onBlur={props.handleBlur("checked")}
                   />
                   {props.errors.checked && props.touched.checked ? (
-                    <Text style={{ color: COLORS.secondary, }}>{props.errors.checked}</Text>
+                    <Text style={{ color: COLORS.secondary, fontSize:SIZES.body2}}>{props.errors.checked}</Text>
                   ) : null}
                 </View>
                 <Text
@@ -235,7 +252,8 @@ const [loading, setloading] = useState(false);
                       borderRadius: 20
                     }}
                     buttonStyle={{
-                      backgroundColor: COLORS.primary
+                      backgroundColor: COLORS.primary,
+                      borderRadius: 5
                     }}
                     titleStyle={{
                       color: COLORS.White
@@ -256,10 +274,17 @@ const [loading, setloading] = useState(false);
             </TouchableOpacity>
 
           </View>
+
         </View>
       </ScrollView>
+      <Snackbar
+        onDismiss={() => setAlert(false)}
+        visible={alert}
+        duration={6}
+        style={{backgroundColor:COLORS.Danger}}>
+        {alertMessage}
+      </Snackbar>
     </View>
-  </View>
   );
 };
 

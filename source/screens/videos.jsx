@@ -1,7 +1,7 @@
 import React,{useState} from 'react';
 import {View,ScrollView,Text,FlatList,TouchableOpacity,StyleSheet} from 'react-native'
 import {Card,Icon } from 'react-native-elements'
-import Info from './Q&A'
+import Info from '../mock/Q&A'
 import { COLORS } from '../constants';
 
 const VideoFiles = ({navigation})=>{

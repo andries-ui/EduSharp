@@ -1,35 +1,37 @@
 import { firestore } from "../configue/Firebase";
 
 
-class Service  {
+class Service {
 
-    post(table,data, id, navigation){
-
+    async post(table, data, id, navigation) {
+        let obj = {};
         const userdata = {
             email: data.email,
             name: data.name,
             location: "",
             phonenumber: "",
-          };
+        };
 
-          console.log(userdata);
+        console.log(userdata);
 
-        return firestore.collection(`${table}`).doc(`${id}`).set(userdata).then((res)=>{
-            console.log(res);
+        await firestore.collection(`${table}`).doc(`${id}`).set(userdata).then((res) => {
             navigation.navigate('SignInScreen');
-        }).catch((err)=>{
-            console.log(err);
+            obj = { status: 'Success', details: res };
+
+        }).catch((err) => {
+           return obj = { status: 'Failed', details: err };
         });
+        return obj;
     }
 
-    get(table){
-        
+    get(table) {
+
     }
-    get(table,id, navigation){
+    get(table, id, navigation) {
 
     }
 
-    update(table,id,data, navigation){
+    update(table, id, data, navigation) {
 
     }
 }

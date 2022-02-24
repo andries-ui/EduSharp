@@ -20,7 +20,7 @@ import {
   BottomSheet,
   Card,
 } from "react-native-elements";
-import Info from "./Q&A";
+import Info from "../mock/Q&A";
 const width = Dimensions.get("window").width / 2 - 30;
 
 // import { Icon } from "react-native-paper/lib/typescript/components/List/List";

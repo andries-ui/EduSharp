@@ -3,7 +3,7 @@ import {View,Text,Image,ScrollView,TouchableOpacity,StyleSheet,Modal,Picker} fro
 import { Icon,Card, BottomSheet,Input,ListItem } from 'react-native-elements';
 import { COLORS, FONTS, SIZES, icons } from "../constants";
 
-import Info from './Q&A'
+import Info from '../mock/Q&A'
 
 
 const Material = ()=> {

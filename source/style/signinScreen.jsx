@@ -4,9 +4,8 @@ import { StyleSheet } from 'react-native';
 
 const Styles = StyleSheet.create({
     container: {
-      flex:1,
-      backgroundColor: COLORS.AppBackgroundColor,
       height:'100%',
+      width:'100%',
     },
     input: {
       alignContent: "center",

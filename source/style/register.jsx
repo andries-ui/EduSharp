@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
             color: "#3b3c3d",
             ...FONTS.body1,
             fontSize: 26,
-            paddingHorizontal: 20,
+            paddingHorizontal: 10,
             width: '100%',
             marginVertical:10
     }

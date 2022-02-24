@@ -2,7 +2,7 @@ import React from 'react';
 import {View,Text,FlatList,ScrollView,StyleSheet,TouchableOpacity} from 'react-native'
 import {Icon,Input,BottomSheet,Card} from 'react-native-elements'
 import { COLORS } from '../constants'
-import Info from './Q&A'
+import Info from '../mock/Q&A'
 
 const DownloadFiles = ({navigation}) => {
 
