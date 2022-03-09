@@ -1,6 +1,7 @@
 import React from 'react'
 import {img} from '../constants'
 
+
 class Info{
     info=[
         {
@@ -61,3 +62,6 @@ docs = [
 
 }
 export default new Info
+
+
+        

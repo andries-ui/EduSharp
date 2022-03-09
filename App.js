@@ -20,6 +20,8 @@ import Search from './source/screens/search'
 import StarredReplies from './source/screens/StarredReplies'
 import Profile from './source/screens/profile';
 import WelcomeScreen from './source/screens/welcome';
+import Lessons from './source/screens/Lessons';
+import QuestionPaper from './source/screens/QuestionPapers';
 
 
 
@@ -50,6 +52,9 @@ const Menu = () => {
                 <Stack.Screen name={'videos'} component={VideoFiles} />
                 <Stack.Screen name={'search'} component={Search} />
                 <Stack.Screen name={'StarredReplies'} component={StarredReplies} />
+                <Stack.Screen name={'lessonscreen'} component={Lessons} />
+                <Stack.Screen name={'questionpaperscreen'} component={QuestionPaper} />
+                {/* <Stack.Screen name={'StarredReplies'} component={StarredReplies} /> */}
             </Stack.Navigator>
         </NavigationContainer>
     )

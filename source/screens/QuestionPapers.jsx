@@ -5,20 +5,19 @@ import { Snackbar } from 'react-native-paper';
 import ProgressIndicator from '../components/progressIndicator';
 import { COLORS, FONTS, SIZES, icons } from "../constants";
 import * as DocumentPicker from 'expo-document-picker';
-import { v4 as uuidv4 } from 'uuid'
+
 import Info from '../mock/Q&A'
-import { useEffect } from 'react';
-import { firestore, storage } from '../BackendFirebase/configue/Firebase';
+import { firestore } from '../BackendFirebase/configue/Firebase';
 
 
-const Material = () => {
+const QuestionPaper = () => {
     // const [toggle, setToggle] = useState(true)
     // const option = () => {
     //     setToggle(!toggle)
     // }
-    const [isVisible, setIsVisible] = useState(false);
-    const [share, setShare] = useState(false);
-    const [modalVisible, setVisible] = useState(false);
+    const [isVisible, setIsVisible] = useState(false)
+    const [share, setShare] = useState(false)
+    const [modalVisible, setVisible] = useState(false)
 
     const [selectedGrade, setselectedGrade] = useState('Grade 8');
     const [selectedSubject, setselectedSubject] = useState('Mathematics');
@@ -29,14 +28,10 @@ const Material = () => {
     const [alertMessage, setalertMessage] = useState('');
     const [post, setpost] = useState([]);
     const [fileUrl, setfileUrl] = useState('');
-    const [filename, setfilename] = useState('');
 
     const MaterialCard = () => {
         return (
             <View>
-                <View style={{ justifyContent: 'center', alignItems: 'center' }}>
-                    {loading ? <View style={{ height: 10 }}><ProgressIndicator /></View> : null}
-                </View>
                 {Info.material.map(data =>
                     <Card key={data.id} containerStyle={{ borderRadius: 10, }} >
                         <Card.FeaturedTitle>
@@ -66,26 +61,17 @@ const Material = () => {
         )
     }
 
-    const SelectFile = async () => {
-
-        let result = await DocumentPicker.getDocumentAsync({
-            multiple: false, type: 'application/pdf',
-            allowsEditing: true,
-            aspect: [4, 3],
+    const SelectFile=()=>{
+        DocumentPicker.getDocumentAsync({multiple: false, type:'application/pdf'}).then((res)=>{
+         setFileUrl(res.uri);
+        })
+        .catch((err)=>{
+            console.log(err);
         });
+ 
+     }
 
-        if (!result.cancelled) {
-
-            setfileUrl(result);
-            setfilename(result.name);
-            console.log(result);
-
-        }
-
-
-    }
-
-    const handleAddPost = async () => {
+     const handleAddPost = async () => {
         setloading(true);
 
         // uploadImageAsync();
@@ -104,7 +90,7 @@ const Material = () => {
                     downloadable: true,
                     createdAt: new Date().format,
                 }
-                GeneralService.post("materials", values, navigation).then((res) => {
+                GeneralService.post("material", values, navigation).then((res) => {
                     setloading(false);
                     setalert(true);
                     setalertMessage('Content is posted successfully.');
@@ -132,14 +118,13 @@ const Material = () => {
     }
 
     const getPost=async()=>{
-        await firestore.collection("materials").get().then(querySnapshot=>{
+        await firestore.collection("questionpapers").get().then(querySnapshot=>{
             console.log('Total users: ', querySnapshot.size);
             let data = [];
             querySnapshot.forEach(documentSnapshot => {
                 data.push(documentSnapshot.data());
             });  
 
-            console.log(data);
             setpost(data);
         }).catch(err=>{
             console.log('====================================');
@@ -148,39 +133,14 @@ const Material = () => {
         });
     }
 
-    const uploadImageAsync = async () => {
-
-        // const blob = await new Promise((resolve, reject) => {
-        //     const xhr = new XMLHttpRequest();
-        //     xhr.onload = function () {
-        //         resolve(xhr.response);
-        //     };
-        //     xhr.onerror = function (e) {
-        //         console.log(e);
-        //         reject(new TypeError("Network request failed"));
-        //     };
-        //     xhr.responseType = "blob";
-        //     xhr.open("GET", fileUrl, true);
-        //     xhr.send(null);
-        // })
-
-        let res = await new fetch(fileUrl);
-        const blob = await res.blob();
-
-        await storage.ref().child("files").child('material').child(uuidv4()).put(blob).then((res) => {
-            console.log(res);
-        });
-    }
-
-    useEffect(() => {
-        getPost();
-
-    }, [])
     return (
         <>
             <View style={Styles.container}>
+                <View style={{ justifyContent: 'center', alignItems: 'center' }}>
+                    {loading ? <View style={{ height: 10 }}><ProgressIndicator /></View> : null}
+                </View>
                 <View style={Styles.header}>
-                    <Text style={Styles.headerText}>Material</Text>
+                    <Text style={Styles.headerText}>Question papers</Text>
                     <TouchableOpacity style={Styles.searchIcon}>
                         <Icon name='search' type='font-awesome' size={23} color={COLORS.primary} />
                     </TouchableOpacity>
@@ -193,7 +153,7 @@ const Material = () => {
                             onColor={'#3D93D1'}
                             offColor="red"
                             labelStyle={{ color: "black", fontWeight: '900' }}
-                            size="medium" 
+                            size="medium"
                             style={Styles.toggle}
                         /> */}
                     </View>
@@ -250,7 +210,7 @@ const Material = () => {
                                 </View>
                                 <View style={Styles.modalInput}>
                                     <Input
-                                        placeholder={'content'}
+                                        placeholder={'State the topic'}
                                         containerStyle={{ backgroundColor: COLORS.White, height: '100%', borderRadius: 10, padding: '1%' }}
                                         inputContainerStyle={{ borderColor: 'white' }}
 
@@ -264,20 +224,18 @@ const Material = () => {
 
                                     />
                                 </View>
-
+                               
                                 <TouchableOpacity style={Styles.fileContainer}>
                                     <Input
-                                        placeholder={'Add pdf'}
-                                        value={filename}
-                                        onChangeText={(e) => setfilename(e)}
+                                        placeholder={'Add pdf,doc, or'}
                                         containerStyle={{ borderRadius: 1, padding: '1%', height: '100%' }}
                                         inputContainerStyle={{ borderColor: '#EAEAEA' }}
-                                        rightIcon={<Icon name={'file'} type={'font-awesome'} size={18} color={COLORS.primary} onPress={SelectFile} />}
+                                        rightIcon={<Icon name={'file'} type={'font-awesome'} size={18} color={COLORS.primary} onPress={SelectFile}/>}
                                     />
                                 </TouchableOpacity>
-                                <View style={[Styles.buttons, { marginVertical: 10 }]}>
+                                <View style={Styles.buttons}>
                                     <TouchableOpacity onPress={() => setVisible(false)} style={Styles.cancel}><Text style={Styles.cancelText}>Cancel</Text></TouchableOpacity>
-                                    <TouchableOpacity onPress={handleAddPost} style={Styles.postbutton} ><Text style={Styles.postText}>Upload</Text></TouchableOpacity>
+                                    <TouchableOpacity onPress={() => alert('Material successfully uploaded')} style={Styles.postbutton} ><Text style={Styles.postText}>Upload</Text></TouchableOpacity>
                                 </View>
                             </View>
 
@@ -307,6 +265,7 @@ const Material = () => {
                         </View>
                     </BottomSheet>
                 </View>
+
                 <Snackbar
                     onDismiss={() => setalert(false)}
                     duration={615}
@@ -464,4 +423,4 @@ const Styles = StyleSheet.create({
 
 
 })
-export default Material
+export default QuestionPaper

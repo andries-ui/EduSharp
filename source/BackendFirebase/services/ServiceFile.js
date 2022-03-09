@@ -21,7 +21,7 @@ class Service {
         }).catch((err) => {
            return obj = { status: 'Failed', details: err };
         });
-        return obj;
+        
     }
 
     get(table) {

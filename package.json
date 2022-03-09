@@ -15,6 +15,9 @@
     "d": "^1.0.1",
     "dotenv": "^14.2.0",
     "expo": "~42.0.1",
+    "expo-camera": "~11.2.2",
+    "expo-document-picker": "~9.2.4",
+    "expo-image-picker": "^12.0.2",
     "expo-sqlite": "^10.0.3",
     "expo-status-bar": "~1.0.4",
     "firebase": "^8.2.3",
@@ -41,6 +44,7 @@
     "react-native-video": "^5.2.0",
     "react-native-web": "~0.13.12",
     "react-navigation": "^4.4.4",
+    "uuid": "^8.3.2",
     "yup": "^0.32.11"
   },
   "devDependencies": {

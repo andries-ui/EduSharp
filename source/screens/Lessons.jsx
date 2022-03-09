@@ -5,21 +5,18 @@ import { Snackbar } from 'react-native-paper';
 import ProgressIndicator from '../components/progressIndicator';
 import { COLORS, FONTS, SIZES, icons } from "../constants";
 import * as DocumentPicker from 'expo-document-picker';
-import { v4 as uuidv4 } from 'uuid'
+
 import Info from '../mock/Q&A'
-import { useEffect } from 'react';
-import { firestore, storage } from '../BackendFirebase/configue/Firebase';
 
 
-const Material = () => {
+const Lessons = () => {
     // const [toggle, setToggle] = useState(true)
     // const option = () => {
     //     setToggle(!toggle)
     // }
-    const [isVisible, setIsVisible] = useState(false);
-    const [share, setShare] = useState(false);
-    const [modalVisible, setVisible] = useState(false);
-
+    const [isVisible, setIsVisible] = useState(false)
+    const [share, setShare] = useState(false)
+    const [modalVisible, setVisible] = useState(false)
     const [selectedGrade, setselectedGrade] = useState('Grade 8');
     const [selectedSubject, setselectedSubject] = useState('Mathematics');
     const [topic, settopic] = useState(null);
@@ -27,16 +24,12 @@ const Material = () => {
     const [loading, setloading] = useState(false);
     const [alert, setalert] = useState(false);
     const [alertMessage, setalertMessage] = useState('');
-    const [post, setpost] = useState([]);
+    const [post, setpost] = useState([])
     const [fileUrl, setfileUrl] = useState('');
-    const [filename, setfilename] = useState('');
 
     const MaterialCard = () => {
         return (
             <View>
-                <View style={{ justifyContent: 'center', alignItems: 'center' }}>
-                    {loading ? <View style={{ height: 10 }}><ProgressIndicator /></View> : null}
-                </View>
                 {Info.material.map(data =>
                     <Card key={data.id} containerStyle={{ borderRadius: 10, }} >
                         <Card.FeaturedTitle>
@@ -66,25 +59,6 @@ const Material = () => {
         )
     }
 
-    const SelectFile = async () => {
-
-        let result = await DocumentPicker.getDocumentAsync({
-            multiple: false, type: 'application/pdf',
-            allowsEditing: true,
-            aspect: [4, 3],
-        });
-
-        if (!result.cancelled) {
-
-            setfileUrl(result);
-            setfilename(result.name);
-            console.log(result);
-
-        }
-
-
-    }
-
     const handleAddPost = async () => {
         setloading(true);
 
@@ -104,7 +78,7 @@ const Material = () => {
                     downloadable: true,
                     createdAt: new Date().format,
                 }
-                GeneralService.post("materials", values, navigation).then((res) => {
+                GeneralService.post("material", values, navigation).then((res) => {
                     setloading(false);
                     setalert(true);
                     setalertMessage('Content is posted successfully.');
@@ -131,71 +105,39 @@ const Material = () => {
         }
     }
 
-    const getPost=async()=>{
-        await firestore.collection("materials").get().then(querySnapshot=>{
-            console.log('Total users: ', querySnapshot.size);
-            let data = [];
-            querySnapshot.forEach(documentSnapshot => {
-                data.push(documentSnapshot.data());
-            });  
-
-            console.log(data);
-            setpost(data);
-        }).catch(err=>{
-            console.log('====================================');
-            console.log(err, "==>>==>");
-            console.log('====================================');
+    const SelectFile=()=>{
+        DocumentPicker.getDocumentAsync({multiple: false, type:'video/*'}).then((res)=>{
+         setFileUrl(res.uri);
+        })
+        .catch((err)=>{
+            console.log(err);
         });
-    }
+ 
+     }
 
-    const uploadImageAsync = async () => {
-
-        // const blob = await new Promise((resolve, reject) => {
-        //     const xhr = new XMLHttpRequest();
-        //     xhr.onload = function () {
-        //         resolve(xhr.response);
-        //     };
-        //     xhr.onerror = function (e) {
-        //         console.log(e);
-        //         reject(new TypeError("Network request failed"));
-        //     };
-        //     xhr.responseType = "blob";
-        //     xhr.open("GET", fileUrl, true);
-        //     xhr.send(null);
-        // })
-
-        let res = await new fetch(fileUrl);
-        const blob = await res.blob();
-
-        await storage.ref().child("files").child('material').child(uuidv4()).put(blob).then((res) => {
-            console.log(res);
-        });
-    }
-
-    useEffect(() => {
-        getPost();
-
-    }, [])
     return (
         <>
             <View style={Styles.container}>
+                <View style={{ justifyContent: 'center', alignItems: 'center' }}>
+                    {loading ? <View style={{ height: 10 }}><ProgressIndicator /></View> : null}
+                </View>
                 <View style={Styles.header}>
-                    <Text style={Styles.headerText}>Material</Text>
+                    <Text style={Styles.headerText}>Lessons</Text>
                     <TouchableOpacity style={Styles.searchIcon}>
                         <Icon name='search' type='font-awesome' size={23} color={COLORS.primary} />
                     </TouchableOpacity>
                 </View>
                 <ScrollView>
                     <View style={Styles.subtitle}>
-                        <Text style={Styles.text}>View only the content that is relevent to my course</Text>
-                        {/* <ToggleSwitch
+                        <Text style={[Styles.text,{fontSize:SIZES.body3}]}>View only the content that is relevent to my course</Text>
+                        <ToggleSwitch
                             isOn={true}
                             onColor={'#3D93D1'}
                             offColor="red"
                             labelStyle={{ color: "black", fontWeight: '900' }}
-                            size="medium" 
+                            size="medium"
                             style={Styles.toggle}
-                        /> */}
+                        />
                     </View>
                     <MaterialCard />
 
@@ -247,10 +189,10 @@ const Material = () => {
                                         <Picker.Item label='Select Subject' value="Mathematics" />
                                         <Picker.Item label='Select Subject' value="Mathematics" />
                                     </Picker>
-                                </View>
+                                </View> 
                                 <View style={Styles.modalInput}>
                                     <Input
-                                        placeholder={'content'}
+                                        placeholder={'State the topic'}
                                         containerStyle={{ backgroundColor: COLORS.White, height: '100%', borderRadius: 10, padding: '1%' }}
                                         inputContainerStyle={{ borderColor: 'white' }}
 
@@ -264,20 +206,18 @@ const Material = () => {
 
                                     />
                                 </View>
-
                                 <TouchableOpacity style={Styles.fileContainer}>
                                     <Input
-                                        placeholder={'Add pdf'}
-                                        value={filename}
-                                        onChangeText={(e) => setfilename(e)}
-                                        containerStyle={{ borderRadius: 1, padding: '1%', height: '100%' }}
+                                        placeholder={'Add Video'}
+                                        containerStyle={{ height: '100%', borderRadius: 20 }}
                                         inputContainerStyle={{ borderColor: '#EAEAEA' }}
-                                        rightIcon={<Icon name={'file'} type={'font-awesome'} size={18} color={COLORS.primary} onPress={SelectFile} />}
+                                        rightIcon={<Icon name={'file'} type={'font-awesome'} size={18} color={COLORS.primary} onPress={SelectFile}/>}
                                     />
                                 </TouchableOpacity>
-                                <View style={[Styles.buttons, { marginVertical: 10 }]}>
+                                
+                                <View style={Styles.buttons}>
                                     <TouchableOpacity onPress={() => setVisible(false)} style={Styles.cancel}><Text style={Styles.cancelText}>Cancel</Text></TouchableOpacity>
-                                    <TouchableOpacity onPress={handleAddPost} style={Styles.postbutton} ><Text style={Styles.postText}>Upload</Text></TouchableOpacity>
+                                    <TouchableOpacity onPress={() => alert('Material successfully uploaded')} style={Styles.postbutton} ><Text style={Styles.postText}>Upload</Text></TouchableOpacity>
                                 </View>
                             </View>
 
@@ -332,7 +272,6 @@ const Styles = StyleSheet.create({
     },
     text: {
         fontSize: 15,
-        width: '50%'
     },
     toggle: {
         marginRight: '2%'
@@ -464,4 +403,4 @@ const Styles = StyleSheet.create({
 
 
 })
-export default Material
+export default Lessons

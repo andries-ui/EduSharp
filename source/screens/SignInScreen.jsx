@@ -33,7 +33,7 @@ const SignIn = ({ navigation }) => {
 
   const [isPasswordVisibility, setIsPasswordVisibility] = useState(true);
   const [loading, setloading] = useState(false);
-  const [alert, setalert] = useState(true);
+  const [alert, setalert] = useState(false);
   const [alertMessage, setalertMessage] = useState('');
 
   const changePasswordViewState = () => {
@@ -60,12 +60,14 @@ const SignIn = ({ navigation }) => {
   const handleSignin = (values) => {
     setloading(true);
     Auth.SignIn(values, navigation).then(res => {
+      console.log('====================================');
+
+      console.log('====================================');
       if (res.status == 'Failed') {
         setalert(true);
         setalertMessage(res.details);
         setloading(false)
       }
-      setalert(true);
       setalertMessage(res.details);
       setloading(false)
     }).catch(err => {
@@ -87,10 +89,10 @@ const SignIn = ({ navigation }) => {
   return (
     <View style={[Styles.container, {}]}>
       <APPStatusBar background={COLORS.AppBackgroundColor} style={'dark-content'} />
-     <View style={{ justifyContent: 'center', alignItems: 'center' }}>
-     {loading ?null: <View style={{ height: 10 }}><ProgressIndicator /></View> }
-     </View>
-      
+      <View style={{ justifyContent: 'center', alignItems: 'center' }}>
+        {loading ? <View style={{ height: 10 }}><ProgressIndicator /></View> : null}
+      </View>
+
       <View style={{ backgroundColor: COLORS.White, paddingVertical: 10, height: 250, justifyContent: 'center', alignItems: 'center' }}>
         <Anim json={require('../../assets/lootie/69437-academic-hut-banner.json')} autoplay={true} autosize={false} loop={true} speed={1} style={{ height: '100%', width: '100%' }} />
       </View>

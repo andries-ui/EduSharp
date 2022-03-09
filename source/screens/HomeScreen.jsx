@@ -93,7 +93,7 @@ const HomeScreen = ({ navigation }) => {
         </Card>
 
         <Card style={{ width: 150, height: 100, alignContent: 'center', justifyContent: 'center', borderRadius: 20, }}>
-          <TouchableOpacity onPress={() => navigation.navigate("Material")}>
+          <TouchableOpacity onPress={() => navigation.navigate("lessonscreen")}>
             <View style={{ alignSelf: 'center', top: 20, }} >
               <FontAwesome5
                 name="edit"
@@ -151,7 +151,7 @@ const HomeScreen = ({ navigation }) => {
         </Card>
 
         <Card style={{ width: 150, height: 100, alignContent: 'center', justifyContent: 'center', borderRadius: 20 }}>
-          <TouchableOpacity onPress={() => navigation.navigate("Material")}>
+          <TouchableOpacity onPress={() => navigation.navigate("questionpaperscreen")}>
             <View style={{ top: 20, alignSelf: 'center' }}>
               <FontAwesome5
                 name="copy"
