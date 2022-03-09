@@ -20,6 +20,7 @@ const  StarredReplies =({ navigation }) =>{
                             <View>
                                 <Text style={Styles.headertext}>Monicca</Text>
                                 <Text style={{ marginLeft: 20 }}>2h ago</Text>
+                             
                             </View>
                             <TouchableOpacity  onPress={() => setIsVisible(true)}>
                                 <Icon name={'ellipsis-v'} type={'font-awesome'}  style={{ right:'0%', marginBottom: 25, width: 8, height: 24 }} />
@@ -30,13 +31,16 @@ const  StarredReplies =({ navigation }) =>{
                     <Card.FeaturedTitle style={Styles.post}>
                         <TouchableOpacity onPress={()=>navigation.goBack()} >
                             <Text style={Styles.question}>
-                                Lorem ipsum dolor sit amet, consectetur a
+                             I've been struggling to work out the KC
                             </Text>
                             <Text>
-                                Lorem ipsum dolor sit amet, consectetur a
+                            calculations can anyone please
                             </Text>
                             <Text>
-                                Lorem ipsum dolor sit amet, consectetur a
+                               recommend any material I can learn
+                            </Text>
+                            <Text>
+                               through
                             </Text>
                         </TouchableOpacity>
                     </Card.FeaturedTitle>
@@ -76,10 +80,13 @@ const  StarredReplies =({ navigation }) =>{
                     <Card.FeaturedTitle style={Styles.post}>
                         <View>
                             <Text style={Styles.question}>
-                                {data.reply}
+                               Check the KC lesson posted by
                             </Text>
                             <Text>
-                                {data.reply}
+                                Edusharp for beginners, it is very
+                            </Text>
+                            <Text>
+                               clear
                             </Text>
                         </View>
                     </Card.FeaturedTitle>
@@ -99,11 +106,11 @@ const  StarredReplies =({ navigation }) =>{
                 <Postcard />
             </View>
             <ScrollView>
-                <Text style={Styles.subtext}>Replies</Text>
+                <Text style={Styles.subtext}>Replies </Text>
                 <View style={{width:'100%'}}>
                     <Replies />
-                    <Text>        </Text>
-                    <Text>        </Text>
+                    <Text>    </Text>
+                    <Text>       </Text>
                 </View>
             </ScrollView>
             <View>
